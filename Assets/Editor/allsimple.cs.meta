@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fb41540ef21403b4382ccd013d0a0d4b
+timeCreated: 1535724860
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - esven: {fileID: 1639731636175570, guid: 9073ea2256e7fe34fb6621172b6b87ca, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
