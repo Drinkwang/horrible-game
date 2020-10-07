@@ -37,7 +37,7 @@ public class selectitem : MonoBehaviour,IPointerDownHandler
         set
         {
             model = value;
-            if (model.id!= null)
+            if (model.id!= 0)
             {
                 
              

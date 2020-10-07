@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class scriptcommand : ScriptableObject, IC{
+public class scriptcommand : IC{
     private string[] myscribe;
     public void Todo(Observer o){
         myscribe =(string[])o.body;

@@ -14,17 +14,19 @@ public class AppFactory : MonoBehaviour
     public AddTaskcommand task;
     public RenderTaskcommand rtask;
     private itemchosenCommand ichosen;
-    private scriptcommand scribe;
+    private scriptcommand scribeObj;
     public GameObject talkobj;
     private TvCommand tvShow;
     public ChangeGoodcommand changegoodat;
     private CinemaControl cinemaContorl;
     private PostProcessController postProcessController;
+    private QuetionController quetionController;
 
     public bool isopenpackage = false;
     private allsave mysave;
     public GameObject entrytab;
     public GameObject testSystem;
+    public GameObject womanLin;
     //public GameObject quiver,enemy;
     // public string character;
     //public move playercontrolpower;
@@ -35,6 +37,11 @@ public class AppFactory : MonoBehaviour
     public void SetbeUseObj(GameObject temp) {
 
         beUseObj =temp;
+    }
+
+    public void changePost(bool active) {
+        postObj.ispost = active;
+
     }
 
     public GameObject GetbeUseObj()
@@ -72,7 +79,7 @@ public class AppFactory : MonoBehaviour
         task
     };
     itemstate nowstate;
-    private bool kaca = true;
+    //private bool kaca = true;
     public void changekacasound(bool t){
         t = !t;
     }
@@ -107,12 +114,12 @@ public class AppFactory : MonoBehaviour
         v = new view();
         render = new RendertoViewcommand();
         once = new Oncesessioncommand();
-        scribe = new scriptcommand();
+        scribeObj = new scriptcommand();
         task = new AddTaskcommand();
         rtask = new RenderTaskcommand();
         ichosen = new itemchosenCommand();
         postProcessController = new PostProcessController();
-
+        quetionController = new QuetionController();
         add = new AddGoodscommand();
         changegoodat = new ChangeGoodcommand();
         useGoodCommand = new UseGoodscommand();
@@ -130,6 +137,7 @@ public class AppFactory : MonoBehaviour
         AdjustView(new CinemaView());
         AdjustView(new TvView());
         AdjustView(new PostEffectView());
+        AdjustView(new QuetionView());
 
         AdjustCommand("once", once);
         AdjustCommand("RendertoViewcommand", render);
@@ -145,7 +153,7 @@ public class AppFactory : MonoBehaviour
         // later will be add delete task
         AdjustCommand("addtask", task);
         AdjustCommand("rtask", rtask);
-        AdjustCommand("changeM", scribe);
+        AdjustCommand("changeM", scribeObj);
 
         //relative Camera about 
         AdjustCommand("changeCamere", cinemaContorl);
@@ -165,6 +173,12 @@ public class AppFactory : MonoBehaviour
         AdjustCommand(Cmd.playTv, tvShow);
         AdjustCommand(Cmd.stopTv, tvShow);
 
+        //QuetionComponent
+        AdjustCommand(Cmd.QuetionChangeButton, quetionController);
+        AdjustCommand(Cmd.QuetionChangeTitle, quetionController);
+        AdjustCommand(Cmd.QuetionShow, quetionController);
+        AdjustCommand(Cmd.QuetionChangeA, quetionController);
+        AdjustCommand(Cmd.QuetionCHnngeB, quetionController);
 
 
     }
@@ -204,6 +218,7 @@ public class AppFactory : MonoBehaviour
     {
         if (isopenpackage == false)
         {
+            AppFactory.instances.changePost(false);
             isopenpackage = true;
             if(blind!=null)
                 blind.SetActive(true);
@@ -228,6 +243,7 @@ public class AppFactory : MonoBehaviour
         else 
         {
             //       Audomanage.instance.bg.Play();
+            AppFactory.instances.changePost(true);
             packageComponent.instante.closePackage();
             //  TaskComponent.instance.transform.GetChild(0).gameObject.SetActive(false);
             //close taskitem
@@ -247,6 +263,7 @@ public class AppFactory : MonoBehaviour
     public void closePackage(GameObject blind = null,bool isPlayAudio=true) {
         if (isopenpackage == true)
         {
+            AppFactory.instances.changePost(true);
             packageComponent.instante.closePackage();
             //close taskitem
             if (blind != null)

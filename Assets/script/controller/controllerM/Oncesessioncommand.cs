@@ -37,10 +37,15 @@ public class Oncesessioncommand : IC
         else if (o.body.GetType().ToString() == "System.String")
         {
             // AppFactory.instances.character = (string)o.body;
+
             AppFactory.instances.viewTodo(new Observer(Cmd.dialog, o.body.ToString()));
             //AppFactory.instances.playercontrol(false);
 
         }
+        //if (Sayingproxy.instances().returnLs().Count >= 0)
+        //    AppFactory.instances.changePost(false);
+
+
     }
 }
 

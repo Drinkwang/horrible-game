@@ -3,6 +3,9 @@
 using System;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
+using System.Collections;
+using UnityEngine;
+
 public static class CUtil 
 {
 
@@ -26,26 +29,44 @@ public static class CUtil
 
 
     }
-
+    public static Hashtable Hash(params object[] args)
+    {
+        Hashtable hashTable = new Hashtable(args.Length / 2);
+        if (args.Length % 2 != 0)
+        {
+            Debug.LogError("Tween Error: Hash requires an even number of arguments!");
+            return null;
+        }
+        else
+        {
+            int i = 0;
+            while (i < args.Length - 1)
+            {
+                hashTable.Add(args[i], args[i + 1]);
+                i += 2;
+            }
+            return hashTable;
+        }
+    }
     public static String idToMaterialString(int id) {
         string t ="";
-       if (id==1)
+       if (id==11)
             t= "Materials/扑克j";//剪刀
-       else if(id==2)
+       else if(id==12)
             t = "Materials/扑克q";//步
-        else if (id == 3)
+        else if (id == 13)
             t = "Materials/扑克k";//石头
         return t;
     }
 
     public static String idToCardBackString(int id) {
         string t = "";
-        if (id == 1)
-            t = "Materials/cardback0";//剪刀
-        else if (id == 2)
-            t = "Materials/cardback2";//步
-        else if (id == 3)
-            t = "Materials/cardback1";//石头
+        if (id == 11)
+            t = "Materials/cardback1";//剪刀
+        else if (id == 12)
+            t = "Materials/cardback0";//步
+        else if (id == 13)
+            t = "Materials/cardback2";//石头
         return t;
 
     }
@@ -63,42 +84,42 @@ public static class CUtil
                 result = int.Parse(str);
             }
         }
-        switch (result)
-        {
-            case 0:
-                return 1;
-            case 1:
-                return 3;
-            case 2:
-                return 2;
-            default:
-                break;
-        }
+        //switch (result)
+        //{
+        //    case 0:
+        //        return 1;
+        //    case 1:
+        //        return 3;
+        //    case 2:
+        //        return 2;
+        //    default:
+        //        break;
+        //}
         return result;
 
     }
     public static int getBeWinCard(int id,bool isbeWin) {
-        if (id == 1)
+        if (id == 11)
         {
             if (isbeWin == true)
-                return 3;
+                return 13;
             else
-                return 2;
+                return 12;
 
         }
-        else if (id == 2)
+        else if (id == 12)
         {
             if (isbeWin == true)
-                return 1;
+                return 11;
             else
-                return 3;
+                return 13;
         }
-        else if (id == 3)
+        else if (id == 13)
         {
             if (isbeWin == true)
-                return 2;
+                return 12;
             else
-                return 1;
+                return 11;
 
         }
         return id;

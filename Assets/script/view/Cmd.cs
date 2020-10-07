@@ -35,6 +35,14 @@ using System.Text;
     public const string initPostEffectModel = "initPostEffectModel";
     public const string shaderPostEffectOperate = "shaderPostEffectOperate";
 
+
+    //changeButton
+    public const string QuetionChangeButton = "QutionChangeButton";
+    public const string QuetionChangeTitle = "QuetionChangeTitle";
+    public const string QuetionShow = "QuetionShow";
+    public const string QuetionChangeA = "QuetionChangeA";
+    public const string QuetionCHnngeB = "QuetionChangeB";
+
     //后续有可能的话，操作view和操作ctrl也进行分层
 }
 

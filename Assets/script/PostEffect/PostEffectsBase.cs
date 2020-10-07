@@ -16,8 +16,11 @@ public class PostEffectsBase : MonoBehaviour {
 
 	// Called in CheckResources to check support on this platform
 	protected bool CheckSupport() {
-		if (SystemInfo.supportsImageEffects == false || SystemInfo.supportsRenderTextures == false) {
-			Debug.LogWarning("This platform does not support image effects or render textures.");
+#pragma warning disable CS0618 // 类型或成员已过时
+        if (SystemInfo.supportsImageEffects == false || SystemInfo.supportsRenderTextures == false)
+        {
+#pragma warning restore CS0618 // 类型或成员已过时
+            Debug.LogWarning("This platform does not support image effects or render textures.");
 			return false;
 		}
 		

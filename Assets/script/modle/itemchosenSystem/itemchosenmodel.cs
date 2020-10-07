@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+//该对象定义了所有物品
 [Serializable]
 public class itemchosenmodel : Basemodel {
     public string button_num;
@@ -91,7 +92,7 @@ public class Befunction : MonoBehaviour
                 AppFactory.instances.generalPaintBase();
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
                 AppFactory.instances.closePackage(null, false);
-
+                
 
             }
         }
@@ -111,9 +112,23 @@ public class Befunction : MonoBehaviour
                 }
                 Tempmodel.myback[index].SetActive(true);
                 Tempmodel.cardBorad[index].layer = 1;
-                Tempmodel.myback[index].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId));
+                Tempmodel.myback[index].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId+10));
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
                 AppFactory.instances.closePackage(null, false);
+                BloomModel.instance().bloomData.MyTablecards[BloomModel.instance().bloomData.currenceUseCardNum++] = BloomModel.instance().bloomData.deckHold[beUseItemId-1];
+                
+                if (BloomModel.instance().bloomData.currenceUseCardNum == 3) {
+                    middleLayer.Instance.canMove = false;
+                    middleLayer.Instance.MousePause();
+
+                }
+                //if (AppFactory.instances.eventTodo("琳的记忆")) {
+
+                //  AppFactory.instances.womanLin.SetActive(true);
+                //  AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
+                // AppFactory.instances.womanLin.GetComponent<Onobjsession>().add();
+
+                //}
             }
         }
 

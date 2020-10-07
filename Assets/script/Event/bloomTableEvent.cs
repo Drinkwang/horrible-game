@@ -11,7 +11,7 @@ public class bloomTableEvent : Befunction
     private packageComponent packageC;
     private BloomModel bloomModel;
     public Camera tempCamera;
-
+    public BloomData tempBloomData;
     private List<GameObject> hintObj;
     public enum bloomType 
     {
@@ -53,6 +53,9 @@ public class bloomTableEvent : Befunction
 
     public void event3() {
         bloomModel = BloomModel.instance();
+      //  Debug.Log("test"+ tempBloomData.MyTablecards[0]);
+        tempBloomData.initCards(0);
+        tempBloomData.initCards(1);
         middleLayer.Instance.canMove = true;
         middleLayer.Instance.MouseRun();
         AppFactory.instances.changestate(Globelstate.state.start);
@@ -61,6 +64,11 @@ public class bloomTableEvent : Befunction
         {
             bloomModel.myback[i].SetActive(false);
             bloomModel.cardback[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/cardback" + i);
+            CardData tempCardData = bloomModel.bloomData.deckHold[i];
+           // tempCardData.material = Resources.Load < Material > (CUtil.idToMaterialString(i+10));// cResources.Load<Material>("Materials/cardback" + i)
+            //Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId));
+            //tempCardData.Point = i + 10;
+            tempBloomData.pushCard(1, tempCardData);
             //  Debug.Log("isrun mouse");
         }
     }
@@ -142,8 +150,10 @@ public class bloomTableEvent : Befunction
         yield return new WaitForSeconds(0.2f);
         AppFactory.instances.showpack();
         yield return new WaitForSeconds(3f);
-        bloomModel.myback[i-1].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToMaterialString(i));
-        bloomModel.cardback[i-1].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToMaterialString(CUtil.getBeWinCard(i,true)));
+        bloomModel.myback[i-1].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToMaterialString(i+10));
+
+        bloomModel.cardback[i-1].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToMaterialString(CUtil.getBeWinCard(i+10,true)));
+
         yield return new WaitForSeconds(5f);
         bloomModel.bloomBeacon.SetActive(true);
         bloomModel.bloomBeacon.GetComponent<Animation>().Play();

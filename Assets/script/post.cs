@@ -13,14 +13,12 @@ public class post : MonoBehaviour
     public Camera main;
     public GameObject onecardevent, threecardevent;
     public GameObject table;
-    public bool ispost=false,isblink = false;
+    public bool ispost = false,isblink = false;
     public GameObject[] paint;
     public GameObject[] paintbase;
 
     void Update()
     {
-
-        //DJ.instant.j ();
         RaycastHit hitpoint;
         if ((Input.GetKeyDown(KeyCode.Tab) && AppFactory.instances.myglobelstate == Globelstate.state.start) || (Input.GetMouseButtonDown(1) && AppFactory.instances.myglobelstate == Globelstate.state.start))
         {
@@ -39,18 +37,16 @@ public class post : MonoBehaviour
 
         }
 
-        if (isblink == true||AppFactory.instances.GetbeUseObj()==null)
+        if (isblink == true)
         {
             a.exit();
-            isblink = false;
+           isblink = false;
         }
-        else if (AppFactory.instances.GetbeUseObj() != null)
+        if (AppFactory.instances.GetbeUseObj() != null)
         {
-            if (isblink == true )
-            {
-                if(Vector3.Distance(this.transform.position, AppFactory.instances.GetbeUseObj().transform.position) >= 5)
-                    AppFactory.instances.SetbeUseObj(null);
-            }
+            if(Vector3.Distance(this.transform.position, AppFactory.instances.GetbeUseObj().transform.position) >= 4f)
+                 AppFactory.instances.SetbeUseObj(null);
+
         }
         if (ispost == true)
         {
@@ -58,10 +54,11 @@ public class post : MonoBehaviour
             Debug.DrawRay(o.origin, o.direction,Color.black);
             if (Physics.Raycast(o, out hitpoint, 1.8f,1))
             {//1.8
-                  AppFactory.instances.SetbeUseObj(hitpoint.collider.gameObject);
+                 
                 if (hitpoint.collider.gameObject.layer == 0)
                 {
                     a.intel();
+                    AppFactory.instances.SetbeUseObj(hitpoint.collider.gameObject);
                     isblink = true;
                 }
 

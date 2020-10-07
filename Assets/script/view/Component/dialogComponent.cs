@@ -76,6 +76,7 @@ public class dialogComponent : MonoBehaviour
                     lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].JapanAC, dialogues[0].talkobj.transform, t);
             }
             dialogues.RemoveAt(0);
+
         }
         else
         {
@@ -94,6 +95,8 @@ public class dialogComponent : MonoBehaviour
     }
     void tempFunction()
     {
+     //   if (Sayingproxy.instances().returnLs().Count <= 0)
+     //      AppFactory.instances.changePost(true);
         AppFactory.instances.viewTodo(new Observer(Cmd.dialog));
 
     }

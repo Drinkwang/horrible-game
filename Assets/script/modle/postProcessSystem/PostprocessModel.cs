@@ -8,7 +8,7 @@ class PostprocessModel : Basemodel
 {
     public string postEffectSrc= "Vignette";
     public float intensity = 0;
-    public string beEffectProperty;
+    public string beEffectProperty="";
 
     public PostprocessModel()
     {
