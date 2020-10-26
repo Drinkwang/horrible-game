@@ -31,8 +31,6 @@ public class BloomData : ScriptableObject
 
     private void Awake()
     {
-        Debug.Log("how to");
-   
 
     }
     public void initCards(int turn) {

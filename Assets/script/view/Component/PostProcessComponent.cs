@@ -89,7 +89,8 @@ public class PostProcessComponent:MonoBehaviour{
 
     }
     public void Oncomplete() {
-
+        if(model.T!=null)
+            model.T();
     }
 
 

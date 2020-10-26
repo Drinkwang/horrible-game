@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AddGoodscommand : IC {
 	PackProxy packproxy=PackProxy.instances();
-	Goodproxy goodproxy=Goodproxy.instances();
+//	Goodproxy goodproxy=Goodproxy.instances();
 
 	// Use this for initialization
 	public void Todo(Observer io)
@@ -22,11 +22,12 @@ public class AddGoodscommand : IC {
             model = packproxy.getback ();
 			model.goodid = id;
             model.count = 1;
-           AppFactory.instances.isopenpackage = true;
+           //AppFactory.instances.isopenpackage = true;
         }
-        //AppFactory.instances.Todo (new Observer ("RendertoViewcommand","main"));
+        AppFactory.instances.Todo (new Observer ("RendertoViewcommand","main"));
         AppFactory.instances.closePackage(AppFactory.instances.entrytab, false);
-        AppFactory.instances.showpack(AppFactory.instances.entrytab,false,true);
+        AppFactory.instances.showpack(AppFactory.instances.entrytab,false,true,false);
+        
         AppFactory.instances.ssinvoke();
 
 //		Debug.Log ("assa");

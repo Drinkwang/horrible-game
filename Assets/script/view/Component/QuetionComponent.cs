@@ -54,7 +54,7 @@ public class QuetionComponent : MonoBehaviour
     {
         GameObject target =(GameObject)o.body;
             
-        Hashtable args =(Hashtable)o.date;
+        Hashtable args =(Hashtable)o.data;
 
 
         Launch(target, args);

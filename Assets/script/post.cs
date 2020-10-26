@@ -36,12 +36,13 @@ public class post : MonoBehaviour
 
 
         }
-
         if (isblink == true)
         {
             a.exit();
-           isblink = false;
+            isblink = false;
+
         }
+
         if (AppFactory.instances.GetbeUseObj() != null)
         {
             if(Vector3.Distance(this.transform.position, AppFactory.instances.GetbeUseObj().transform.position) >= 4f)
@@ -54,7 +55,8 @@ public class post : MonoBehaviour
             Debug.DrawRay(o.origin, o.direction,Color.black);
             if (Physics.Raycast(o, out hitpoint, 1.8f,1))
             {//1.8
-                 
+               
+ 
                 if (hitpoint.collider.gameObject.layer == 0)
                 {
                     a.intel();
@@ -69,7 +71,7 @@ public class post : MonoBehaviour
                         middleLayer.Instance.canMove = false;
                         middleLayer.Instance.MousePause();
                         hitpoint.collider.GetComponent<Onobjsession>().add();
-                        AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 1));
+                        AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
                         AppFactory.instances.closePackage(AppFactory.instances.entrytab);
                         AppFactory.instances.changestate(Globelstate.state.load);
                     }
@@ -209,11 +211,12 @@ public class post : MonoBehaviour
         }
         else if ((t.name == "mycard0" || t.name == "mycard1"|| t.name == "mycard2")&& AppFactory.instances.eventTodo("不能回收手牌")) {
           
-            PostprocessModel tempModel = new PostprocessModel();
-            tempModel.id = 0;
-            tempModel.postEffectSrc = "UnityEngine.Rendering.PostProcessing.Vignette";
-            tempModel.intensity = 1;
-            AppFactory.instances.Todo(new Observer(Cmd.postEffectOperate, tempModel));
+            //PostprocessModel tempModel = new PostprocessModel();
+            //tempModel.id = 0;
+            //tempModel.postEffectSrc = "UnityEngine.Rendering.PostProcessing.Vignette";
+            //tempModel.intensity = 1;
+            //tempModel.T+=M
+            //AppFactory.instances.Todo(new Observer(Cmd.postEffectOperate, tempModel));
             player.GetComponent<Animator>().SetTrigger("grag");
             BloomModel.instance().gameObject.GetComponent<Onobjsession>().add();
         }

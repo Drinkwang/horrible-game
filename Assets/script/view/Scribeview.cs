@@ -27,7 +27,7 @@ public class Scribeview : Vmediator {
         {
             case "changeM":
               
-                scribeComponent.instance.changeM((string[])o.body);
+                scribeComponent.instance.changeM((scriptmodel)o.body);
 
                 break;
                 }

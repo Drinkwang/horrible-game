@@ -26,7 +26,7 @@ public class AppFactory : MonoBehaviour
     private allsave mysave;
     public GameObject entrytab;
     public GameObject testSystem;
-    public GameObject womanLin;
+    public GameObject raceEvent;
     //public GameObject quiver,enemy;
     // public string character;
     //public move playercontrolpower;
@@ -139,7 +139,9 @@ public class AppFactory : MonoBehaviour
         AdjustView(new PostEffectView());
         AdjustView(new QuetionView());
 
+        AdjustCommand(Cmd.dialogReplace, once);
         AdjustCommand("once", once);
+
         AdjustCommand("RendertoViewcommand", render);
         AdjustCommand("exchange", changegoodat);
         AdjustCommand("AddGoodscommand", add);
@@ -214,15 +216,16 @@ public class AppFactory : MonoBehaviour
     }
 
 
-    public void showpack(GameObject blind=null,bool playAudio=true,bool isMove=false)
+    public void showpack(GameObject blind=null,bool playAudio=true,bool isMove=false,bool IsChangePost=true)
     {
         if (isopenpackage == false)
         {
-            AppFactory.instances.changePost(false);
+            if(IsChangePost==true)
+                AppFactory.instances.changePost(false);
             isopenpackage = true;
             if(blind!=null)
                 blind.SetActive(true);
-            //     Audomanage.instance.bg.Pause();
+          
             if(playAudio==true)
                 Audomanage.instance.OnPlay("pick");
             if(isMove==false)

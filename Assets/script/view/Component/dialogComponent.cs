@@ -9,15 +9,18 @@ public class dialogComponent : MonoBehaviour
     private List<SingledialogText> dialogues;
     private Text saying;
     private static int num = 0;
-    public AudioSource lastaudio;
+    private AudioSource lastaudio;
+
 
 
     void Awake()
     {
         instance = this;
         saying = this.GetComponent<Text>();
+
     }
-    // Use this for initializaWtion
+
+
     void Start()
     {
 
@@ -28,6 +31,7 @@ public class dialogComponent : MonoBehaviour
     {
         Audomanage.instance.Stop();
         dialogues = a;
+
 
         //	a[a[0]];
 
@@ -43,37 +47,75 @@ public class dialogComponent : MonoBehaviour
     {
     }
 
+    public void Replace(SingledialogText temp,Onobjsession oncession,int index)
+    {
+        //  Audomanage.instance.Stop();
+        // SingledialogText D = dialogues[1];
+        temp.Assignment(oncession,index);
+         //dialogues[1].Assignment(tempDialog);
+        //D.ChineseAC=tempDialog.ChineseAC;
+        //D.ChineseVersion
+
+    }
+
+
+    public void ReplaceAll(List<SingledialogText> tempDialog)
+    {
+        //  Audomanage.instance.Stop();
+        for (int i = 0; i < tempDialog.Count; i++)
+        {
+            SingledialogText temp = tempDialog[i];
+            temp.talkobj = dialogues[0].talkobj;
+        }
+
+        tempDialog.AddRange(dialogues);
+        dialogues = tempDialog;
+
+    }
 
     public void todo(Befunction t = null)
     {
         if (dialogues.Count != 0)
         {
-            if (dialogues[0].t != null)
+            if (dialogues[0].t != null && dialogues[0].Sequence == SingledialogText.executeSequence.RunInDiaglogEnd)
                 t = dialogues[0].t;
+            else if (dialogues[0].Sequence == SingledialogText.executeSequence.RunInDiaglogBegan) {
+                dialogues[0].t.runa(dialogues[0].value, dialogues[0].values);
+                t = new Befunction("who know");
+            }
+
             else t = new Befunction("who know");
             t.A += tempFunction;
+            t._A += tempFunction2;
+            //if (calledObj != null)
+            //    t.calledObj = calledObj;
+            
+
             if (AppFactory.instances.mylanguage == Globelstate.language.china)
             {
                 textchange(dialogues[0].ChineseVersion.ToString());
                 if (dialogues[0].ChineseAC == null)
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t);
-                else lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].ChineseAC, dialogues[0].talkobj.transform, t);
+                {
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
+                }
+                else
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].ChineseAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
             }
             else if (AppFactory.instances.mylanguage == Globelstate.language.english)
             {
                 textchange(dialogues[0].EnglishVersion.ToString());
                 if (dialogues[0].EnglishAC == null)
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
                 else
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].EnglishAC, dialogues[0].talkobj.transform, t);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].EnglishAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
             }
             else if (AppFactory.instances.mylanguage == Globelstate.language.japanense)
             {
                 textchange(dialogues[0].JapanVersion.ToString());
                 if (dialogues[0].JapanAC == null)
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
                 else
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].JapanAC, dialogues[0].talkobj.transform, t);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].JapanAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
             }
             dialogues.RemoveAt(0);
 
@@ -81,8 +123,7 @@ public class dialogComponent : MonoBehaviour
         else
         {
             saying.text = "";
-            //this.transform.Find("black").gameObject.SetActive(false);
-            //       AppFactory.instances.playercontrolpower.enabled = true;
+
         }
 
 
@@ -95,8 +136,15 @@ public class dialogComponent : MonoBehaviour
     }
     void tempFunction()
     {
-     //   if (Sayingproxy.instances().returnLs().Count <= 0)
-     //      AppFactory.instances.changePost(true);
+        //   if (Sayingproxy.instances().returnLs().Count <= 0)
+        //      AppFactory.instances.changePost(true);
+        tempFunction2();
+
+    }
+    void tempFunction2(int res = 0, List<int> values = null)
+    {
+        //   if (Sayingproxy.instances().returnLs().Count <= 0)
+        //      AppFactory.instances.changePost(true);
         AppFactory.instances.viewTodo(new Observer(Cmd.dialog));
 
     }
@@ -104,39 +152,7 @@ public class dialogComponent : MonoBehaviour
 
 
 
-/*	public void OnPointerClick(PointerEventData eventData)
-	{
-		if (eventData.pointerId == -1) {
-			Debug.Log ("Left Mouse Clicked");
 
-		}
-	}
-
-	public void OnPointerEnter(PointerEventData eventData)
-	{if (one == false) {
-			t =	this.GetComponent<Button> ().onClick.GetPersistentTarget (0)as GameObject;
-			t.SetActive (true);
-		}
-	}
-
-	public void OnPointerExit(PointerEventData eventData)
-	{t.SetActive (false);
-		Debug.Log("Pointer Exit");
-	}
-
-	public void OnPointerDown(PointerEventData eventData)
-	{
-		if (two == false) {
-			Debug.Log ("Pointer Down");
-			s.enabled = true;
-			issaying = true;
-
-			title.SetActive (false);
-			task.SetActive (true);
-			this.GetComponent<Text>().enabled=false;
-			two = true;}
-	}
-*/
 
 
 

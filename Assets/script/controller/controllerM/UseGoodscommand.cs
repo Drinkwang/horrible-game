@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UseGoodscommand : IC {
 	PackProxy packproxy=PackProxy.instances();
-	Goodproxy goodproxy=Goodproxy.instances();
+	//Goodproxy goodproxy=Goodproxy.instances();
 
 	// Use this for initialization
 	public void Todo(Observer io)

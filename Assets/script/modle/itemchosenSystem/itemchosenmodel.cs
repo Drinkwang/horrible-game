@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using Assets.script.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 //该对象定义了所有物品
 [Serializable]
@@ -30,20 +32,46 @@ public class itemchosenmodel : Basemodel {
 
    
 }
+
+
+
+public class newBehaiver {
+    internal string t;
+    public Action A;
+    public newBehaiver(string temp)
+    {
+        t = temp;
+    }
+    internal void runa(int res = 0, List<int> resG = null)
+    {
+
+            A();
+    }
+}
+
+
 [System.Serializable]
 public class Befunction : MonoBehaviour
 {
     internal string t;
     public Action A;
+    public object calledObj;
+    public ReplaceNextDiaglogData.SessionAddIndex sai;
+    //  public Hashtable hashtable;
+
+    public Action<int, List<int>> _A;
     public Befunction(string temp)
     {
         t = temp;
     }
 
-    internal void runa()
+    internal void runa(int res = 0, List<int> resG = null)
     {
         //  Debug.Log(t + "isruning");
-        A();
+        if ((res != 0 || (resG!=null&&resG.Count>0))&&_A!=null)
+            _A(res, resG);
+        else
+            A();
     }
 
     public void checkitem()
@@ -120,12 +148,14 @@ public class Befunction : MonoBehaviour
                 if (BloomModel.instance().bloomData.currenceUseCardNum == 3) {
                     middleLayer.Instance.canMove = false;
                     middleLayer.Instance.MousePause();
+                    AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
+                    AppFactory.instances.raceEvent.GetComponent<Onobjsession>().add();
 
                 }
                 //if (AppFactory.instances.eventTodo("琳的记忆")) {
 
-                //  AppFactory.instances.womanLin.SetActive(true);
-                //  AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
+              //    AppFactory.instances.womanLin.SetActive(true);
+                //  
                 // AppFactory.instances.womanLin.GetComponent<Onobjsession>().add();
 
                 //}

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -13,18 +14,25 @@ public class bloomTableEvent : Befunction
     public Camera tempCamera;
     public BloomData tempBloomData;
     private List<GameObject> hintObj;
-    public enum bloomType 
+    //public static EnumUse bloom_changeCamera = new EnumUse("bloom_changeCamera",0);
+    //public static EnumUse bloom_TimeLine = new EnumUse("bloom_TimeLine", 1);
+    //public static EnumUse bloom_bloomPlayDetail = new EnumUse("bloom_bloomPlayDetail", 2);
+    //public static EnumUse bloom_bloomEnd = new EnumUse("bloom_bloomEnd",3);
+    //    public static EnumUse B = new EnumUse("B", 2);
+    //   public static EnumUse C = new EnumUse("C", 2);
+    
+    public enum bloomType
     {
         bloom_changeCamera = 0,
-        bloom_TimeLine=1,
-        bloom_bloomPlayDetail=2,
-        bloom_bloomEnd=3,
-        bloom_discardCard=4
+        bloom_TimeLine = 1,
+        bloom_bloomPlayDetail = 2,
+        bloom_bloomEnd = 3,
+        bloom_discardCard = 4
         //IGG_MobileRoyale,
     }
-    public bloomType type;
+    public bloomType type = 0;
 
-    public int changeId = 3;
+ 
     public bloomTableEvent(string temp) : base(temp)
     {
     }
@@ -34,9 +42,15 @@ public class bloomTableEvent : Befunction
         packageC = packageComponent.instante;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         bloomModel = BloomModel.instance();
+        Reset();
     }
 
-    public void event1 (){
+    public void Reset()
+    {
+        base._A = Myfunction;
+        base.A = function;
+    }
+    public void event1(int changeId) {
         Debug.Log("game start");
         AppFactory.instances.Todo(new Observer(Cmd.playTv));
         AppFactory.instances.Todo(new Observer(Cmd.moveCamera, changeId));
@@ -53,7 +67,7 @@ public class bloomTableEvent : Befunction
 
     public void event3() {
         bloomModel = BloomModel.instance();
-      //  Debug.Log("test"+ tempBloomData.MyTablecards[0]);
+        //  Debug.Log("test"+ tempBloomData.MyTablecards[0]);
         tempBloomData.initCards(0);
         tempBloomData.initCards(1);
         middleLayer.Instance.canMove = true;
@@ -65,39 +79,64 @@ public class bloomTableEvent : Befunction
             bloomModel.myback[i].SetActive(false);
             bloomModel.cardback[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/cardback" + i);
             CardData tempCardData = bloomModel.bloomData.deckHold[i];
-           // tempCardData.material = Resources.Load < Material > (CUtil.idToMaterialString(i+10));// cResources.Load<Material>("Materials/cardback" + i)
+            // tempCardData.material = Resources.Load < Material > (CUtil.idToMaterialString(i+10));// cResources.Load<Material>("Materials/cardback" + i)
             //Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId));
             //tempCardData.Point = i + 10;
             tempBloomData.pushCard(1, tempCardData);
             //  Debug.Log("isrun mouse");
         }
     }
+    public void event4()
+    {
+        PostprocessModel tempModel = new PostprocessModel();
+        tempModel.id = 0;
+        tempModel.postEffectSrc = "UnityEngine.Rendering.PostProcessing.Vignette";
+        tempModel.intensity = 1;
+        tempModel.T += event4_2;
+        AppFactory.instances.Todo(new Observer(Cmd.postEffectOperate, tempModel));
 
-    public void event4() {
+
+    }
+    public void event4_2() {
         PostprocessModel tempModel = new PostprocessModel();
         tempModel.id = 0;
         tempModel.postEffectSrc = "UnityEngine.Rendering.PostProcessing.Vignette";
         tempModel.intensity = 0;
         AppFactory.instances.Todo(new Observer(Cmd.postEffectOperate, tempModel));
+        // Debug.Log("22222333");
 
 
 
     }
+    public void function() {
+        Myfunction();
+    }
+  
     // Start is called before the first frame update
-    void Start()
+    public void  Myfunction(int a=0,List<int> b=null)
     {
+        Debug.Log("runa");
+        type = (bloomType)a;
+        int changeId;
+
+        if (b!=null&&b.Count>0)
+            changeId = b[0];
+        else
+            changeId = 0;
         if (type == bloomType.bloom_changeCamera || type == bloomType.bloom_bloomPlayDetail)
-            base.A += event1;
+            event1(changeId);
         else if (type == bloomType.bloom_TimeLine)
-            base.A += event2;
+            event2();
         else if (type == bloomType.bloom_bloomEnd)
         {
-            base.A += event3;
+            event3();
         }
         else if (type == bloomType.bloom_discardCard) {
 
-            base.A += event4;
+            event4();
         }
+        Reset();
+
     }
     public IEnumerator showPack() {
         bloomModel = BloomModel.instance();

@@ -24,9 +24,13 @@ using System.Text;
     public const string consumeItem = "consumeItem";
 
     //diaglog
+   
     public const string dialogAdd = "dialogadd";
-    public const string dialog = "diaglog";
+    public const string dialog = "dialog";
+    public const string dialogReplace = "dialogReplace";
+    public const string dialogMerge = "dialogMerge";
     public const string dialogClear = "dialogclear";
+
 
 
     //postEffect

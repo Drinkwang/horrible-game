@@ -12,10 +12,27 @@ public class Oncesessioncommand : IC
     }
     public void Todo(Observer o)
     {//Debug.Log();
+
         if (o.body == null)
         {
             Debug.Log("thi is nothing todo");
+
         }
+        else if (o.msg == Cmd.dialogReplace)
+        {
+            if ((o.body is SingledialogText))
+            {
+
+                SingledialogText rep = (SingledialogText) o.body;
+                AppFactory.instances.viewTodo(new Observer(Cmd.dialogReplace, rep,o.data));
+            }
+            else {
+
+                List<SingledialogText> rep = (List<SingledialogText>)o.body;
+                AppFactory.instances.viewTodo(new Observer(Cmd.dialogReplace, rep,o.data));
+            }
+        }
+
         else if (o.body != null && o.body.GetType().ToString() != "System.String")
         {
             List<SingledialogText> news = (List<SingledialogText>)o.body;

@@ -24,13 +24,13 @@ public class scribeComponent : MonoBehaviour
         Time.timeScale = 1;
         middleLayer.Instance.MouseRun();
     }
-    internal void changeM(string[] body)
+    internal void changeM(scriptmodel body)
     {
         transform.GetChild(0).gameObject.SetActive(true);
         //  Debug.Log("hekk");
-        top.text = body[0];
-        center.text = body[1];
-        inscribe.text = body[2];
+        top.text = body.top;
+        center.text = body.center;
+        inscribe.text = body.inscribe;
         ///below text present color change, maybe add later;
        /* top.color= color1;
         center.color = body[1];

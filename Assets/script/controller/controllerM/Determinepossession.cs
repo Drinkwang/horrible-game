@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Determinepossession : IC {
-	Goodproxy goodproxy=Goodproxy.instances();
+//	Goodproxy goodproxy=Goodproxy.instances();
 	PackProxy packproxy=PackProxy.instances();
 
 	// Use this for initialization

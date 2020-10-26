@@ -30,7 +30,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 firstCatch.SetActive(true);
                 firstCatch.GetComponent<Animator>().SetTrigger("trigger");
-                StartCoroutine("onFirstCatch", 5.5f);
+                StartCoroutine("onFirstCatch", 2.4f);
 
             }
 

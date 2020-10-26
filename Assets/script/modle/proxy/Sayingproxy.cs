@@ -6,6 +6,13 @@ using UnityEngine;
 [Serializable]
 public struct SingledialogText
 { public string ChineseVersion;
+    public enum executeSequence {
+        RunInDiaglogEnd,
+        RunInDiaglogBegan,
+        RunInStart,
+        
+    }
+   
    public string EnglishVersion;
    public string JapanVersion;
    public AudioClip EnglishAC;
@@ -13,6 +20,51 @@ public struct SingledialogText
    public AudioClip JapanAC;
     public GameObject talkobj;
     public Befunction t;
+    public executeSequence Sequence;
+    public int value;
+    public List<int> values;
+    public void Assignment(Onobjsession Single,int index) {
+ 
+
+        Debug.Log("老对话" + Single.MySingleD[index].ChineseVersion);
+        Single.MySingleD[index].ChineseVersion = this.ChineseVersion;
+        Single.MySingleD[index].EnglishVersion = this.EnglishVersion;
+        Single.MySingleD[index].JapanVersion = this.JapanVersion;
+
+
+
+        Single.MySingleD[index].EnglishAC = this.EnglishAC;
+        Single.MySingleD[index].ChineseAC = this.ChineseAC;
+        Single.MySingleD[index].JapanAC = this.JapanAC;
+        Single.MySingleD[index].t = this.t;
+        Single.MySingleD[index].value = this.value;
+        Single.MySingleD[index].values = this.values;
+        Debug.Log("新对话" + ChineseVersion);
+
+    }
+
+
+    public void Assignment(string ChineseVersion, string EnglishVersion,
+    string JapanVersion,
+    AudioClip EnglishAC,
+    AudioClip ChineseAC,
+    AudioClip JapanAC,
+    GameObject talkobj = null,
+    Befunction t = null,
+    int value = 0,
+    List<int> values = null)
+    {
+        this.ChineseVersion = ChineseVersion;
+        this.EnglishVersion = EnglishVersion;
+        this.JapanVersion = JapanVersion;
+        this.EnglishAC = EnglishAC;
+        this.ChineseAC = ChineseAC;
+        this.JapanAC = JapanAC;
+        this.talkobj = talkobj;
+        this.t = t;
+        this.value = value;
+        this.values = values;
+    }
 }
 
 

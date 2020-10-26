@@ -68,7 +68,7 @@ public class Audomanage : MonoBehaviour
 
         }
     }
-    public AudioSource OnPlay(float value = 0.5f, AudioClip i = null, Transform obj = null, Befunction callback = null)
+    public AudioSource OnPlay(float value = 0.5f, AudioClip i = null, Transform obj = null, Befunction callback = null,int res=0,List<int> resG=null)
     {
         if (obj == null)
             obj = playertransfrom;
@@ -78,21 +78,21 @@ public class Audomanage : MonoBehaviour
         if (i != null)
         {
             last = PlayClipAtPoint(i, obj.position, value);
-            StartCoroutine(Delayedcallback(i.length, callback));
+            StartCoroutine(Delayedcallback(i.length, res,resG,callback));
         }
         else
         {
-            StartCoroutine(Delayedcallback(5.0f, callback));
+            StartCoroutine(Delayedcallback(5.0f, res, resG, callback));
             last = null;
         }
 
         return last;
 
     }
-    private IEnumerator Delayedcallback(float time, Befunction callback)
+    private IEnumerator Delayedcallback(float time, int res,List<int>resG,Befunction callback)
     {
         yield return new WaitForSeconds(time);
-        callback.runa();
+        callback.runa(res,resG);
     }
     public void reloadbg(string a)
     {

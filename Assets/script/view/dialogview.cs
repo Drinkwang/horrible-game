@@ -11,6 +11,7 @@ public class dialogview:Vmediator
 			mlist.Add (Cmd.dialogAdd);
 			mlist.Add(Cmd.dialog);
             mlist.Add(Cmd.dialogClear);
+            mlist.Add(Cmd.dialogReplace);
             return mlist;
 		}
 	}
@@ -27,11 +28,24 @@ public class dialogview:Vmediator
 			D.add (packmodelList);
 		break;
 		case Cmd.dialog:
-			D.todo ();
+			D.todo (null);
 			break;
         case Cmd.dialogClear:
-                D.clear();
-                break;
+            D.clear();
+            break;
+        case Cmd.dialogReplace:
+                if (o.body is SingledialogText)
+                {
+                    SingledialogText reST1 = (SingledialogText)o.body;
+                    ReplaceNextDiaglogData.SessionAddIndex temp = (ReplaceNextDiaglogData.SessionAddIndex)o.data;
+                    D.Replace(reST1, temp.tempSession, temp.index);
+                }
+                else
+                {
+                    List<SingledialogText> reST = (List<SingledialogText>)o.body;
+                    D.ReplaceAll(reST);
+                }
+            break;
 		default: ;
 			break;
 

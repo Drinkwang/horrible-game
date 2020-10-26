@@ -59,12 +59,17 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         if (eventData != null)
         {
             AppFactory.instances.changestate(Globelstate.state.start);
-            if (DragObj != null&&this.model!=null&&this.model.good!=null)
+            
+            if (DragObj != null && this.model != null && this.model.good != null && !LimitUtil.isOverScreenPos(eventData.position.x, eventData.position.y, 300))
             {
                 Befunction w = new Befunction("使用物品" + " " + model.good.src + " " + model.good.id);
                 w.A += w.useritem;
                 w.runa();
                 Destroy(DragObj);//拖拽结束后销毁生成的物体
+            }
+            else
+            {
+                Destroy(DragObj);
             }
         }
 

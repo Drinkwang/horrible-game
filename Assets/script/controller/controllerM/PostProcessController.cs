@@ -29,5 +29,11 @@ public class PostProcessController : IC
     private void initPostEffectModel(List<PostprocessModel> tempList) {
         List<PostprocessModel> modelList=proxy.getmodellist();
         modelList= tempList;
+        this.ChnageModel(modelList);
+    }
+
+    private void ChnageModel(List<PostprocessModel> tempModel) {
+
+
     }
 }

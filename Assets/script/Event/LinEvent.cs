@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class LinEvent : Befunction
 {
     public GameObject stoneScissorCloth;
-    private Canvas canvas;
-    private packageComponent packageC;
+   // private Canvas canvas;
+   // private packageComponent packageC;
   //  private BloomModel bloomModel;
     public Camera tempCamera;
     private float intensity =0.2f;
@@ -34,8 +34,8 @@ public class LinEvent : Befunction
 
     public void Awake()
     {
-        packageC = packageComponent.instante;
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+       // packageC = packageComponent.instante;
+       // canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
        // bloomModel = BloomModel.instance();
     }
 

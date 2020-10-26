@@ -2,7 +2,7 @@
 public class ChangeGoodcommand : IC
 {
     PackProxy packproxy = PackProxy.instances();
-    Goodproxy goodproxy = Goodproxy.instances();
+ //   Goodproxy goodproxy = Goodproxy.instances();
 
     public void Todo(Observer o)
     {

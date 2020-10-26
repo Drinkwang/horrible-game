@@ -9,7 +9,7 @@ public class Taskitem : MonoBehaviour,IPointerClickHandler{
 	public string titile;
 	public string detail;
 	public bool iscomplete;
-	private bool ischoice;
+	//private bool ischoice;
 	void Awake()
 	{image = transform.GetComponentInChildren<Image> ();
 		text = transform.GetComponentInChildren<Text> ();
@@ -35,7 +35,7 @@ public class Taskitem : MonoBehaviour,IPointerClickHandler{
 				if(this.text!=null)
 				text.text=this.titile;
 				this.detail = model.alltaskmodel.src;
-				this.ischoice = model.alltaskmodel.ischoice;
+			//	this.ischoice = model.alltaskmodel.ischoice;
 				this.iscomplete = model.IScamplete;
 			
 					Color a = new Color (200, 5, 5, 150);
