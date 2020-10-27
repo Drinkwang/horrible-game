@@ -10,6 +10,7 @@ public struct SingledialogText
         RunInDiaglogEnd,
         RunInDiaglogBegan,
         RunInStart,
+        RunInAdd,
         
     }
    

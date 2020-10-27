@@ -7,7 +7,6 @@ using System.Text;
 using System;
 
 public class Onobjsession : MonoBehaviour {
-    public Befunction temp;
     private string[] textFile;
     public void Awake()
     { 
@@ -48,25 +47,7 @@ public class Onobjsession : MonoBehaviour {
     }
     private void Start()
     {
-        //待编辑，增加四个状态，分别在游戏初始化，脚本播放完，脚本刚开始播放进行执行脚本
-
-
-        for (int i = 0; i < MySingleD.Length; i++)
-        {
-            if (MySingleD[i].t != null) { 
-                MySingleD[i].t.calledObj = this;
-                MySingleD[i].t.sai = new ReplaceNextDiaglogData.SessionAddIndex(this,i); }
-        }
-        foreach (SingledialogText tempSingdialogText in MySingleD)
-        {
-            if (tempSingdialogText.Sequence == SingledialogText.executeSequence.RunInStart)
-            {
-                //mpSingdialogText.t.A
-                tempSingdialogText.t.runa(tempSingdialogText.value, tempSingdialogText.values);
-
-            }
-
-        }
+        runSingleDialogT(SingledialogText.executeSequence.RunInStart);
     }
 
     private string GenerateText(int language) {
@@ -117,12 +98,7 @@ public class Onobjsession : MonoBehaviour {
 
     public SingledialogText[] MySingleD;
     public void add(){
-        if (temp != null)
-        {
-            temp.runa();
-
-        }
-
+        runSingleDialogT(SingledialogText.executeSequence.RunInAdd);
         if (MySingleD != null){
 
             foreach (Globelstate.language language in Globelstate.getLanguage())
@@ -142,5 +118,25 @@ public class Onobjsession : MonoBehaviour {
         
     }
 
+
+    private void runSingleDialogT(SingledialogText.executeSequence TSequence) {
+
+
+        for (int i = 0; i < MySingleD.Length; i++)
+        {
+            if (MySingleD[i].t != null)
+            {
+                MySingleD[i].t.calledObj = this;
+                MySingleD[i].t.sai = new ReplaceNextDiaglogData.SessionAddIndex(this, i);
+                if (MySingleD[i].Sequence == TSequence)
+                {
+                    //mpSingdialogText.t.A
+                    MySingleD[i].t.runa(MySingleD[i].value, MySingleD[i].values);
+
+                }
+            }
+        }
+
+    }
 
 }

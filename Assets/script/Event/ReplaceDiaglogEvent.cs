@@ -38,6 +38,7 @@ public class ReplaceDiaglogEvent : Befunction
         base.A = function;
     }
     public void event1(int changeId) {
+        //0是j，1是q，2是k
         dialogReplaceSystem.instance.ReplaceJqk(changeId,this.sai);
 
     }
