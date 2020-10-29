@@ -67,7 +67,7 @@ public class bloomTableEvent : Befunction
 
     public void event3() {
         bloomModel = BloomModel.instance();
-        //  Debug.Log("test"+ tempBloomData.MyTablecards[0]);
+      
         tempBloomData.initCards(0);
         tempBloomData.initCards(1);
         middleLayer.Instance.canMove = true;
@@ -83,6 +83,7 @@ public class bloomTableEvent : Befunction
             //Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId));
             //tempCardData.Point = i + 10;
             tempBloomData.pushCard(1, tempCardData);
+           
             //  Debug.Log("isrun mouse");
         }
     }
@@ -115,7 +116,6 @@ public class bloomTableEvent : Befunction
     // Start is called before the first frame update
     public void  Myfunction(int a=0,List<int> b=null)
     {
-        Debug.Log("runa");
         type = (bloomType)a;
         int changeId;
 

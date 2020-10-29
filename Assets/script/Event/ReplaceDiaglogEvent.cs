@@ -20,7 +20,7 @@ public class ReplaceDiaglogEvent : Befunction
         //IGG_MobileRoyale,
     }
     public ReplaceDiagType type = 0;
-
+    private BloomData bloomData;
  
     public ReplaceDiaglogEvent(string temp) : base(temp)
     {
@@ -30,6 +30,7 @@ public class ReplaceDiaglogEvent : Befunction
     {
 
         Reset();
+        
     }
 
     public void Reset()
@@ -37,9 +38,13 @@ public class ReplaceDiaglogEvent : Befunction
         base._A = Myfunction;
         base.A = function;
     }
-    public void event1(int changeId) {
+    public void changeJqk(int changeId) {
+        if(bloomData==null)
+            bloomData = BloomModel.instance().bloomData;
         //0是j，1是q，2是k
-        dialogReplaceSystem.instance.ReplaceJqk(changeId,this.sai);
+        var beChangePoint=bloomData.MyTablecards[changeId].Point;
+        int index = CUtil.cardPointToId(beChangePoint);
+        dialogReplaceSystem.instance.ReplaceJqk(index, this.sai);
 
     }
 
@@ -77,7 +82,7 @@ public class ReplaceDiaglogEvent : Befunction
 
 
         if (type == ReplaceDiagType.ReplaceDiaglog_jqk)
-            event1(changeId);
+            changeJqk(changeId);
  
         Reset();
 

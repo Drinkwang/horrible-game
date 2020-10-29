@@ -58,6 +58,14 @@ public static class CUtil
             t = "Materials/扑克k";//石头
         return t;
     }
+    public static int idToCardPoint(int id) {
+        return id + 11;
+    }
+
+    public static int cardPointToId(int point)
+    {
+        return point - 11;
+    }
 
     public static String idToCardBackString(int id) {
         string t = "";

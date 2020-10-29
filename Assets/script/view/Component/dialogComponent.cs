@@ -77,18 +77,20 @@ public class dialogComponent : MonoBehaviour
     {
         if (dialogues.Count != 0)
         {
-            if (dialogues[0].t != null && dialogues[0].Sequence == SingledialogText.executeSequence.RunInDiaglogEnd)
-                t = dialogues[0].t;
-            else if (dialogues[0].Sequence == SingledialogText.executeSequence.RunInDiaglogBegan) {
-                dialogues[0].t.runa(dialogues[0].value, dialogues[0].values);
-                t = new Befunction("who know");
+            if (dialogues[0].t != null)
+            {
+                if (dialogues[0].Sequence == SingledialogText.executeSequence.RunInDiaglogEnd)
+                    t = dialogues[0].t;
+                else if (dialogues[0].Sequence == SingledialogText.executeSequence.RunInDiaglogBegan)
+                {
+                    dialogues[0].t.runa(dialogues[0].value, dialogues[0].values);
+                    t = new Befunction("who know");
+                }
             }
-
             else t = new Befunction("who know");
             t.A += tempFunction;
             t._A += tempFunction2;
-            //if (calledObj != null)
-            //    t.calledObj = calledObj;
+
             
 
             if (AppFactory.instances.mylanguage == Globelstate.language.china)
