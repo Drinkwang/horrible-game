@@ -17,7 +17,7 @@ namespace UnityStandardAssets.Utility
         private float m_MaxLifetime;
         private bool m_EarlyStop;
 
-
+        [Obsolete]
         private IEnumerator Start()
         {
             var systems = GetComponentsInChildren<ParticleSystem>();

@@ -9,4 +9,5 @@ public class Onplayinterrect : MonoBehaviour {
     {
         Audomanage.instance.OnPlay(AUDIO);
     }
+    
 }
