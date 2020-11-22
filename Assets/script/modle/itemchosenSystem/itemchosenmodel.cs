@@ -51,7 +51,7 @@ public class newBehaiver {
 
 
 [System.Serializable]
-public class Befunction : MonoBehaviour
+public class /*  */Befunction : MonoBehaviour
 {
     internal string t;
     public Action A;
@@ -143,7 +143,8 @@ public class Befunction : MonoBehaviour
                 Tempmodel.myback[index].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId+10));
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
                 AppFactory.instances.closePackage(null, false);
-                BloomModel.instance().bloomData.MyTablecards[BloomModel.instance().bloomData.currenceUseCardNum++] = BloomModel.instance().bloomData.deckHold[beUseItemId-1];
+                BloomModel.instance().bloomData.currenceUseCardNum++;
+                BloomModel.instance().bloomData.MyTablecards[index] = BloomModel.instance().bloomData.deckHold[beUseItemId-1];
                 
                 if (BloomModel.instance().bloomData.currenceUseCardNum == 3) {
                     middleLayer.Instance.canMove = false;

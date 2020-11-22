@@ -29,40 +29,7 @@ MonoBehaviour:
     EnglishVersion: 
     JapanVersion: 
     EnglishAC: {fileID: 0}
-    ChineseAC: {fileID: 8300000, guid: 01a47710ee8f6eb4ab2a028296b6ecfe, type: 3}
-    JapanAC: {fileID: 0}
-    talkobj: {fileID: 0}
-    t: {fileID: 0}
-    Sequence: 0
-    value: 0
-    values: 
-  - ChineseVersion: 
-    EnglishVersion: 
-    JapanVersion: 
-    EnglishAC: {fileID: 0}
     ChineseAC: {fileID: 8300000, guid: 9ed7a990632a3bf42a59440470b50c59, type: 3}
-    JapanAC: {fileID: 0}
-    talkobj: {fileID: 0}
-    t: {fileID: 0}
-    Sequence: 0
-    value: 0
-    values: 
-  - ChineseVersion: 
-    EnglishVersion: 
-    JapanVersion: 
-    EnglishAC: {fileID: 0}
-    ChineseAC: {fileID: 8300000, guid: f384bbc2127c7b046bdd52f621768dbb, type: 3}
-    JapanAC: {fileID: 0}
-    talkobj: {fileID: 0}
-    t: {fileID: 0}
-    Sequence: 0
-    value: 0
-    values: 
-  - ChineseVersion: 
-    EnglishVersion: 
-    JapanVersion: 
-    EnglishAC: {fileID: 0}
-    ChineseAC: {fileID: 8300000, guid: 81f05261bbd4e574b9b06adf986ef116, type: 3}
     JapanAC: {fileID: 0}
     talkobj: {fileID: 0}
     t: {fileID: 0}

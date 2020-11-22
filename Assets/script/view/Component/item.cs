@@ -115,7 +115,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
                 packageComponent.instante.T = this;
                 selectitemMenu.SetActive(false);
                 DragObj = new GameObject("ICON");
-                DragObj.tag = "uicard";
+                //DragObj.tag = "uicard";
                 DragObj.AddComponent<Rigidbody2D>();
                 DragObj.GetComponent<Rigidbody2D>().gravityScale = 0;
                 DragObj.transform.SetParent(canvas.transform, false);

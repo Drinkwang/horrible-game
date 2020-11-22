@@ -13,10 +13,9 @@ public class ReplaceDiaglogEvent : Befunction
     public enum ReplaceDiagType
     {
         ReplaceDiaglog_jqk = 0,
-        bloom_TimeLine = 1,
-        bloom_bloomPlayDetail = 2,
-        bloom_bloomEnd = 3,
-        bloom_discardCard = 4
+        ReplaceDiaglog_win = 1,
+        ReplaceDiaglog_lose = 2,
+
         //IGG_MobileRoyale,
     }
     public ReplaceDiagType type = 0;
@@ -48,12 +47,12 @@ public class ReplaceDiaglogEvent : Befunction
 
     }
 
-    public void event2() {
+    public void changeLost(int changeId) {
 
     }
 
 
-    public void event3() {
+    public void changeWin(int changeId) {
 
         
     }
@@ -83,7 +82,10 @@ public class ReplaceDiaglogEvent : Befunction
 
         if (type == ReplaceDiagType.ReplaceDiaglog_jqk)
             changeJqk(changeId);
- 
+        else if(type == ReplaceDiagType.ReplaceDiaglog_win)
+            changeWin(changeId);
+        else if(type ==ReplaceDiagType.ReplaceDiaglog_lose)
+            changeLost(changeId);
         Reset();
 
     }

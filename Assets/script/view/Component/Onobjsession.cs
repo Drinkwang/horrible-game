@@ -98,7 +98,6 @@ public class Onobjsession : MonoBehaviour {
 
     public SingledialogText[] MySingleD;
     public void add(){
-        runSingleDialogT(SingledialogText.executeSequence.RunInAdd);
         if (MySingleD != null){
 
             foreach (Globelstate.language language in Globelstate.getLanguage())
@@ -106,8 +105,9 @@ public class Onobjsession : MonoBehaviour {
                 ReadToText((int)language);
             }
             AppFactory.instances.viewTodo(new Observer(Cmd.dialogClear));
+   
+            runSingleDialogT(SingledialogText.executeSequence.RunInAdd);    
             List<SingledialogText> t = MySingleD.ToList();
-
             AppFactory.instances.Todo(new Observer("once", t));
             Audomanage.instance.huhu.Stop();
         }

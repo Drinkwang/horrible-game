@@ -86,8 +86,11 @@ public class dialogComponent : MonoBehaviour
                     dialogues[0].t.runa(dialogues[0].value, dialogues[0].values);
                     t = new Befunction("who know");
                 }
+                else{
+                    t = dialogues[0].t;
+                }
             }
-            else t = new Befunction("who know");
+            else t = new Befunction("who know");/*  */
             t.A += tempFunction;
             t._A += tempFunction2;
 
