@@ -147,6 +147,40 @@ public class ReplaceNextDiaglogData : ScriptableObject
 
 
     }
+    public void mergeAudio(SessionAddIndex sai){
+        //存在bug
+        List<float> ar = new List<float> ();
+        SingledialogText t = new SingledialogText();
+        for(int i=0;i<MySingleD.Length;i++){
+            AudioClip s1= MySingleD[i].ChineseAC;
+            float[] data1 = new float[s1.samples * s1.channels];
+            s1.GetData (data1, 0);
+            ar.AddRange (data1);
+            t.ChineseVersion+=MySingleD[i].ChineseVersion;
+            t.EnglishVersion+=MySingleD[i].EnglishVersion;
+            t.JapanVersion+=MySingleD[i].JapanVersion;
+
+        }
+
+ 
+        float[] datas = ar.ToArray ();
+
+        t.Sequence=SingledialogText.executeSequence.RunInDiaglogEnd;
+        AudioClip clip = AudioClip.Create ("temp", datas.Length, 1, 16000, false);
+        clip.SetData (datas, 0);
+
+
+
+
+        t.ChineseAC=clip;
+
+
+        AppFactory.instances.Todo(new Observer(Cmd.dialogReplace, t, sai));
+        // source = this.GetComponent<AudioSource> ();
+        // source.clip = clip;
+        // source.Play ();
+        
+    }
 
     public class SessionAddIndex{
         public Onobjsession tempSession;

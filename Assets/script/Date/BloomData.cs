@@ -29,6 +29,9 @@ public class BloomData : ScriptableObject
     private int myCardNum;
     private int enemyCardNum;
 
+
+    public int MyScore=0;
+    public int EnemyScore=0;
     private void Awake()
     {
 

@@ -13,13 +13,16 @@ public class ReplaceDiaglogEvent : Befunction
     public enum ReplaceDiagType
     {
         ReplaceDiaglog_jqk = 0,
-        ReplaceDiaglog_win = 1,
-        ReplaceDiaglog_lose = 2,
+        ReplaceDiaglog_winOrLost = 1,
+
+        ReplaceAudio_Merge=2
+
 
         //IGG_MobileRoyale,
     }
     public ReplaceDiagType type = 0;
     private BloomData bloomData;
+
  
     public ReplaceDiaglogEvent(string temp) : base(temp)
     {
@@ -47,21 +50,50 @@ public class ReplaceDiaglogEvent : Befunction
 
     }
 
-    public void changeLost(int changeId) {
 
-    }
+    public void changeWinOrLost(int changeId){
 
-
-    public void changeWin(int changeId) {
-
+        if(bloomData==null)
+            bloomData = BloomModel.instance().bloomData;
+        var myCardPoint=bloomData.MyTablecards[changeId].Point;
+        var enemyCardPoint=bloomData.enemyTablecards[changeId].Point;
+        int bewinCard=CUtil.getBeWinCard(myCardPoint,true);
+        int beLostCard=CUtil.getBeWinCard(myCardPoint,false);
         
+        if(bewinCard==enemyCardPoint){
+            //你赢了
+            Win();
+            bloomData.MyScore++;
+        }else if(beLostCard==enemyCardPoint){
+            //你输了
+            Lost();
+            bloomData.EnemyScore++;
+        }else if(myCardPoint==enemyCardPoint){
+            Draw();
+        }else{
+            Debug.LogError("不可能出现输、赢、平之外的第四种情况，请检查源代码");
+        }
     }
-    public void event4()
-    {
 
+    public void changeAudioMerge(int changeId){
 
+        dialogReplaceSystem.instance.ReplaceAudioMerge(this.sai);
     }
 
+    public void Lost() {
+        dialogReplaceSystem.instance.ReplaceLose(this.sai);
+    }
+
+
+    public void Win() {
+
+        dialogReplaceSystem.instance.ReplaceWin(this.sai);
+    }
+
+    public void Draw(){
+
+        dialogReplaceSystem.instance.ReplaceDraw(this.sai);
+    }
     public void function() {
         Myfunction();
     }
@@ -82,10 +114,11 @@ public class ReplaceDiaglogEvent : Befunction
 
         if (type == ReplaceDiagType.ReplaceDiaglog_jqk)
             changeJqk(changeId);
-        else if(type == ReplaceDiagType.ReplaceDiaglog_win)
-            changeWin(changeId);
-        else if(type ==ReplaceDiagType.ReplaceDiaglog_lose)
-            changeLost(changeId);
+        else if(type == ReplaceDiagType.ReplaceDiaglog_winOrLost)
+            changeWinOrLost(changeId);
+        else if(type==ReplaceDiagType.ReplaceAudio_Merge){
+            changeAudioMerge(changeId);
+        }
         Reset();
 
     }

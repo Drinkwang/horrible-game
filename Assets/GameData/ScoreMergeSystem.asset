@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5c39d8178c3e046ae6bc96d2e24c35, type: 3}
+  m_Name: ScoreMergeSystem
+  m_EditorClassIdentifier: 
+  tName: 
+  MySingleD:
+  - ChineseVersion: 0
+    EnglishVersion: 0
+    JapanVersion: 0
+    EnglishAC: {fileID: 0}
+    ChineseAC: {fileID: 8300000, guid: d727eeb7d4ed9ba4c942ce3fecba4612, type: 3}
+    JapanAC: {fileID: 0}
+    talkobj: {fileID: 0}
+    t: {fileID: 0}
+    Sequence: 0
+    value: 0
+    values: 
+  - ChineseVersion: 1
+    EnglishVersion: 1
+    JapanVersion: 1
+    EnglishAC: {fileID: 0}
+    ChineseAC: {fileID: 8300000, guid: e8db727f118d5b745b7e3472c01e7b88, type: 3}
+    JapanAC: {fileID: 0}
+    talkobj: {fileID: 0}
+    t: {fileID: 0}
+    Sequence: 0
+    value: 0
+    values: 
+  - ChineseVersion: 2
+    EnglishVersion: 2
+    JapanVersion: 2
+    EnglishAC: {fileID: 0}
+    ChineseAC: {fileID: 8300000, guid: 3bc02f18304fe974fa8393ad285ed882, type: 3}
+    JapanAC: {fileID: 0}
+    talkobj: {fileID: 0}
+    t: {fileID: 0}
+    Sequence: 0
+    value: 0
+    values: 
+  - ChineseVersion: "\uFF1A"
+    EnglishVersion: "\uFF1A"
+    JapanVersion: "\uFF1A"
+    EnglishAC: {fileID: 0}
+    ChineseAC: {fileID: 8300000, guid: e378cb0b9d12f764d9d2017132fa7dc4, type: 3}
+    JapanAC: {fileID: 0}
+    talkobj: {fileID: 0}
+    t: {fileID: 0}
+    Sequence: 0
+    value: 0
+    values: 
