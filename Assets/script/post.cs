@@ -36,6 +36,21 @@ public class post : MonoBehaviour
 
 
         }
+        if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F1))
+        {
+
+            AppFactory.instances.saveGame(1);
+            Debug.Log("savegame");
+
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F1))
+        {
+
+            AppFactory.instances.loadGame(1);
+            Debug.Log("loadgame");
+
+        }
+
         if (isblink == true)
         {
             a.exit();

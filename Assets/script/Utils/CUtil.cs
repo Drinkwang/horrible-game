@@ -5,14 +5,17 @@ using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Collections;
 using UnityEngine;
+using Newtonsoft.Json;
 
-public static class CUtil 
+public static class CUtil
 {
 
     // Start is called before the first frame update
-    public static int GetResidueNum(string temp) {
+    public static int GetResidueNum(string temp)
+    {
         string numString = "";
-        foreach (char a in temp) {
+        foreach (char a in temp)
+        {
             if (a >= 48 && a <= 58)
             {
 
@@ -48,17 +51,19 @@ public static class CUtil
             return hashTable;
         }
     }
-    public static String idToMaterialString(int id) {
-        string t ="";
-       if (id==11)
-            t= "Materials/扑克j";//剪刀
-       else if(id==12)
+    public static String idToMaterialString(int id)
+    {
+        string t = "";
+        if (id == 11)
+            t = "Materials/扑克j";//剪刀
+        else if (id == 12)
             t = "Materials/扑克q";//步
         else if (id == 13)
             t = "Materials/扑克k";//石头
         return t;
     }
-    public static int idToCardPoint(int id) {
+    public static int idToCardPoint(int id)
+    {
         return id + 11;
     }
 
@@ -67,7 +72,8 @@ public static class CUtil
         return point - 11;
     }
 
-    public static String idToCardBackString(int id) {
+    public static String idToCardBackString(int id)
+    {
         string t = "";
         if (id == 11)
             t = "Materials/cardback1";//剪刀
@@ -79,7 +85,8 @@ public static class CUtil
 
     }
 
-    public static int cardBacktoID(string str) {
+    public static int cardBacktoID(string str)
+    {
         //T.Substring()
         int result = 0;
         if (str != null && str != string.Empty)
@@ -106,7 +113,8 @@ public static class CUtil
         return result;
 
     }
-    public static int getBeWinCard(int id,bool isbeWin) {
+    public static int getBeWinCard(int id, bool isbeWin)
+    {
         if (id == 11)
         {
             if (isbeWin == true)
@@ -133,7 +141,8 @@ public static class CUtil
         return id;
     }
 
-    public static T GetAppSetting<T>(this string key) {
+    public static T GetAppSetting<T>(this string key)
+    {
         try
         {
 
@@ -149,9 +158,20 @@ public static class CUtil
         {
             return default(T);
         }
-         
+
 
     }
+
+
+    public static string ToJsonString<T>(this T list)
+    {
+        JsonSerializerSettings settings = new JsonSerializerSettings();
+        settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        string result = JsonConvert.SerializeObject(list, settings);
+        return result;
+    }
+
+
 
 
 

@@ -21,6 +21,7 @@ public class AppFactory : MonoBehaviour
     private CinemaControl cinemaContorl;
     private PostProcessController postProcessController;
     private QuetionController quetionController;
+    private SaveSystemController saveSystemController;
 
     public bool isopenpackage = false;
     private allsave mysave;
@@ -125,6 +126,7 @@ public class AppFactory : MonoBehaviour
         useGoodCommand = new UseGoodscommand();
 
         cinemaContorl = new CinemaControl();
+        saveSystemController = new SaveSystemController();
 
         tvShow = new TvCommand();
         //	Packageview packageview = 
@@ -182,7 +184,9 @@ public class AppFactory : MonoBehaviour
         AdjustCommand(Cmd.QuetionChangeA, quetionController);
         AdjustCommand(Cmd.QuetionCHnngeB, quetionController);
 
-
+        //saveSystem
+        AdjustCommand(Cmd.saveGame, saveSystemController);
+        AdjustCommand(Cmd.loadGame, saveSystemController);
     }
 
 
@@ -343,48 +347,15 @@ public class AppFactory : MonoBehaviour
        
 
     }
-    /// <summary>
-    /// this param is very import,it is dialogText creator;
-    /// </summary>
-    /// <param name="chinese"></param>
-    /// <param name="eng"></param>
-    /// <param name="chineseAC"></param>
-    /// <param name="engAC"></param>
-    /// <returns></returns>
-    /*
-    public SingledialogText addDiaglog(string chinese,string eng,AudioClip chineseAC,AudioClip engAC)
-    {
-       SingledialogText a = new SingledialogText();
-        a.ChineseAC =chineseAC;
-        a.EnglishAC =engAC;
-        a.ChineseVersion =chinese;
-        a.EnglishVersion =eng;
-        return a;
-        // Todo(new Observer("addtask",1));
-     
 
-    }*/
-    /*  public SingledialogText addDiaglog(string talk)
-      {
-          SingledialogText a = new SingledialogText();
-          a.ChineseAC = null;
-          a.EnglishAC = null;
-          a.ChineseVersion = null;
-          a.EnglishVersion = null;
-          a.talkobj = talk;
-          return a;
-          // Todo(new Observer("addtask",1));
+    public void saveGame(int slot) {
+        AppFactory.instances.Todo(new Observer(Cmd.saveGame, slot));
+    }
 
 
-      }
-      */
-    /* public void getenemy(Transform t)
-     {
-
-           mainpool.GetObject("eneyNum").GetComponent<MonsterWander>().initialPosition = t.position;
-         mainpool.GetObject("eneyNum").transform.position = t.position;
-     }*/
-
+    public void loadGame(int slot) {
+        AppFactory.instances.Todo(new Observer(Cmd.loadGame, slot));
+    }
     public void changetitle(string a)
     { tasktitle.text = a; }
 

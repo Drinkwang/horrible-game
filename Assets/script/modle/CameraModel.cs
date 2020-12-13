@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
+﻿using Newtonsoft.Json;
 
 public class CameraModel:Basemodel  {
+    [JsonIgnore]
     public float fieldValue;
+    [JsonIgnore]
     public object follow;
+    [JsonIgnore]
     public int priority;
 
 	public CameraModel()

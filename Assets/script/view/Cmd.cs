@@ -31,7 +31,9 @@ using System.Text;
     public const string dialogMerge = "dialogMerge";
     public const string dialogClear = "dialogclear";
 
-
+    //saveSystem
+    public const string saveGame = "saveGame";
+    public const string loadGame = "loadGame";
 
     //postEffect
     public const string postEffectOperate = "postEffectOperate";

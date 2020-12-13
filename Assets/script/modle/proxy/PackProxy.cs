@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using Newtonsoft.Json;
+
 public class PackProxy : Baseproxy<Packagemodel> {
+
+	[JsonIgnore]
+	public List<inventory> InvenToryList;
 	private static PackProxy  instance;
+
 	public static PackProxy instances()
 	{
 		if (instance == null) {
@@ -14,12 +20,13 @@ public class PackProxy : Baseproxy<Packagemodel> {
 			return instance;
 		
 	}
-	public PackProxy():base()
+	public void crateInventory(int index)
 	{
-		for (int i = 0; i <= 10; i++) {
+		for (int i = 0; i <= index; i++) {
 			this.addmodeltolist (new Packagemodel (i));
 		}
-		//.
+		
+		//默认index=10;
 
 	}
 	internal bool isfull()
@@ -51,4 +58,9 @@ public class PackProxy : Baseproxy<Packagemodel> {
         else
             return false;
     }
+
+    internal void setPackProxy(PackProxy packProxy)
+    {
+		this.modellist = packProxy.getmodellist();
+	}
 }

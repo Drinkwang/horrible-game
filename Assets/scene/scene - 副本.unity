@@ -13588,7 +13588,7 @@ MonoBehaviour:
     t: {fileID: 1970011150}
     Sequence: 3
     value: 1
-    values: 
+    values: 00000000
   - ChineseVersion: "\u5176\u6B21\u4F60\u7684\u7B2C\u4E8C\u5F20\u662F..."
     EnglishVersion: 
     JapanVersion: 
@@ -13640,10 +13640,10 @@ MonoBehaviour:
     ChineseAC: {fileID: 8300000, guid: 160a344a719d117409846c7b9e60719f, type: 3}
     JapanAC: {fileID: 0}
     talkobj: {fileID: 1577828252}
-    t: {fileID: 0}
+    t: {fileID: 1970011150}
     Sequence: 3
     value: 1
-    values: 
+    values: 01000000
   - ChineseVersion: "\u7B2C\u4E09\u5C0F\u5C40\u662F\u80DC\u8D1F\u5C40\uFF0C\u6765\u770B\u770B\u6211\u4EEC\u53CC\u65B9\u7684\u724C\u5427"
     EnglishVersion: 
     JapanVersion: 
@@ -13718,9 +13718,9 @@ MonoBehaviour:
     JapanAC: {fileID: 0}
     talkobj: {fileID: 1577828252}
     t: {fileID: 1970011150}
-    Sequence: 0
+    Sequence: 3
     value: 2
-    values: 
+    values: 0000000000000000
   - ChineseVersion: "\u6211\u8D62\u4E86"
     EnglishVersion: 
     JapanVersion: 
@@ -13728,8 +13728,8 @@ MonoBehaviour:
     ChineseAC: {fileID: 8300000, guid: bcb385d91beb3ed44acb4b984c3cd7d1, type: 3}
     JapanAC: {fileID: 0}
     talkobj: {fileID: 1577828252}
-    t: {fileID: 0}
-    Sequence: 0
+    t: {fileID: 1970011150}
+    Sequence: 3
     value: 0
     values: 
 --- !u!1 &927545201

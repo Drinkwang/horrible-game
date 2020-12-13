@@ -44,12 +44,14 @@ public class BloomData : ScriptableObject
                 myInit = true;
                 myCardNum = 0;
                 currenceUseCardNum = 0;
+                MyScore = 0;
                 break;
             case 1:
                 if (enemyTablecards.Length == 0)
                     enemyTablecards = new CardData[3];
                 eneInit = true;
                 enemyCardNum = 0;
+                EnemyScore = 0;
                 break;
         }
 

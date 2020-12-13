@@ -7,6 +7,7 @@ using System.Text;
 public class CameraProxy:Baseproxy<CameraModel>{
     private int nowCameraID;
     private static CameraProxy instance;
+
     public int NowCameraID
     {
         get
@@ -33,6 +34,12 @@ public class CameraProxy:Baseproxy<CameraModel>{
     internal void clear()
     {
         this.modellist.Clear();
+    }
+
+    internal void SetCamera(CameraProxy cameraProxy)
+    {
+        nowCameraID = cameraProxy.nowCameraID;
+        
     }
 }
 

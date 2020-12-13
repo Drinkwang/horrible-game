@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Packagemodel : Basemodel {
-	public int count;
+	public int count=0;
 	private int Goodid;
 	public int goodid
 	{get{ return this.Goodid;}
-		set{ count = 0;Goodid = value;}}
+		set{Goodid = value;}}
 	public Packagemodel(int id,int count,int goodid):base(id)
 	{
 		this.goodid=goodid;
@@ -26,7 +26,7 @@ public class Packagemodel : Basemodel {
 	// Update is called once per frame
 	public Packagemodel()
 	{
-		count = 0;
+
 	}
 
 

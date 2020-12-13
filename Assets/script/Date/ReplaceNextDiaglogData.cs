@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Drawing;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.IO;
@@ -147,26 +148,26 @@ public class ReplaceNextDiaglogData : ScriptableObject
 
 
     }
-    public void mergeAudio(SessionAddIndex sai){
+    public void mergeAudio(SessionAddIndex sai,List<int> Point){
         //存在bug
         List<float> ar = new List<float> ();
         SingledialogText t = new SingledialogText();
-        for(int i=0;i<MySingleD.Length;i++){
-            AudioClip s1= MySingleD[i].ChineseAC;
+        for(int i=0;i<Point.Count;i++){
+            int index =Point[i];
+            AudioClip s1= MySingleD[index].ChineseAC;
             float[] data1 = new float[s1.samples * s1.channels];
             s1.GetData (data1, 0);
             ar.AddRange (data1);
-            t.ChineseVersion+=MySingleD[i].ChineseVersion;
-            t.EnglishVersion+=MySingleD[i].EnglishVersion;
-            t.JapanVersion+=MySingleD[i].JapanVersion;
+            t.ChineseVersion+=MySingleD[index].ChineseVersion;
+            t.EnglishVersion+=MySingleD[index].EnglishVersion;
+            t.JapanVersion+=MySingleD[index].JapanVersion;
 
         }
-
  
         float[] datas = ar.ToArray ();
 
         t.Sequence=SingledialogText.executeSequence.RunInDiaglogEnd;
-        AudioClip clip = AudioClip.Create ("temp", datas.Length, 1, 16000, false);
+        AudioClip clip = AudioClip.Create ("temp", datas.Length/2, 2, 44100, false);
         clip.SetData (datas, 0);
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 public class Baseproxy<T> where T:Basemodel,new()  {
-	protected List<T> modellist;
+	public List<T> modellist;
 	// Use this for initialization
 	public Baseproxy()
 	{

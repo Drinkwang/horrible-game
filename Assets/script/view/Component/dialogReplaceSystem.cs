@@ -64,8 +64,9 @@ public class dialogReplaceSystem : MonoBehaviour
     }
 
 
-    public void ReplaceAudioMerge(ReplaceNextDiaglogData.SessionAddIndex sai){
-        audioMerge.mergeAudio(sai);
+    public void ReplaceAudioMerge(ReplaceNextDiaglogData.SessionAddIndex sai,List<int> Point){
+
+        audioMerge.mergeAudio(sai,Point);
     }
 
 

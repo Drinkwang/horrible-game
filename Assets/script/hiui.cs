@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Assets.script.modle.SaveSystem;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,6 +63,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             a.OnChangeCamera += changeCamera;
             firstperson.changeCamera(0,CinemacineComponent.Instance().CinemacineMain);
         }
+
+
 
         // Use this for initialization
         public void objecvisble(GameObject o)
@@ -130,6 +134,35 @@ namespace UnityStandardAssets.Characters.FirstPerson
             firstperson.m_RunSpeed = runspeed;
             firstperson.m_JumpSpeed = jumpspeed;
             firstperson.m_WalkSpeed = walkspeed;
+        }
+
+        public FirstPersonController GetFirstPerson()
+        {
+            return this.firstperson;
+        }
+
+        public PlayerPosition GetPlayerPosition() {
+            var tempV= firstperson.transform.position;
+            PlayerPosition temp=new PlayerPosition();
+            temp.x = tempV.x;
+            temp.y = tempV.y;
+            temp.z = tempV.z;
+            var tempR = firstperson.transform.rotation;
+            temp.rx = tempR.x;
+            temp.ry = tempR.y;
+            temp.rz = tempR.z;
+            return temp;
+        }
+
+
+
+        internal void setPlayerPosition(PlayerPosition playerPosition)
+        {
+            mousepause();
+            firstperson.transform.position = new Vector3(playerPosition.x, playerPosition.y, playerPosition.z);
+            firstperson.transform.rotation = Quaternion.Euler(playerPosition.rx, playerPosition.ry, playerPosition.rz);
+            firstperson.changeCamera(0, CinemacineComponent.Instance().CinemacineMain);
+            
         }
     }
 }

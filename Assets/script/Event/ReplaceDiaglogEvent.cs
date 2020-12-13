@@ -15,7 +15,7 @@ public class ReplaceDiaglogEvent : Befunction
         ReplaceDiaglog_jqk = 0,
         ReplaceDiaglog_winOrLost = 1,
 
-        ReplaceAudio_Merge=2
+        ReplaceAudio_Merge_Score=2
 
 
         //IGG_MobileRoyale,
@@ -75,9 +75,9 @@ public class ReplaceDiaglogEvent : Befunction
         }
     }
 
-    public void changeAudioMerge(int changeId){
+    public void changeAudioMerge(int changeId,List<int> point){
 
-        dialogReplaceSystem.instance.ReplaceAudioMerge(this.sai);
+        dialogReplaceSystem.instance.ReplaceAudioMerge(this.sai,point);
     }
 
     public void Lost() {
@@ -116,8 +116,12 @@ public class ReplaceDiaglogEvent : Befunction
             changeJqk(changeId);
         else if(type == ReplaceDiagType.ReplaceDiaglog_winOrLost)
             changeWinOrLost(changeId);
-        else if(type==ReplaceDiagType.ReplaceAudio_Merge){
-            changeAudioMerge(changeId);
+        else if(type==ReplaceDiagType.ReplaceAudio_Merge_Score){
+            b = new List<int>();
+            b.Add(bloomData.MyScore);
+            b.Add(3);
+            b.Add(bloomData.EnemyScore);
+            changeAudioMerge(changeId,b);
         }
         Reset();
 

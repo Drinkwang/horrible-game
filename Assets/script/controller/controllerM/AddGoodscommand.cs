@@ -8,7 +8,10 @@ public class AddGoodscommand : IC {
 
 	// Use this for initialization
 	public void Todo(Observer io)
-	{//Debug.Log ("as2sa");
+	{
+		if (packproxy.modellist.Count <= 0) {
+			packproxy.crateInventory(10);
+		}
 		int id = 1;
 		Packagemodel model = null;
 		if (!int.TryParse (io.body.ToString (), out id)) {
@@ -22,15 +25,12 @@ public class AddGoodscommand : IC {
             model = packproxy.getback ();
 			model.goodid = id;
             model.count = 1;
-           //AppFactory.instances.isopenpackage = true;
         }
         AppFactory.instances.Todo (new Observer ("RendertoViewcommand","main"));
         AppFactory.instances.closePackage(AppFactory.instances.entrytab, false);
         AppFactory.instances.showpack(AppFactory.instances.entrytab,false,true,false);
         
         AppFactory.instances.ssinvoke();
-
-//		Debug.Log ("assa");
 
 	}
 }
