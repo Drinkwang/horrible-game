@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 public class PackProxy : Baseproxy<Packagemodel> {
 
 	[JsonIgnore]
-	public List<inventory> InvenToryList;
+	public List<Inventory> InvenToryList;
 	private static PackProxy  instance;
 
 	public static PackProxy instances()

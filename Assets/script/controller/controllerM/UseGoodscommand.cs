@@ -18,6 +18,9 @@ public class UseGoodscommand : IC {
             if (model.count > 0)
                 packproxy.update(id, model);
             else {
+                if ((io.data)!=null && (int)io.data != 0) {
+                    model.RemoveHashId((int)io.data);
+                }
                 model.count=0;
                 model.goodid = 0;
                 packproxy.update(id, model); }

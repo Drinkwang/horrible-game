@@ -108,7 +108,7 @@ public class Onobjsession : MonoBehaviour {
    
             runSingleDialogT(SingledialogText.executeSequence.RunInAdd);    
             List<SingledialogText> t = MySingleD.ToList();
-            AppFactory.instances.Todo(new Observer("once", t));
+            AppFactory.instances.Todo(new Observer(Cmd.dialog, t));
             Audomanage.instance.huhu.Stop();
         }
         else

@@ -10,6 +10,11 @@ using System.Text;
     public const string moveCamera = "moveCamera";
     public const string addCamera = "addCamera";
 
+    //task
+    public const string addTask = "addtask";
+    public const string renderTask = "rtask";
+    public const string changeM = "changeM";
+
 
     //tv
     public  const string changeTv = "changeTv";
@@ -18,10 +23,22 @@ using System.Text;
     public const string stopTv = "stopTv";
 
 
+    //ichosen点击物品弹出菜单
+
+    public const string iChosenAdd = "add";
+    public const string iChosenRender = "render";
+    public const string iChosenHide = "hide";
+
+
     //item
     public const string showItem = "showitem";
     public const string hideItem = "hideitem";
     public const string consumeItem = "consumeItem";
+
+    //myinventory--Item
+    public const string addItem = "AddGoodscommand";
+    public const string renderAllItem = "RendertoViewcommand";
+    public const string exchangeMySelfItem = "exchange";
 
     //diaglog
    

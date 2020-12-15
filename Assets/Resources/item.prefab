@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 61425201698005448}
   m_Layer: 5
   m_Name: item
-  m_TagString: Untagged
+  m_TagString: uicard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

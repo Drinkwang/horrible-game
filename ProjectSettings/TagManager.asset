@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - cd
+  - cardBase
+  - card
+  - paint
+  - itemchosen
+  - bloomtable
+  - uicard
   layers:
   - Default
   - TransparentFX

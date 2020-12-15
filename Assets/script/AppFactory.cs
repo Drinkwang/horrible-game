@@ -80,7 +80,7 @@ public class AppFactory : MonoBehaviour
         task
     };
     itemstate nowstate;
-    //private bool kaca = true;
+
     public void changekacasound(bool t){
         t = !t;
     }
@@ -142,27 +142,27 @@ public class AppFactory : MonoBehaviour
         AdjustView(new QuetionView());
 
         AdjustCommand(Cmd.dialogReplace, once);
-        AdjustCommand("once", once);
+        AdjustCommand(Cmd.dialog, once);
 
-        AdjustCommand("RendertoViewcommand", render);
-        AdjustCommand("exchange", changegoodat);
-        AdjustCommand("AddGoodscommand", add);
+        AdjustCommand(Cmd.renderAllItem, render);
+        AdjustCommand(Cmd.exchangeMySelfItem, changegoodat);
+        AdjustCommand(Cmd.addItem, add);
         AdjustCommand(Cmd.consumeItem, useGoodCommand);
         //below code present itemchosenCommand
-        AdjustCommand("add", ichosen);
-        AdjustCommand("render", ichosen);
-        AdjustCommand("hide", ichosen);
-        AdjustCommand("tvShow", tvShow);
+        AdjustCommand(Cmd.iChosenAdd, ichosen);
+        AdjustCommand(Cmd.iChosenRender, ichosen);
+        AdjustCommand(Cmd.iChosenHide, ichosen);
+
 
         // later will be add delete task
-        AdjustCommand("addtask", task);
-        AdjustCommand("rtask", rtask);
-        AdjustCommand("changeM", scribeObj);
+        AdjustCommand(Cmd.addTask, task);
+        AdjustCommand(Cmd.renderTask, rtask);
+        AdjustCommand(Cmd.changeM, scribeObj);
 
         //relative Camera about 
-        AdjustCommand("changeCamere", cinemaContorl);
-        AdjustCommand("moveCamera", cinemaContorl);
-        AdjustCommand("addCamera", cinemaContorl);
+        AdjustCommand(Cmd.changeCamera, cinemaContorl);
+        AdjustCommand(Cmd.moveCamera, cinemaContorl);
+        AdjustCommand(Cmd.addCamera, cinemaContorl);
 
 
         //relative To postEffct 
@@ -176,6 +176,7 @@ public class AppFactory : MonoBehaviour
         AdjustCommand(Cmd.initTv, tvShow);
         AdjustCommand(Cmd.playTv, tvShow);
         AdjustCommand(Cmd.stopTv, tvShow);
+        //AdjustCommand("tvShow", tvShow);
 
         //QuetionComponent
         AdjustCommand(Cmd.QuetionChangeButton, quetionController);

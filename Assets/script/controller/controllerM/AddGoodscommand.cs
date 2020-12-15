@@ -25,7 +25,10 @@ public class AddGoodscommand : IC {
             model = packproxy.getback ();
 			model.goodid = id;
             model.count = 1;
+
         }
+		if(io.data!=null)
+			model.AddHashId((int)io.data);
         AppFactory.instances.Todo (new Observer ("RendertoViewcommand","main"));
         AppFactory.instances.closePackage(AppFactory.instances.entrytab, false);
         AppFactory.instances.showpack(AppFactory.instances.entrytab,false,true,false);

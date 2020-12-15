@@ -6,6 +6,7 @@ using UnityEngine;
 public class Packagemodel : Basemodel {
 	public int count=0;
 	private int Goodid;
+	public List<int> hashId;
 	public int goodid
 	{get{ return this.Goodid;}
 		set{Goodid = value;}}
@@ -13,6 +14,7 @@ public class Packagemodel : Basemodel {
 	{
 		this.goodid=goodid;
 		this.count=count;
+		
 	}
 
 
@@ -28,6 +30,25 @@ public class Packagemodel : Basemodel {
 	{
 
 	}
+
+	public void AddHashId(int hash) {
+		if (hashId == null) {
+			hashId = new List<int>();
+		}
+		hashId.Add(hash);
+
+	}
+
+	public void RemoveHashId(int hash)
+	{
+		if (hashId!=null&&hashId.Count>0)
+		{
+			if(hashId.Contains(hash))
+				hashId.Remove(hash);
+		}
+
+	}
+
 
 
 }

@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 public class ChangeGoodcommand : IC
 {
     PackProxy packproxy = PackProxy.instances();
@@ -15,12 +17,16 @@ public class ChangeGoodcommand : IC
                 if (packproxy.TryGeGoodtModel(body[1].good.id, out body[1]) == true)
                 {
                     int tid, tcont;
+                    List<int> thashId;
                     tid = body[0].goodid;
                     tcont = body[0].count;
+                    thashId = body[0].hashId;
                     body[0].goodid= body[1].goodid;
                     body[0].count = body[1].count;
+                    body[1].hashId = body[1].hashId;
                     body[1].goodid =tid;
                     body[1].count = tcont;
+                    body[1].hashId = thashId;
 
 
                 }

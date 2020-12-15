@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class inventory : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
     public int id;
     public int layer;
-    public long hashId;
+    private int hashId;
 
     private void Start()
     {
-        PackProxy.instances().InvenToryList.Add(this);
+        hashId = GetHashCode();
+        if (PackProxy.instances().InvenToryList == null) { 
+            PackProxy.instances().InvenToryList = new List<Inventory>(); 
+        }
+
+      
+        Debug.Log("HashId" + hashId);
     }
     // Start is called before the first frame update
 
@@ -21,6 +27,7 @@ public class inventory : MonoBehaviour
         
     }
 
+   
     public void Refresh() { 
     }
 }
