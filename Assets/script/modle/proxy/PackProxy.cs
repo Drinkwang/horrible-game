@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 public class PackProxy : Baseproxy<Packagemodel> {
 
 	[JsonIgnore]
-	public List<Inventory> InvenToryList;
+	private List<Inventory> invenToryList;
 	private static PackProxy  instance;
 
 	public static PackProxy instances()
@@ -62,5 +62,15 @@ public class PackProxy : Baseproxy<Packagemodel> {
     internal void setPackProxy(PackProxy packProxy)
     {
 		this.modellist = packProxy.getmodellist();
+		this.modellist.ForEach(e => { e.hashId.ForEach(hash => { invenToryList.ForEach(inven => { if (inven.GetHashCode() == hash) { inven.gameObject.SetActive(false);return; } });  }); });
+
+	}
+
+	public void AddInventory(Inventory temp) {
+		if (invenToryList == null)
+		{
+			invenToryList = new List<Inventory>();
+		}
+		invenToryList.Add(temp);
 	}
 }

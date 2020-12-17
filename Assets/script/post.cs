@@ -100,6 +100,10 @@ public class post : MonoBehaviour
                 {
 
                     AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
+
+                    Inventory inv = hitpoint.collider.gameObject.GetComponent<Inventory>();
+                    AppFactory.instances.Todo(new Observer("AddGoodscommand", inv.id,inv.GetHashCode()));
+
                     if (hitpoint.collider.tag == "card")
                     {
                         cardDeal(hitpoint.collider);

@@ -30,4 +30,11 @@ public class Goodproxy : Baseproxy<Goodsmodel> {
         this.addmodeltolist(new Goodsmodel("刚画好的油画", this.getMaxid() + 1));
 
     }
+
+    public void addInventory(Goodsmodel temp) {
+        if (!this.modellist.TrueForAll(e => { return temp.id == e.id; })) {
+            this.addmodeltolist(temp);
+        }
+    }
+
 }
