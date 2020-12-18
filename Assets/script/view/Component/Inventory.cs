@@ -29,10 +29,7 @@ public class Inventory : MonoBehaviour
         //this.addmodeltolist(new Goodsmodel("刚画好的油画", this.getMaxid() + 1));
 
     }
-    // Start is called before the first frame update
 
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -44,7 +41,15 @@ public class Inventory : MonoBehaviour
     }
 
 
-    public void Refresh() { 
+    public void Refresh() {
+        if (id == GoodType.世界名画1)
+        {
+        }
+        else if (id == GoodType.世界名画2) {
+        } else if (id== GoodType.刚画好的油画) { 
+            
+       }
+
     }
 }
 

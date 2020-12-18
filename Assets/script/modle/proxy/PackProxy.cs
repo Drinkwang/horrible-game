@@ -62,7 +62,25 @@ public class PackProxy : Baseproxy<Packagemodel> {
     internal void setPackProxy(PackProxy packProxy)
     {
 		this.modellist = packProxy.getmodellist();
-		this.modellist.ForEach(e => { e.hashId.ForEach(hash => { invenToryList.ForEach(inven => { if (inven.GetHashCode() == hash) { inven.gameObject.SetActive(false);return; } });  }); });
+		this.modellist.ForEach(e => {
+			if (e.hashId!=null)
+			{
+				e.hashId.ForEach(hash =>
+				{
+					invenToryList.ForEach(inven =>
+					{
+						if (inven.GetHashCode() == hash)
+						{
+							inven.gameObject.SetActive(false);
+							inven.Refresh();
+							AppFactory.instances.generalPaintBase();
+							return;
+
+						}
+					});
+				});
+			}
+		});
 
 	}
 

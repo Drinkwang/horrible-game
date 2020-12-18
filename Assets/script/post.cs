@@ -102,8 +102,15 @@ public class post : MonoBehaviour
                     AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
 
                     Inventory inv = hitpoint.collider.gameObject.GetComponent<Inventory>();
-                    AppFactory.instances.Todo(new Observer("AddGoodscommand", inv.id,inv.GetHashCode()));
-
+                    if (inv != null)
+                    {
+                        AppFactory.instances.Todo(new Observer("AddGoodscommand", (int)inv.id, inv.GetHashCode()));
+                        if ((int)inv.id != 0)
+                        {
+                            player.GetComponent<Animator>().SetTrigger("grag");
+                            inv.gameObject.SetActive(false);
+                        }
+                    }
                     if (hitpoint.collider.tag == "card")
                     {
                         cardDeal(hitpoint.collider);
@@ -120,50 +127,21 @@ public class post : MonoBehaviour
                         }
                     }
 
-                    else if (hitpoint.collider.tag == "cd")
-                    {
-
-                        if (hitpoint.collider.name == "cd1")
-                        {
-                            player.GetComponent<Animator>().SetTrigger("grag");
-                            AppFactory.instances.Todo(new Observer("AddGoodscommand", 7));
-                            Destroy(hitpoint.collider.gameObject);
-                        }
-                        if (hitpoint.collider.name == "cd2")
-                        {
-                            player.GetComponent<Animator>().SetTrigger("grag");
-                            AppFactory.instances.Todo(new Observer("AddGoodscommand", 8));
-                            Destroy(hitpoint.collider.gameObject);
-                        }
-                        if (hitpoint.collider.name == "cd3")
-                        {
-                            player.GetComponent<Animator>().SetTrigger("grag");
-                            AppFactory.instances.Todo(new Observer("AddGoodscommand", 9));
-                            Destroy(hitpoint.collider.gameObject);
-                        }
-
-
-                    }
                     else if (hitpoint.collider.tag == "paint")
                     {
                         if (hitpoint.collider.name == "paint1")
                         {
-                            player.GetComponent<Animator>().SetTrigger("grag");
-                            AppFactory.instances.Todo(new Observer("AddGoodscommand", 10));
+
                             hitpoint.collider.gameObject.SetActive(false);
                             paintbase[0].SetActive(true);
                         }
                         if (hitpoint.collider.name == "paint2")
                         {
-                            player.GetComponent<Animator>().SetTrigger("grag");
-                            AppFactory.instances.Todo(new Observer("AddGoodscommand", 11));
                             hitpoint.collider.gameObject.SetActive(false);
                             paintbase[1].SetActive(true);
                         }
                         if (hitpoint.collider.name == "paint3")
                         {
-                            player.GetComponent<Animator>().SetTrigger("grag");
-                            AppFactory.instances.Todo(new Observer("AddGoodscommand", 12));
                             hitpoint.collider.gameObject.SetActive(false);
                             paintbase[2].SetActive(true);
                         }
@@ -193,9 +171,9 @@ public class post : MonoBehaviour
 
         }
 
-
-
     }
+
+
     private void useItem(string itemName="物品") {
         AppFactory.instances.closePackage();
         AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击"+itemName+"进行使用";
@@ -209,33 +187,9 @@ public class post : MonoBehaviour
             onecardevent.GetComponent<Onobjsession>().add();
 
         }
-        if (t.name == "card -j")
-        {
-            player.GetComponent<Animator>().SetTrigger("grag");
-            AppFactory.instances.Todo(new Observer("AddGoodscommand", 1));
-            Destroy(t.gameObject);
-        }
-        else if (t.name == "card -q")
-        {
-            player.GetComponent<Animator>().SetTrigger("grag");
-            AppFactory.instances.Todo(new Observer("AddGoodscommand", 2));
-            Destroy(t.gameObject);
-        }
-        else if (t.name == "card -k")
-        {
-            player.GetComponent<Animator>().SetTrigger("grag");
-            AppFactory.instances.Todo(new Observer("AddGoodscommand", 3));
-            Destroy(t.gameObject);
-            //   getItem(hitpoint, 3);
-        }
-        else if ((t.name == "mycard0" || t.name == "mycard1"|| t.name == "mycard2")&& AppFactory.instances.eventTodo("不能回收手牌")) {
+
+        if ((t.name == "mycard0" || t.name == "mycard1"|| t.name == "mycard2")&& AppFactory.instances.eventTodo("不能回收手牌")) {
           
-            //PostprocessModel tempModel = new PostprocessModel();
-            //tempModel.id = 0;
-            //tempModel.postEffectSrc = "UnityEngine.Rendering.PostProcessing.Vignette";
-            //tempModel.intensity = 1;
-            //tempModel.T+=M
-            //AppFactory.instances.Todo(new Observer(Cmd.postEffectOperate, tempModel));
             player.GetComponent<Animator>().SetTrigger("grag");
             BloomModel.instance().gameObject.GetComponent<Onobjsession>().add();
         }
