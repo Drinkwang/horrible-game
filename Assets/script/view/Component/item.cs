@@ -169,7 +169,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 		set{ model = value;
 			if (model.goodid != 0) {
 				this.image.sprite = Resources.Load<Sprite> (model.good.src);
-				this.text.text = model.good.src + "";
+				this.text.text = model.good.name + "";
                 Color q= new Color(this.image.color.r, this.image.color.g, this.image.color.b, 255);
                 this.image.color = q;
 

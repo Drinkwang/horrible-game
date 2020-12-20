@@ -1466,7 +1466,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   invName: "\u2660K"
-  language: []
+  language:
+  - k
+  - heitaok
+  - kkk
 --- !u!23 &109836067
 MeshRenderer:
   m_ObjectHideFlags: 0

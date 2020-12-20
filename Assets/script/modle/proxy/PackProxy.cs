@@ -4,12 +4,16 @@ using UnityEngine;
 using System;
 using System.Linq;
 using Newtonsoft.Json;
+using System.IO;
+using System.Text;
 
 public class PackProxy : Baseproxy<Packagemodel> {
 
 	[JsonIgnore]
-	private List<Inventory> invenToryList;
+	private List<Inventory> inventoryList;
 	private static PackProxy  instance;
+	[JsonIgnore]
+	public Dictionary<int, string>[] inventoryDic; 
 
 	public static PackProxy instances()
 	{
@@ -67,7 +71,7 @@ public class PackProxy : Baseproxy<Packagemodel> {
 			{
 				e.hashId.ForEach(hash =>
 				{
-					invenToryList.ForEach(inven =>
+					inventoryList.ForEach(inven =>
 					{
 						if (inven.GetHashCode() == hash)
 						{
@@ -85,10 +89,93 @@ public class PackProxy : Baseproxy<Packagemodel> {
 	}
 
 	public void AddInventory(Inventory temp) {
-		if (invenToryList == null)
+		if (inventoryList == null)
 		{
-			invenToryList = new List<Inventory>();
+			inventoryList = new List<Inventory>();
 		}
-		invenToryList.Add(temp);
+		inventoryList.Add(temp);
+	}
+
+
+	public void saveAllInventoryLan() {
+
+
+		foreach (Globelstate.language lan in Globelstate.getLanguage()) {
+				string streamOpenFileName = Application.streamingAssetsPath + "/" + lan + "/" + "Inventory" + ".text";
+			if (!File.Exists(streamOpenFileName)) {
+				if (!Directory.Exists(Application.streamingAssetsPath + "/" + lan))
+				{
+					Directory.CreateDirectory(Application.streamingAssetsPath + "/" + lan);
+				}
+				string tex = "";
+				for (int i = 0; i < inventoryList.Count; i++)
+				{
+
+					if (i != inventoryList.Count - 1)
+					{
+
+						if ((int)lan < inventoryList[i].language.Length)
+							tex += inventoryList[i].GetHashCode() + "," + inventoryList[i].language[(int)lan] + '\n';
+						else
+							tex += inventoryList[i].GetHashCode() + "," + inventoryList[i].invName + '\n';
+					}
+					else {
+
+						if ((int)lan < inventoryList[i].language.Length)
+							tex += inventoryList[i].GetHashCode() + "," + inventoryList[i].language[(int)lan];
+						else
+							tex += inventoryList[i].GetHashCode() + "," + inventoryList[i].invName;
+					}
+
+
+
+				}
+
+
+				File.WriteAllText(streamOpenFileName, tex, Encoding.UTF8); 
+			}
+		}
+		loadAllInventoryLan();
+	}
+
+
+	public void loadAllInventoryLan() {
+		inventoryDic = new Dictionary<int, string>[Globelstate.LanguageLength()];
+
+		foreach (Globelstate.language lan in Globelstate.getLanguage())
+		{
+			inventoryDic[(int)lan] = new Dictionary<int, string>();
+			string streamOpenFileName = Application.streamingAssetsPath + "/" + lan + "/" + "Inventory" + ".text";
+
+			if (!Directory.Exists(Application.streamingAssetsPath + "/" + lan))
+			{
+				Directory.CreateDirectory(Application.streamingAssetsPath + "/" + lan);
+			}
+			if (File.Exists(streamOpenFileName))
+			{
+
+				StreamReader sr = new StreamReader(streamOpenFileName);
+				if (sr != null)
+				{
+					string temp = sr.ReadToEnd();
+					string[] languages = temp.Split('\n');
+					for (int i = 0; i < languages.Length; i++)
+					{
+						string[] hashAndLang = languages[i].Split(',');
+						inventoryDic[(int)lan].Add(int.Parse(hashAndLang[0]),hashAndLang[1]);
+					}
+				}
+
+			}
+		}
+
+		foreach (Inventory inv in inventoryList) {
+
+			inv.ReplaceLanguege();
+		}
+
+
+
+		
 	}
 }

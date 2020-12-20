@@ -329,6 +329,7 @@ public class AppFactory : MonoBehaviour
         talkobj.GetComponent<Onobjsession>().add();
         viewTodo(new Observer(Cmd.initCamera));
         Todo(new Observer(Cmd.initPostEffectOperate));
+        PackProxy.instances().saveAllInventoryLan();
 
     }
     public void Cleardialog()

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -11,9 +12,9 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
 
-        ReplaceLanguege();//代编辑
+        //ReplaceLanguege();//代编辑
         PackProxy.instances().AddInventory(this);
-        Goodproxy.instances().addInventory(new Goodsmodel(invName, (int)id));
+     
 
         //            this.addmodeltolist(new Goodsmodel("♠J", this.getMaxid() + 1));
         //this.addmodeltolist(new Goodsmodel("♠Q", this.getMaxid() + 1));
@@ -36,9 +37,54 @@ public class Inventory : MonoBehaviour
     }
 
    public void ReplaceLanguege() {
-        
-    
+        if (language.Length < Globelstate.LanguageLength()) {
+
+            language = new string[Globelstate.LanguageLength()];
+
+        }
+        //一次读档所有获取
+
+
+        foreach (Globelstate.language lan in Globelstate.getLanguage()) {
+            PackProxy.instances().inventoryDic[(int)lan].TryGetValue(this.GetHashCode(), out language[(int)lan]);
+        }
+        GenerateText();
+           
+            
     }
+    private void GenerateText()
+    {
+        string tempUrl=invName;
+        Globelstate.language myLanguege=AppFactory.instances.mylanguage;
+        if (language != null)
+        {
+            int index =(int)myLanguege;
+            if (index < language.Length) {
+                invName = language[index];
+
+
+            }
+            
+            
+   
+
+
+        }
+
+        Goodproxy.instances().addInventory(new Goodsmodel(tempUrl, (int)id, invName));
+        //    for (int i = 0; i < language.Length; i++)
+        //    {
+        //        tex += MySingleD[i].talkobj.name + ">";
+        //        if (MySingleD[i].ChineseVersion != null && language == (int)Globelstate.language.china)
+        //            tex += MySingleD[i].ChineseVersion;
+        //        else if (MySingleD[i].ChineseVersion == null && language == (int)Globelstate.language.china)
+        //            tex += "中文";
+        //        else if (MySingleD[i].EnglishVersion != null && language == (int)Globelstate.language.english)
+        //            tex += MySingleD[i].EnglishVersion;
+        //        else if
+    }
+
+
 
 
     public void Refresh() {
