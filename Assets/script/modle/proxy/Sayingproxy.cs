@@ -77,7 +77,11 @@ public class Sayingproxy{
 	// Use this for initialization
 	//public string src;
 	private static Sayingproxy instance;
-	public static Sayingproxy instances ()
+    public Onobjsession nowObj;
+    public int index;
+
+
+    public static Sayingproxy instances ()
 	{if (instance == null) {
 		
 			instance = new Sayingproxy ();
@@ -87,6 +91,9 @@ public class Sayingproxy{
 	}
 	public void Add(SingledialogText what)
 	{
+        if (saywhat == null) { 
+        
+        }
 			saywhat.Add (what);
 
 	}

@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 9
-  invName: dvd-3
+  invName: cd-3
   language: []
 --- !u!1 &80515701
 GameObject:
@@ -10067,7 +10067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 8
-  invName: dvd-2
+  invName: cd-2
   language: []
 --- !u!1 &541998015
 GameObject:
@@ -17937,7 +17937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 7
-  invName: dvd-1
+  invName: cd-1
   language: []
 --- !u!1 &1269446675
 GameObject:

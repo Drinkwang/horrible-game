@@ -27,10 +27,10 @@ public class dialogComponent : MonoBehaviour
 
     }
 
-    public void add(List<SingledialogText> a)
+    public void add()
     {
         Audomanage.instance.Stop();
-        dialogues = a;
+        dialogues = Sayingproxy.instances().returnLs();
 
 
         //	a[a[0]];
@@ -61,7 +61,8 @@ public class dialogComponent : MonoBehaviour
 
     public void ReplaceAll(List<SingledialogText> tempDialog)
     {
-        //  Audomanage.instance.Stop();
+        //  Audomanage.instance.Stop();a 
+        //  Audomanage.instance.Stop();a 
         for (int i = 0; i < tempDialog.Count; i++)
         {
             SingledialogText temp = tempDialog[i];

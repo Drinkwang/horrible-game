@@ -14,7 +14,7 @@ namespace Assets.script.modle.SaveSystem
         public CameraProxy cameraProxy;
         public PackProxy packProxy;
         public Dictionary<string, bool> all;
-
+        public Sayingproxy sayingProxy;
         public PlayerPosition playerPosition;
 
     }

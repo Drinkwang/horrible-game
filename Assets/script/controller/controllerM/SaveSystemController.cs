@@ -22,7 +22,8 @@ class SaveSystemController : IC
                 cameraProxy = CameraProxy.instances(),
                 all = allsave.instance.every,
                 packProxy = PackProxy.instances(),
-                playerPosition = hiui.instance.GetPlayerPosition()
+                playerPosition = hiui.instance.GetPlayerPosition(),
+                sayingProxy=Sayingproxy.instances()
                 //     playerPosition = hiui.instance.GetPlayerPosition(),
 
             };
