@@ -13,7 +13,7 @@ public class Onobjsession : MonoBehaviour {
         if (!this.GetComponent<Onobjsession>().isActiveAndEnabled){
             MySingleD = null;
         }
-      
+        Sayingproxy.instances().addHashSession(this.GetHashCode(), this);
         textFile = new string[Globelstate.LanguageLength()];
         foreach (Globelstate.language language in Globelstate.getLanguage())
         {
@@ -97,7 +97,7 @@ public class Onobjsession : MonoBehaviour {
 
 
     public SingledialogText[] MySingleD;
-    public void add(){
+    public void add(int index=0){
         if (MySingleD != null){
 
             foreach (Globelstate.language language in Globelstate.getLanguage())
@@ -108,7 +108,10 @@ public class Onobjsession : MonoBehaviour {
    
             runSingleDialogT(SingledialogText.executeSequence.RunInAdd);    
             List<SingledialogText> t = MySingleD.ToList();
-            AppFactory.instances.Todo(new Observer(Cmd.dialog, t));
+            Sayingproxy.HashIdAndIndex tempHashIdAndIndex = new Sayingproxy.HashIdAndIndex();
+            tempHashIdAndIndex.hashId = this.GetHashCode();
+            tempHashIdAndIndex.index = index;
+            AppFactory.instances.Todo(new Observer(Cmd.dialog, t, tempHashIdAndIndex));
             Audomanage.instance.huhu.Stop();
         }
         else

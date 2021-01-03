@@ -8,7 +8,6 @@ public class dialogComponent : MonoBehaviour
     public static dialogComponent instance;
     private List<SingledialogText> dialogues;
     private Text saying;
-    private static int num = 0;
     private AudioSource lastaudio;
 
 
@@ -41,6 +40,7 @@ public class dialogComponent : MonoBehaviour
 
         Audomanage.instance.StopSoundEffect(lastaudio);
         Sayingproxy.instances().clear();
+      //  Sayingproxy.instances().hashIdAndIndex.index = 0;
 
     }
     void Update()
@@ -138,7 +138,7 @@ public class dialogComponent : MonoBehaviour
     void textchange(string a)
     {
         saying.text = a;
-        num++;
+        Sayingproxy.instances().hashIdAndIndex.index++;
     }
     void tempFunction()
     {

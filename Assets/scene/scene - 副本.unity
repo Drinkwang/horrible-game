@@ -12462,6 +12462,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   tasktitle: {fileID: 0}
   postObj: {fileID: 1468476391}
+  saveData: {fileID: 11400000, guid: d36319e3f99134a40ad156aec20422c5, type: 2}
 --- !u!1 &792642359
 GameObject:
   m_ObjectHideFlags: 0

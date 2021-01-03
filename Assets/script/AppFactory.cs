@@ -35,6 +35,7 @@ public class AppFactory : MonoBehaviour
     public Text tasktitle;
     private GameObject beUseObj;
     public post postObj;
+
     public void SetbeUseObj(GameObject temp) {
 
         beUseObj =temp;

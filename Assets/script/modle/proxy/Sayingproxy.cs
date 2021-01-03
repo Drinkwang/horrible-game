@@ -71,43 +71,84 @@ public struct SingledialogText
 
 
 
-public class Sayingproxy{
+public class Sayingproxy {
 
-	private List<SingledialogText> saywhat; 
-	// Use this for initialization
-	//public string src;
-	private static Sayingproxy instance;
-    public Onobjsession nowObj;
-    public int index;
+    private List<SingledialogText> saywhat;
+    // Use this for initialization
+    //public string src;
+    private static Sayingproxy instance;
+    private Dictionary<int, Onobjsession> hashOnSession;
+    //public int currenceHashId;
+    //public int index;
+    public HashIdAndIndex hashIdAndIndex;
+    public static Sayingproxy instances()
+    { if (instance == null) {
 
+            instance = new Sayingproxy();
+            instance.saywhat = new List<SingledialogText>();
 
-    public static Sayingproxy instances ()
-	{if (instance == null) {
-		
-			instance = new Sayingproxy ();
-			instance.saywhat = new List<SingledialogText>();
-		}
-	 return instance;
-	}
-	public void Add(SingledialogText what)
-	{
-        if (saywhat == null) { 
-        
         }
-			saywhat.Add (what);
+        return instance;
+    }
+    public void Add(SingledialogText what)
+    {
+        if (saywhat == null) {
+            instance.saywhat = new List<SingledialogText>();
+        }
+        saywhat.Add(what);
 
-	}
-	public List<SingledialogText> returnLs()
-	{
-			return	saywhat;
-		
-	}
+    }
+    public List<SingledialogText> returnLs()
+    {
+        return saywhat;
+
+    }
     public void clear()
     {
-        saywhat.Clear();
-        
+        if (saywhat != null)
+        {
+            saywhat.Clear();
+        }
+
     }
 
+
+    public void SetSaveContent(HashIdAndIndex temp) {
+
+        Sayingproxy.instances().hashIdAndIndex = temp;
+        Onobjsession result = getHashSession(Sayingproxy.instances().hashIdAndIndex.hashId);
+        if (hashIdAndIndex.index - 1 >= 0)
+            result.add(hashIdAndIndex.index - 1);
+        else
+            result.add();
+    }
+
+    public void addHashSession(int hashId, Onobjsession tempSession) {
+
+        if (hashOnSession == null) {
+            hashOnSession = new Dictionary<int, Onobjsession>();
+        }
+
+        hashOnSession.Add(hashId, tempSession);
+    }
+
+
+    public Onobjsession getHashSession(int hashId)
+    {
+
+
+        Onobjsession tempOnsession;
+
+        hashOnSession.TryGetValue(hashId, out tempOnsession);
+        return tempOnsession;
+    }
+
+
     // Update is called once per frame
+
+    public class HashIdAndIndex{
+        public int hashId;
+        public int index;
+   }
 
 }

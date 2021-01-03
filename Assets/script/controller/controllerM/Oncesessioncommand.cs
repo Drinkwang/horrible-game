@@ -35,7 +35,14 @@ public class Oncesessioncommand : IC
 
         else if (o.body != null && o.body.GetType().ToString() != "System.String")
         {
+
+
             List<SingledialogText> news = (List<SingledialogText>)o.body;
+            if (o.data != null)
+            {
+                Sayingproxy.instances().hashIdAndIndex = (Sayingproxy.HashIdAndIndex)o.data;
+                news.RemoveRange(0, Sayingproxy.instances().hashIdAndIndex.index);
+            }
             if (news.Capacity != 0)
             {
                 foreach (SingledialogText msg in news)
@@ -43,10 +50,10 @@ public class Oncesessioncommand : IC
                     saymore.Add(msg);
 
 
-
                 }
 
             }
+
            AppFactory.instances.viewTodo(new Observer(Cmd.dialogAdd));
             AppFactory.instances.viewTodo(new Observer(Cmd.dialog));
 

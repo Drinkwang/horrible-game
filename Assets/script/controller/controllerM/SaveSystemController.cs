@@ -27,7 +27,7 @@ class SaveSystemController : IC
                 //     playerPosition = hiui.instance.GetPlayerPosition(),
 
             };
-            
+
             string json = JsonConvert.SerializeObject(inputDate);
                 File.WriteAllText(saveFile, json, Encoding.UTF8);
             }
@@ -48,7 +48,16 @@ class SaveSystemController : IC
                 hiui.instance.setPlayerPosition(save.playerPosition);
                 allsave.instance.every = save.all;
 
+
+
+                Sayingproxy.instances().SetSaveContent(save.sayingProxy.hashIdAndIndex);
+
             }
+
+
+            //GameData saveData = AppFactory.instances.saveData.saveData1[(int)SaveGbName.dialogObj];
+            //SaveGbName.dialogObj.ToString()
+
             sr.Close();
 
  
