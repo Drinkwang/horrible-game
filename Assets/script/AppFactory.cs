@@ -10,6 +10,8 @@ public class AppFactory : MonoBehaviour
     public RendertoViewcommand render;
     public AddGoodscommand add;
     public UseGoodscommand useGoodCommand;
+    private SortItemcommand sortItemcommand;
+
     public Oncesessioncommand once;
     public AddTaskcommand task;
     public RenderTaskcommand rtask;
@@ -22,7 +24,7 @@ public class AppFactory : MonoBehaviour
     private PostProcessController postProcessController;
     private QuetionController quetionController;
     private SaveSystemController saveSystemController;
-
+    
     public bool isopenpackage = false;
     private allsave mysave;
     public GameObject entrytab;
@@ -45,6 +47,12 @@ public class AppFactory : MonoBehaviour
         postObj.ispost = active;
 
     }
+
+    public bool IsHitItem() {
+
+        return postObj.IsHit();
+    }
+
 
     public GameObject GetbeUseObj()
     {
@@ -125,6 +133,7 @@ public class AppFactory : MonoBehaviour
         add = new AddGoodscommand();
         changegoodat = new ChangeGoodcommand();
         useGoodCommand = new UseGoodscommand();
+        sortItemcommand = new SortItemcommand() ;
 
         cinemaContorl = new CinemaControl();
         saveSystemController = new SaveSystemController();
@@ -147,6 +156,7 @@ public class AppFactory : MonoBehaviour
 
         AdjustCommand(Cmd.renderAllItem, render);
         AdjustCommand(Cmd.exchangeMySelfItem, changegoodat);
+        AdjustCommand(Cmd.sortAllItem, sortItemcommand);
         AdjustCommand(Cmd.addItem, add);
         AdjustCommand(Cmd.consumeItem, useGoodCommand);
         //below code present itemchosenCommand

@@ -56,11 +56,13 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
     }
     public void OnEndDrag(PointerEventData eventData)
     {
+
+        
         if (eventData != null)
         {
             AppFactory.instances.changestate(Globelstate.state.start);
-            
-            if (DragObj != null && this.model != null && this.model.good != null && !LimitUtil.isOverScreenPos(eventData.position.x, eventData.position.y, 300))
+            LimitUtil.value = 300;
+            if (DragObj != null && this.model != null && this.model.good != null && !LimitUtil.isOverScreenPos(eventData.position.x, eventData.position.y)&&AppFactory.instances.IsHitItem())
             {
                 Befunction w = new Befunction("使用物品" + " " + model.good.src + " " + model.good.id);
                 w.A += w.useritem;

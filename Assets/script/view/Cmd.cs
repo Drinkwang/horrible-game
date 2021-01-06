@@ -39,6 +39,8 @@ using System.Text;
     public const string addItem = "AddGoodscommand";
     public const string renderAllItem = "RendertoViewcommand";
     public const string exchangeMySelfItem = "exchange";
+    public const string sortAllItem = "sortAllItem";
+
 
     //diaglog
    

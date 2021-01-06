@@ -13,7 +13,7 @@ public class post : MonoBehaviour
     public Camera main;
     public GameObject onecardevent, threecardevent;
     public GameObject table;
-    public bool ispost = false,isblink = false;
+    public bool ispost = false, isblink = false;
     public GameObject[] paint;
     public GameObject[] paintbase;
 
@@ -60,43 +60,45 @@ public class post : MonoBehaviour
 
         if (AppFactory.instances.GetbeUseObj() != null)
         {
-            if(Vector3.Distance(this.transform.position, AppFactory.instances.GetbeUseObj().transform.position) >= 4f)
-                 AppFactory.instances.SetbeUseObj(null);
+            if (Vector3.Distance(this.transform.position, AppFactory.instances.GetbeUseObj().transform.position) >= 4f)
+                AppFactory.instances.SetbeUseObj(null);
 
         }
-        if (ispost == true)
-        {
-            Ray o = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-            Debug.DrawRay(o.origin, o.direction,Color.black);
-            if (Physics.Raycast(o, out hitpoint, 1.8f,1))
-            {//1.8
-               
- 
-                if (hitpoint.collider.gameObject.layer == 0)
-                {
-                    a.intel();
-                    AppFactory.instances.SetbeUseObj(hitpoint.collider.gameObject);
-                    isblink = true;
-                }
 
-                if (hitpoint.collider.tag == "bloomtable" )
-                {
-                    hitpoint.collider.gameObject.layer = 1;
-                    if (AppFactory.instances.eventTodo("赌桌事件")){
-                        middleLayer.Instance.canMove = false;
-                        middleLayer.Instance.MousePause();
-                        hitpoint.collider.GetComponent<Onobjsession>().add();
-                        AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
-                        AppFactory.instances.closePackage(AppFactory.instances.entrytab);
-                        AppFactory.instances.changestate(Globelstate.state.load);
-                    }
-                }
+        Ray o = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        Debug.DrawRay(o.origin, o.direction, Color.black);
+        if (Physics.Raycast(o, out hitpoint, 1.8f, 1))
+        {//1.8
 
-                if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == true || Input.GetMouseButtonDown(1) && AppFactory.instances.isopenpackage == true)&&AppFactory.instances.myglobelstate==Globelstate.state.start)
+
+            if (hitpoint.collider.gameObject.layer == 0)
+            {
+                a.intel();
+                AppFactory.instances.SetbeUseObj(hitpoint.collider.gameObject);
+                isblink = true;
+            }
+
+
+            if (hitpoint.collider.tag == "bloomtable")
+            {
+                hitpoint.collider.gameObject.layer = 1;
+                if (AppFactory.instances.eventTodo("赌桌事件"))
+                {
+                    middleLayer.Instance.canMove = false;
+                    middleLayer.Instance.MousePause();
+                    hitpoint.collider.GetComponent<Onobjsession>().add();
+                    AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
+                    AppFactory.instances.closePackage(AppFactory.instances.entrytab);
+                    AppFactory.instances.changestate(Globelstate.state.load);
+                }
+            }
+            if (ispost == true)
+            {
+                if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == true || Input.GetMouseButtonDown(1) && AppFactory.instances.isopenpackage == true) && AppFactory.instances.myglobelstate == Globelstate.state.start)
                 {
                     AppFactory.instances.closePackage(AppFactory.instances.entrytab);
                 }
-                else if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == false || Input.GetMouseButtonDown(0)&& AppFactory.instances.isopenpackage==false) && AppFactory.instances.myglobelstate == Globelstate.state.start)
+                else if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == false || Input.GetMouseButtonDown(0) && AppFactory.instances.isopenpackage == false) && AppFactory.instances.myglobelstate == Globelstate.state.start)
                 {
 
                     AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
@@ -161,7 +163,8 @@ public class post : MonoBehaviour
 
                         }
                     }
-                    else if (hitpoint.collider.tag == "cardBase") {
+                    else if (hitpoint.collider.tag == "cardBase")
+                    {
                         useItem("卡牌");
                     }
 
@@ -174,22 +177,25 @@ public class post : MonoBehaviour
     }
 
 
-    private void useItem(string itemName="物品") {
+    private void useItem(string itemName = "物品")
+    {
         AppFactory.instances.closePackage();
-        AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击"+itemName+"进行使用";
+        AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击" + itemName + "进行使用";
         AppFactory.instances.showpack(AppFactory.instances.entrytab);
         return;
 
     }
-    public void cardDeal(Collider t) {
+    public void cardDeal(Collider t)
+    {
         if (AppFactory.instances.eventTodo("第一张卡牌"))
         {
             onecardevent.GetComponent<Onobjsession>().add();
 
         }
 
-        if ((t.name == "mycard0" || t.name == "mycard1"|| t.name == "mycard2")&& AppFactory.instances.eventTodo("不能回收手牌")) {
-          
+        if ((t.name == "mycard0" || t.name == "mycard1" || t.name == "mycard2") && AppFactory.instances.eventTodo("不能回收手牌"))
+        {
+
             player.GetComponent<Animator>().SetTrigger("grag");
             BloomModel.instance().gameObject.GetComponent<Onobjsession>().add();
         }
@@ -204,12 +210,22 @@ public class post : MonoBehaviour
             }
         }
     }
-    private void getItem(RaycastHit hitpoint,int id) {
+    private void getItem(RaycastHit hitpoint, int id)
+    {
         player.GetComponent<Animator>().SetTrigger("grag");
         AppFactory.instances.Todo(new Observer("AddGoodscommand", id));
         hitpoint.collider.gameObject.SetActive(false);
     }
 
 
-}
+    public bool IsHit()
+    {
+        RaycastHit hitpoint;
 
+        Ray o = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        Debug.DrawRay(o.origin, o.direction, Color.black);
+        return (Physics.Raycast(o, out hitpoint, 1.8f, 1));
+
+
+    }
+}
