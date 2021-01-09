@@ -24,8 +24,8 @@ public class UseGoodscommand : IC {
                 model.count=0;
                 model.goodid = 0;
                 packproxy.update(id, model); }
-           
-            AppFactory.instances.Todo(new Observer(Cmd.sortAllItem, "main"));
+
+            AppFactory.instances.Todo(new Observer("RendertoViewcommand", "else"));
         } 
 
         

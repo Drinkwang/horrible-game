@@ -62,9 +62,9 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         {
             AppFactory.instances.changestate(Globelstate.state.start);
             LimitUtil.value = 300;
-            if (DragObj != null && this.model != null && this.model.good != null && !LimitUtil.isOverScreenPos(eventData.position.x, eventData.position.y)&&AppFactory.instances.IsHitItem())
+            if (DragObj != null && packageComponent.instante.T.Model != null && packageComponent.instante.T.Model.good != null && !LimitUtil.isOverScreenPos(eventData.position.x, eventData.position.y)&&AppFactory.instances.IsHitItem())
             {
-                Befunction w = new Befunction("使用物品" + " " + model.good.src + " " + model.good.id);
+                Befunction w = new Befunction("使用物品" + " " + packageComponent.instante.T.Model.good.src + " " + packageComponent.instante.T.Model.good.id);
                 w.A += w.useritem;
                 w.runa();
                 Destroy(DragObj);//拖拽结束后销毁生成的物体
@@ -83,12 +83,14 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
            if(this.model.goodid != 0 && this.model.good != null && this.model.good.src != null && DragObj == null&&collision.gameObject.tag=="uicard"&& packageComponent.instante.T.Model!=null)
         {
             AppFactory.instances.Todo(new Observer("exchange", new Packagemodel[] { packageComponent.instante.T.Model, Model }));
-       //     Debug.Log(packageComponent.instante.T.Model.good.src+"tuo");
+            //     Debug.Log(packageComponent.instante.T.Model.good.src+"tuo");
+
+
             Packagemodel t = packageComponent.instante.T.Model;
             packageComponent.instante.T.Model = Model;
             Model = t;
             packageComponent.instante.T = this;
-          
+
         }
 
         
