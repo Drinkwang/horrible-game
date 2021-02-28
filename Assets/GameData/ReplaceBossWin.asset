@@ -10,26 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d5c39d8178c3e046ae6bc96d2e24c35, type: 3}
-  m_Name: Replace1Draw
+  m_Name: ReplaceBossWin
   m_EditorClassIdentifier: 
   tName: 
   MySingleD:
-  - ChineseVersion: "\u8FD9\u4E00\u5C0F\u5C40\u662F\u5E73\u5C40"
+  - ChineseVersion: "\u8FD9\u4E00\u5C0F\u5C40\u6211\u8D62\u5F97\u4E00\u5206"
     EnglishVersion: 
     JapanVersion: 
     EnglishAC: {fileID: 0}
-    ChineseAC: {fileID: 8300000, guid: 11cf6f26eb0e9164eaae9f5ed9a80a2d, type: 3}
+    ChineseAC: {fileID: 8300000, guid: f48a63f67aed7d14f85806652fd9d9df, type: 3}
     JapanAC: {fileID: 0}
     talkobj: {fileID: 0}
     t: {fileID: 0}
     Sequence: 0
     value: 0
     values: 
-  - ChineseVersion: "\u770B\u6765\uFF0C\u6211\u4EEC\u90FD\u6CA1\u6709\u8F93\u548C\u6CA1\u6709\u8D62"
+  - ChineseVersion: "\u8FD9\u4E00\u5C40\u6211\u8D62\u4E86\u4E00\u5206"
     EnglishVersion: 
     JapanVersion: 
     EnglishAC: {fileID: 0}
-    ChineseAC: {fileID: 8300000, guid: 313a78b403c2ad448b215c5106f1bf50, type: 3}
+    ChineseAC: {fileID: 8300000, guid: 9ed7a990632a3bf42a59440470b50c59, type: 3}
+    JapanAC: {fileID: 0}
+    talkobj: {fileID: 0}
+    t: {fileID: 0}
+    Sequence: 0
+    value: 0
+    values: 
+  - ChineseVersion: "\u8D62\u7684\u4EBA\u662F\u6211"
+    EnglishVersion: 
+    JapanVersion: 
+    EnglishAC: {fileID: 0}
+    ChineseAC: {fileID: 8300000, guid: 92d2834fdf34ba345988da8bb42debe0, type: 3}
     JapanAC: {fileID: 0}
     talkobj: {fileID: 0}
     t: {fileID: 0}

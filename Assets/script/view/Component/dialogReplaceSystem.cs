@@ -12,12 +12,14 @@ public class dialogReplaceSystem : MonoBehaviour
 
     public ReplaceNextDiaglogData jqk;
 
-    public ReplaceNextDiaglogData win;
-    public ReplaceNextDiaglogData lost;
+    public ReplaceNextDiaglogData bossWin;
+    public ReplaceNextDiaglogData bossLost;
 
     public ReplaceNextDiaglogData draw;
     public ReplaceNextDiaglogData audioMerge;
 
+    public ReplaceNextDiaglogData anywin2;
+    //每次加入新的替换系统，需要在initNextDialogData里面进行初始化
 
     void Awake()
     {
@@ -29,10 +31,11 @@ public class dialogReplaceSystem : MonoBehaviour
     void initNextDialogData()
     {
         jqk.initDiaglog();
-        win.initDiaglog();
-        lost.initDiaglog();
+        bossWin.initDiaglog();
+        bossLost.initDiaglog();
         draw.initDiaglog();
         audioMerge.initDiaglog();
+        anywin2.initDiaglog();
 
     }
 
@@ -43,17 +46,17 @@ public class dialogReplaceSystem : MonoBehaviour
 
     }
 
-    public void ReplaceWin(ReplaceNextDiaglogData.SessionAddIndex sai){
+    public void ReplaceLose(ReplaceNextDiaglogData.SessionAddIndex sai){
         int index;
-        index=(int)(Random.Range(0,win.MySingleD.Length));
-        win.replace(index,sai);
+        index=(int)(Random.Range(0, bossWin.MySingleD.Length));
+        bossWin.replace(index,sai);
     }
 
-    public void ReplaceLose(ReplaceNextDiaglogData.SessionAddIndex sai)
+    public void ReplaceWin(ReplaceNextDiaglogData.SessionAddIndex sai)
     {
         int index;
-        index= (int)(Random.Range(0,lost.MySingleD.Length));
-        lost.replace(index,sai);
+        index= (int)(Random.Range(0,bossLost.MySingleD.Length));
+        bossLost.replace(index,sai);
     }
 
 
@@ -69,6 +72,13 @@ public class dialogReplaceSystem : MonoBehaviour
         audioMerge.mergeAudio(sai,Point);
     }
 
+    public void ReplaceNextDiaglog(ReplaceNextDiaglogData.SessionAddIndex sai,int count)
+    {
+        int index;
+        index = (int)(Random.Range(0, anywin2.MySingleD.Length));
+        anywin2.replace(index, sai);
+       AppFactory.instances.Todo(new Observer(Cmd.dialogRemove, sai, count));
+    }
 
 }
 

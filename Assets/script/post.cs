@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Video;
+using System.Text;
+using System.Text.RegularExpressions;
 
 public class post : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class post : MonoBehaviour
     public Camera main;
     public GameObject onecardevent, threecardevent;
     public GameObject table;
-    public bool ispost = false, isblink = false;
+    public bool ispost = false, isblink = false, isHitChangeObj = true;
     public GameObject[] paint;
     public GameObject[] paintbase;
 
@@ -60,7 +59,7 @@ public class post : MonoBehaviour
 
         if (AppFactory.instances.GetbeUseObj() != null)
         {
-            if (Vector3.Distance(this.transform.position, AppFactory.instances.GetbeUseObj().transform.position) >= 4f)
+            if (Vector3.Distance(this.transform.position, AppFactory.instances.GetbeUseObj().transform.position) >= 4f&& isHitChangeObj == true)
                 AppFactory.instances.SetbeUseObj(null);
 
         }
@@ -71,25 +70,29 @@ public class post : MonoBehaviour
         {//1.8
 
 
-            if (hitpoint.collider.gameObject.layer == 0)
+            if (hitpoint.collider.gameObject.layer == 0&&isHitChangeObj==true)
             {
                 a.intel();
                 AppFactory.instances.SetbeUseObj(hitpoint.collider.gameObject);
                 isblink = true;
+
             }
 
 
             if (hitpoint.collider.tag == "bloomtable")
             {
                 hitpoint.collider.gameObject.layer = 1;
-                if (AppFactory.instances.eventTodo("赌桌事件"))
+                if (!AppFactory.instances.eventIsExcuteState("三张卡牌"))
                 {
-                    middleLayer.Instance.canMove = false;
-                    middleLayer.Instance.MousePause();
-                    hitpoint.collider.GetComponent<Onobjsession>().add();
-                    AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
-                    AppFactory.instances.closePackage(AppFactory.instances.entrytab);
-                    AppFactory.instances.changestate(Globelstate.state.load);
+                    if (AppFactory.instances.eventTodo("赌桌事件"))
+                    {
+                        middleLayer.Instance.canMove = false;
+                        middleLayer.Instance.MousePause();
+                        hitpoint.collider.GetComponent<Onobjsession>().add();
+                        AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
+                        AppFactory.instances.closePackage(AppFactory.instances.entrytab);
+                        AppFactory.instances.changestate(Globelstate.state.load);
+                    }
                 }
             }
             if (ispost == true)
@@ -131,37 +134,22 @@ public class post : MonoBehaviour
 
                     else if (hitpoint.collider.tag == "paint")
                     {
-                        if (hitpoint.collider.name == "paint1")
+                        if (hitpoint.collider.name == "paint1"|| hitpoint.collider.name == "paint2"|| hitpoint.collider.name == "paint3")
                         {
 
+                            // 正则表达式剔除非数字字符（不包含小数点.）
+                            string str = Regex.Replace(hitpoint.collider.name, @"[^\d.\d]", "");
+                            int index = int.Parse(str)-1;
                             hitpoint.collider.gameObject.SetActive(false);
-                            paintbase[0].SetActive(true);
+                            paintbase[index].SetActive(true);
                         }
-                        if (hitpoint.collider.name == "paint2")
-                        {
-                            hitpoint.collider.gameObject.SetActive(false);
-                            paintbase[1].SetActive(true);
-                        }
-                        if (hitpoint.collider.name == "paint3")
-                        {
-                            hitpoint.collider.gameObject.SetActive(false);
-                            paintbase[2].SetActive(true);
-                        }
-                        if (hitpoint.collider.name == "paint1_base")
+
+                        if (hitpoint.collider.name == "paint1_base"|| hitpoint.collider.name == "paint2_base"|| hitpoint.collider.name == "paint3_base")
                         {
 
                             useItem("物品");
                         }
-                        if (hitpoint.collider.name == "paint2_base")
-                        {
-
-                            useItem("物品");
-                        }
-                        if (hitpoint.collider.name == "paint3_base")
-                        {
-                            useItem("物品");
-
-                        }
+             
                     }
                     else if (hitpoint.collider.tag == "cardBase")
                     {
@@ -179,7 +167,9 @@ public class post : MonoBehaviour
 
     private void useItem(string itemName = "物品")
     {
+        //isHitChangeObj = false;
         AppFactory.instances.closePackage();
+     
         AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击" + itemName + "进行使用";
         AppFactory.instances.showpack(AppFactory.instances.entrytab);
         return;

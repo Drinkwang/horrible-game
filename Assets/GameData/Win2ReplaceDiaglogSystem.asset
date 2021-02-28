@@ -10,26 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d5c39d8178c3e046ae6bc96d2e24c35, type: 3}
-  m_Name: Replace1Lose
+  m_Name: Win2ReplaceDiaglogSystem
   m_EditorClassIdentifier: 
   tName: 
   MySingleD:
-  - ChineseVersion: 
-    EnglishVersion: 
-    JapanVersion: 
-    EnglishAC: {fileID: 8300000, guid: f48a63f67aed7d14f85806652fd9d9df, type: 3}
-    ChineseAC: {fileID: 8300000, guid: bcb385d91beb3ed44acb4b984c3cd7d1, type: 3}
-    JapanAC: {fileID: 0}
-    talkobj: {fileID: 0}
-    t: {fileID: 0}
-    Sequence: 0
-    value: 0
-    values: 
-  - ChineseVersion: 
+  - ChineseVersion: "\u80DC\u8D1F\u5DF2\u5206\uFF0C\u53EA\u8981\u6709\u4E00\u65B9\u62FF\u5230\u4E86\u4E8C\u5206\uFF0C\u90A3\u4E48\u8FD9\u4E00\u5C0F\u5C40\u5C31\u65E0\u9700\u8FDB\u884C\u4E0B\u53BB\u4E86"
     EnglishVersion: 
     JapanVersion: 
     EnglishAC: {fileID: 0}
-    ChineseAC: {fileID: 8300000, guid: 043f579128be64a43adb0bfd11fbc7ad, type: 3}
+    ChineseAC: {fileID: 8300000, guid: 563dbe387339d484ba7e70b08e297d53, type: 3}
     JapanAC: {fileID: 0}
     talkobj: {fileID: 0}
     t: {fileID: 0}

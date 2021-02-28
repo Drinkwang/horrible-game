@@ -48,6 +48,9 @@ public class AppFactory : MonoBehaviour
 
     }
 
+    public void ChangeIsHitChangeObj(bool active){
+        postObj.isHitChangeObj = active;
+    }
     public bool IsHitItem() {
 
         return postObj.IsHit();
@@ -94,11 +97,6 @@ public class AppFactory : MonoBehaviour
         t = !t;
     }
 
-
-    void Update()
-    {
-
-    }
 
     void Awake()
     {
@@ -153,6 +151,7 @@ public class AppFactory : MonoBehaviour
 
         AdjustCommand(Cmd.dialogReplace, once);
         AdjustCommand(Cmd.dialog, once);
+        AdjustCommand(Cmd.dialogRemove,once);
 
         AdjustCommand(Cmd.renderAllItem, render);
         AdjustCommand(Cmd.exchangeMySelfItem, changegoodat);
@@ -232,11 +231,21 @@ public class AppFactory : MonoBehaviour
     }
 
 
-    public void showpack(GameObject blind=null,bool playAudio=true,bool isMove=false,bool IsChangePost=true)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="blind">是否携带组件进行关闭</param>
+    /// <param name="playAudio">播放 kaca 的声音</param>
+    /// <param name="isMove">如果该值为false，则关闭主角的移动选项</param>
+    /// <param name="IsChangePost">如果该值为false，则关掉主角能交互物品的功能</param>
+    /// <param name="changeIsHitChangeObj">如果该值为ture，则关掉物品聚焦锚点，玩家将无法改变使用物品对象</param>
+    public void showpack(GameObject blind=null,bool playAudio=true,bool isMove=false,bool IsChangePost=true,bool changeIsHitChangeObj=true)
     {
         if (isopenpackage == false)
         {
-            if(IsChangePost==true)
+            if(changeIsHitChangeObj==true)
+                ChangeIsHitChangeObj(false);
+            if (IsChangePost==true)
                 AppFactory.instances.changePost(false);
             isopenpackage = true;
             if(blind!=null)
@@ -264,9 +273,10 @@ public class AppFactory : MonoBehaviour
             //       Audomanage.instance.bg.Play();
             AppFactory.instances.changePost(true);
             packageComponent.instante.closePackage();
+            ChangeIsHitChangeObj(true);
             //  TaskComponent.instance.transform.GetChild(0).gameObject.SetActive(false);
             //close taskitem
-            if(blind!=null)
+            if (blind!=null)
                 blind.SetActive(false);
             // Time.timeScale = 1;
             isopenpackage = false;
@@ -282,6 +292,7 @@ public class AppFactory : MonoBehaviour
     public void closePackage(GameObject blind = null,bool isPlayAudio=true) {
         if (isopenpackage == true)
         {
+            ChangeIsHitChangeObj(true);
             AppFactory.instances.changePost(true);
             packageComponent.instante.closePackage();
             //close taskitem
@@ -290,7 +301,7 @@ public class AppFactory : MonoBehaviour
             // Time.timeScale = 1;
             StartCoroutine("ClosePackage");
             middleLayer.Instance.MouseRun();
-            // if(kaca==true)
+
             if(isPlayAudio==true)
                 Audomanage.instance.OnPlay("kaca");
         }
@@ -312,8 +323,11 @@ public class AppFactory : MonoBehaviour
     public void sinvoke()
     {
         if (isopenpackage != true)
+        {
             packageComponent.instante.closePackage();
             entrytab.SetActive(false);
+            //ChangeIsHitChangeObj(true);
+        }
         //  TaskComponent.instance.transform.GetChild(0).gameObject.SetActive(false);
         //close taskitem
 
@@ -326,6 +340,19 @@ public class AppFactory : MonoBehaviour
         Todo(new Observer("addtask", tasknum));
 
     }
+
+
+    public bool eventIsExcuteState(string t) {
+        if (mysave.every.ContainsKey(t) && mysave.every[t] == false)
+        {
+            return true;
+        }
+        return false;
+
+    
+
+    }
+
     public bool eventTodo(string t) {
         if (mysave.every.ContainsKey(t)&&mysave.every[t]==false) {
             mysave.every[t] = true;

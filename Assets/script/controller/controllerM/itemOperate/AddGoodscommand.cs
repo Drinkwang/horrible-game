@@ -31,7 +31,7 @@ public class AddGoodscommand : IC {
 			model.AddHashId((int)io.data);
         AppFactory.instances.Todo (new Observer ("RendertoViewcommand","main"));
         AppFactory.instances.closePackage(AppFactory.instances.entrytab, false);
-        AppFactory.instances.showpack(AppFactory.instances.entrytab,false,true,false);
+        AppFactory.instances.showpack(AppFactory.instances.entrytab,false,true,false,false);
         
         AppFactory.instances.ssinvoke();
 

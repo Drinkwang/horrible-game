@@ -12,14 +12,9 @@ public class bloomTableEvent : Befunction
     private packageComponent packageC;
     private BloomModel bloomModel;
     public Camera tempCamera;
-    public BloomData tempBloomData;
+    //public BloomData tempBloomData;
     private List<GameObject> hintObj;
-    //public static EnumUse bloom_changeCamera = new EnumUse("bloom_changeCamera",0);
-    //public static EnumUse bloom_TimeLine = new EnumUse("bloom_TimeLine", 1);
-    //public static EnumUse bloom_bloomPlayDetail = new EnumUse("bloom_bloomPlayDetail", 2);
-    //public static EnumUse bloom_bloomEnd = new EnumUse("bloom_bloomEnd",3);
-    //    public static EnumUse B = new EnumUse("B", 2);
-    //   public static EnumUse C = new EnumUse("C", 2);
+
     
     public enum bloomType
     {
@@ -27,7 +22,8 @@ public class bloomTableEvent : Befunction
         bloom_TimeLine = 1,
         bloom_bloomPlayDetail = 2,
         bloom_bloomEnd = 3,
-        bloom_discardCard = 4
+        bloom_discardCard = 4,
+        bloom_showEnemyCard=5
         //IGG_MobileRoyale,
     }
     public bloomType type = 0;
@@ -68,8 +64,8 @@ public class bloomTableEvent : Befunction
     public void event3() {
         bloomModel = BloomModel.instance();
       
-        tempBloomData.initCards(0);
-        tempBloomData.initCards(1);
+        //tempBloomData.initCards(0);
+        //tempBloomData.initCards(1);
         middleLayer.Instance.canMove = true;
         middleLayer.Instance.MouseRun();
         AppFactory.instances.changestate(Globelstate.state.start);
@@ -77,13 +73,16 @@ public class bloomTableEvent : Befunction
         for (int i = 0; i < 3; i++)
         {
             bloomModel.myback[i].SetActive(false);
-            bloomModel.cardback[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/cardback" + i);
-            CardData tempCardData = bloomModel.bloomData.deckHold[i];
-            // tempCardData.material = Resources.Load < Material > (CUtil.idToMaterialString(i+10));// cResources.Load<Material>("Materials/cardback" + i)
+            string cardBackMatrial = "Materials/cardback" + i;
+            bloomModel.cardback[i].GetComponent<MeshRenderer>().material = Resources.Load<Material>(cardBackMatrial);
+            //int index = CUtil.cardPointToId(CUtil.cardBacktoID(cardBackMatrial));// cResources.Load<Material>("Materials/cardback" + i)
+
+            bloomModel.cardback[i].GetComponent<CardBase>().SetData(CUtil.cardBacktoID(cardBackMatrial), false);
+            //CardData tempCardData = bloomModel.bloomData.deckHold[index];
             //Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId));
             //tempCardData.Point = i + 10;
-            tempBloomData.pushCard(1, tempCardData);
-           
+            //tempBloomData.pushCard(1, tempCardData);
+
             //  Debug.Log("isrun mouse");
         }
     }
@@ -98,16 +97,41 @@ public class bloomTableEvent : Befunction
 
 
     }
+
+    /// <summary>
+    /// 分段后处理效果2
+    /// </summary>
     public void event4_2() {
         PostprocessModel tempModel = new PostprocessModel();
         tempModel.id = 0;
         tempModel.postEffectSrc = "UnityEngine.Rendering.PostProcessing.Vignette";
         tempModel.intensity = 0;
         AppFactory.instances.Todo(new Observer(Cmd.postEffectOperate, tempModel));
-        // Debug.Log("22222333");
 
 
 
+    }
+
+    /// <summary>
+    /// 事件5-将Boss扑克牌进行翻面
+    /// </summary>
+    /// <param name="changeID">翻开的扑克牌编号，其中第一张为0</param>
+    public void event5(int changeID) {
+
+        if (bloomModel.cardback[changeID] != null)
+        {
+            CardBase tempCard = bloomModel.cardback[changeID].GetComponent<CardBase>();
+            if (tempCard != null)
+            {
+                tempCard.RenderCard();
+                Audomanage.instance.OnPlay("cardDraw");
+            }
+
+        }
+        else {
+            Debug.LogError("非正常情况将Boss的卡牌翻出，请检查源代码");
+        }
+    
     }
     public void function() {
         Myfunction();
@@ -131,9 +155,13 @@ public class bloomTableEvent : Befunction
         {
             event3();
         }
-        else if (type == bloomType.bloom_discardCard) {
+        else if (type == bloomType.bloom_discardCard)
+        {
 
             event4();
+        }
+        else if (type == bloomType.bloom_showEnemyCard) {
+            event5(changeId);
         }
         Reset();
 

@@ -7,10 +7,10 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 {
 	private Image image;
 	private Text text;
-    private  GameObject selectitemMenu,DragObj;
+    private  GameObject selectitemMenu,DragObj,tempBeUseObj;
     private Canvas canvas;
     private static RectTransform dragObjRect;
-
+   
     void Awake()
 	{
         if (dragObjRect == null)
@@ -57,12 +57,11 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
     public void OnEndDrag(PointerEventData eventData)
     {
 
-        
         if (eventData != null)
         {
             AppFactory.instances.changestate(Globelstate.state.start);
             LimitUtil.value = 300;
-            if (DragObj != null && packageComponent.instante.T.Model != null && packageComponent.instante.T.Model.good != null && !LimitUtil.isOverScreenPos(eventData.position.x, eventData.position.y)&&AppFactory.instances.IsHitItem())
+            if (DragObj != null && packageComponent.instante.T.Model != null && packageComponent.instante.T.Model.good != null &&AppFactory.instances.IsHitItem())
             {
                 Befunction w = new Befunction("使用物品" + " " + packageComponent.instante.T.Model.good.src + " " + packageComponent.instante.T.Model.good.id);
                 w.A += w.useritem;
@@ -72,6 +71,9 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
             else
             {
                 Destroy(DragObj);
+                AppFactory.instances.ChangeIsHitChangeObj(false);
+                if (tempBeUseObj != null)
+                    AppFactory.instances.SetbeUseObj(tempBeUseObj);
             }
         }
 
@@ -111,6 +113,8 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        tempBeUseObj = AppFactory.instances.GetbeUseObj();
+        AppFactory.instances.ChangeIsHitChangeObj(true);
 
         if (AppFactory.instances.myglobelstate == Globelstate.state.start&& eventData!=null)
         {

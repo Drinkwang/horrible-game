@@ -23,15 +23,21 @@ public class Oncesessioncommand : IC
             if ((o.body is SingledialogText))
             {
 
-                SingledialogText rep = (SingledialogText) o.body;
-                AppFactory.instances.viewTodo(new Observer(Cmd.dialogReplace, rep,o.data));
+                SingledialogText rep = (SingledialogText)o.body;
+                AppFactory.instances.viewTodo(new Observer(Cmd.dialogReplace, rep, o.data));
             }
-            else {
+            else
+            {
 
                 List<SingledialogText> rep = (List<SingledialogText>)o.body;
-                AppFactory.instances.viewTodo(new Observer(Cmd.dialogReplace, rep,o.data));
+                AppFactory.instances.viewTodo(new Observer(Cmd.dialogReplace, rep, o.data));
             }
         }
+        else if (o.msg == Cmd.dialogRemove) {
+            AppFactory.instances.viewTodo(new Observer(Cmd.dialogRemove, o.body, o.data));
+
+        } 
+    
 
         else if (o.body != null && o.body.GetType().ToString() != "System.String")
         {
@@ -54,7 +60,7 @@ public class Oncesessioncommand : IC
 
             }
 
-           AppFactory.instances.viewTodo(new Observer(Cmd.dialogAdd));
+            AppFactory.instances.viewTodo(new Observer(Cmd.dialogAdd));
             AppFactory.instances.viewTodo(new Observer(Cmd.dialog));
 
         }

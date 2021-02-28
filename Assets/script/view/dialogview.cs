@@ -15,6 +15,7 @@ public class dialogview : Vmediator
             mlist.Add(Cmd.dialog);
             mlist.Add(Cmd.dialogClear);
             mlist.Add(Cmd.dialogReplace);
+            mlist.Add(Cmd.dialogRemove);
             return mlist;
         }
     }
@@ -42,14 +43,27 @@ public class dialogview : Vmediator
                 if (o.body is SingledialogText)
                 {
                     SingledialogText reST1 = (SingledialogText)o.body;
-                    ReplaceNextDiaglogData.SessionAddIndex temp = (ReplaceNextDiaglogData.SessionAddIndex)o.data;
-                    D.Replace(reST1, temp.tempSession, temp.index);
+                    ReplaceNextDiaglogData.SessionAddIndex tempSession = (ReplaceNextDiaglogData.SessionAddIndex)o.data;
+                    D.Replace(reST1, tempSession.tempSession, tempSession.index);
+            
                 }
                 else
                 {
                     List<SingledialogText> reST = (List<SingledialogText>)o.body;
                     D.ReplaceAll(reST);
                 }
+                break;
+            case Cmd.dialogRemove:
+
+
+                ReplaceNextDiaglogData.SessionAddIndex temp = (ReplaceNextDiaglogData.SessionAddIndex)o.body;
+                int index = (int)temp.index;
+                int count = (int)(o.data);
+                List<SingledialogText> mySingleD=temp.tempSession.MySingleD.ToList();
+                mySingleD.RemoveRange(index+1, count);
+                temp.tempSession.MySingleD=mySingleD.ToArray();
+     
+
                 break;
             default:
                 ;

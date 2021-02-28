@@ -76,11 +76,11 @@ public static class CUtil
     {
         string t = "";
         if (id == 11)
-            t = "Materials/cardback1";//剪刀
+            t = "Materials/cardback1";//剪刀 j
         else if (id == 12)
-            t = "Materials/cardback0";//步
+            t = "Materials/cardback0";//步 q
         else if (id == 13)
-            t = "Materials/cardback2";//石头
+            t = "Materials/cardback2";//石头 k
         return t;
 
     }
@@ -99,17 +99,17 @@ public static class CUtil
                 result = int.Parse(str);
             }
         }
-        //switch (result)
-        //{
-        //    case 0:
-        //        return 1;
-        //    case 1:
-        //        return 3;
-        //    case 2:
-        //        return 2;
-        //    default:
-        //        break;
-        //}
+        switch (result)
+        {
+            case 0:
+                return 12;
+            case 1:
+                return 11;
+            case 2:
+                return 13;
+            default:
+                break;
+        }
         return result;
 
     }

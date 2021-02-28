@@ -126,27 +126,20 @@ public class /*  */Befunction : MonoBehaviour
         }
         if (beUseItemId >= 1 && beUseItemId <= 3)
         {
-            if (beFuncObj.name == "0" || beFuncObj.name == "1" || beFuncObj.name == "2")
+            if (beFuncObj.name == "cardBase0" || beFuncObj.name == "cardBase1" || beFuncObj.name == "cardBase2")
             {
                 BloomModel Tempmodel = BloomModel.instance();
-                int index = int.Parse(beFuncObj.name);
-                if (index == 0)
-                {
-                    index = 1;
-                }
-                else if (index == 1)
-                {
-                    index = 0;
-                }
+                //beFuncObj.name.("cardBase")
+                int index = int.Parse(System.Text.RegularExpressions.Regex.Replace(beFuncObj.name, @"[^0-9]+", ""));
+
                 Tempmodel.myback[index].SetActive(true);
                 Tempmodel.cardBorad[index].layer = 1;
-                Tempmodel.myback[index].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId+10));
+                //Tempmodel.myback[index].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId+10));
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
                 AppFactory.instances.closePackage(null, false);
-                BloomModel.instance().bloomData.currenceUseCardNum++;
-                BloomModel.instance().bloomData.MyTablecards[index] = BloomModel.instance().bloomData.deckHold[beUseItemId-1];
-                
-                if (BloomModel.instance().bloomData.currenceUseCardNum == 3) {
+                BloomModel.instance().currenceUseCardNum++;
+                BloomModel.instance().myback[index].GetComponent<CardBase>().SetData(beUseItemId + 10,true);
+                if (BloomModel.instance().currenceUseCardNum == 3) {
                     middleLayer.Instance.canMove = false;
                     middleLayer.Instance.MousePause();
                     AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));

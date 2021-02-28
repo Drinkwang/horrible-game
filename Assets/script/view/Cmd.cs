@@ -47,6 +47,7 @@ using System.Text;
     public const string dialogAdd = "dialogadd";
     public const string dialog = "dialog";
     public const string dialogReplace = "dialogReplace";
+    public const string dialogRemove = "dialogRemove";
     public const string dialogMerge = "dialogMerge";
     public const string dialogClear = "dialogclear";
 
