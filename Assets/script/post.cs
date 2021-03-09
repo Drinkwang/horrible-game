@@ -81,7 +81,6 @@ public class post : MonoBehaviour
 
             if (hitpoint.collider.tag == "bloomtable")
             {
-                hitpoint.collider.gameObject.layer = 1;
                 if (!AppFactory.instances.eventIsExcuteState("三张卡牌"))
                 {
                     if (AppFactory.instances.eventTodo("赌桌事件"))
