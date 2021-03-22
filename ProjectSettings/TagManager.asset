@@ -12,6 +12,7 @@ TagManager:
   - itemchosen
   - bloomtable
   - uicard
+  - cabinet
   layers:
   - Default
   - TransparentFX

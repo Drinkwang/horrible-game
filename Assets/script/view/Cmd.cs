@@ -69,6 +69,12 @@ using System.Text;
     public const string QuetionChangeA = "QuetionChangeA";
     public const string QuetionCHnngeB = "QuetionChangeB";
 
+    //cabinetManager
+
+    public const string CabineMove = "CabineMove";
+    public const string CabineShake = "CabineShake";
+
+
     //后续有可能的话，操作view和操作ctrl也进行分层
 }
 

@@ -149,6 +149,9 @@ public class AppFactory : MonoBehaviour
         AdjustView(new PostEffectView());
         AdjustView(new QuetionView());
 
+        //只有View层，没有model层的方法
+        AdjustView(new CabinetManagerView());
+        //------------------------------------------------------
         AdjustCommand(Cmd.dialogReplace, once);
         AdjustCommand(Cmd.dialog, once);
         AdjustCommand(Cmd.dialogRemove,once);

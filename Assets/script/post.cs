@@ -133,26 +133,29 @@ public class post : MonoBehaviour
 
                     else if (hitpoint.collider.tag == "paint")
                     {
-                        if (hitpoint.collider.name == "paint1"|| hitpoint.collider.name == "paint2"|| hitpoint.collider.name == "paint3")
+                        if (hitpoint.collider.name == "paint1" || hitpoint.collider.name == "paint2" || hitpoint.collider.name == "paint3")
                         {
 
                             // 正则表达式剔除非数字字符（不包含小数点.）
                             string str = Regex.Replace(hitpoint.collider.name, @"[^\d.\d]", "");
-                            int index = int.Parse(str)-1;
+                            int index = int.Parse(str) - 1;
                             hitpoint.collider.gameObject.SetActive(false);
                             paintbase[index].SetActive(true);
                         }
 
-                        if (hitpoint.collider.name == "paint1_base"|| hitpoint.collider.name == "paint2_base"|| hitpoint.collider.name == "paint3_base")
+                        if (hitpoint.collider.name == "paint1_base" || hitpoint.collider.name == "paint2_base" || hitpoint.collider.name == "paint3_base")
                         {
 
                             useItem("物品");
                         }
-             
+
                     }
                     else if (hitpoint.collider.tag == "cardBase")
                     {
                         useItem("卡牌");
+                    }
+                    else if (hitpoint.collider.tag == "cabinet") {
+                        AppFactory.instances.viewTodo(new Observer(Cmd.CabineMove, hitpoint.collider.gameObject));
                     }
 
                 }
