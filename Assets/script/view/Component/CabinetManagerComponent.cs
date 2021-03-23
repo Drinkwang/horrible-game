@@ -8,8 +8,11 @@ public class CabinetManagerComponent : MonoBehaviour
     public static CabinetManagerComponent instance;
     public float[] lengths;
     public GameObject[] cabinets;
-    public bool[] isPull;
-    public Dictionary<GameObject, BoolAndFloat> cabinetLengthTable;
+    public string[] canUseHave;
+
+    public Dictionary<GameObject, cabineValue> cabinetLengthTable;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +21,18 @@ public class CabinetManagerComponent : MonoBehaviour
     void Awake()
     {
         instance = this;
-        cabinetLengthTable = new Dictionary<GameObject, BoolAndFloat>();
-        isPull = new bool[cabinets.Length];
+        cabinetLengthTable = new Dictionary<GameObject, cabineValue>();
+
         for (int i = 0; i < cabinets.Length; i++)
         {
 
-            BoolAndFloat tempBAndF = new BoolAndFloat();
+            cabineValue tempBAndF = new cabineValue();
             tempBAndF.values = lengths[i];
-            tempBAndF.isPull = isPull[i];
-
+            tempBAndF.isPull = false;
+            tempBAndF.isProcess = false;
             cabinetLengthTable.Add( cabinets[i], tempBAndF);
-            isPull[i] = false;
+       
+         
         }  
 
 
@@ -42,46 +46,55 @@ public class CabinetManagerComponent : MonoBehaviour
 
 
     public void move(object temp,object isPull=null) {
+    
+            GameObject t = temp as GameObject;
+        if (cabinetLengthTable[t].isProcess == false)
+        {
+            if (isPull != null)
+            {
+                cabinetLengthTable[t].isPull = !(bool)isPull;
+            }
+            float length = -cabinetLengthTable[t].values;
+            if (cabinetLengthTable[t].isPull == false)
+            {
+                cabinetLengthTable[t].isPull = true;
 
-        GameObject t = temp as GameObject;
-        if (isPull != null)
-        {
-            cabinetLengthTable[t].isPull = !(bool)isPull;
-        }
-        float length = -cabinetLengthTable[t].values;
-        if (cabinetLengthTable[t].isPull == false)
-        {
-            cabinetLengthTable[t].isPull = true;
+            }
+            else
+            {
+                length = -length;
+                //StopCoroutine("moveEnd");
+                cabinetLengthTable[t].isPull = false;
+            }
+            cabinetLengthTable[t].isProcess =true;
+            //isProcess[t] = true; ;
+
+
    
+
+            iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 1, "oncomplete", "moveComplete", "oncompleteparams", t, "oncompletetarget",this.gameObject));
+      
+
         }
-        else {
-            length = -length;
-            StopCoroutine("moveEnd");
-            cabinetLengthTable[t].isPull = false;
-        }
+    }
 
-
-  
-
-        //cabinets.index;
-
-        iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z+length, "time", 1));
-        //if(isOpen==true)
-          // 
-
+    public void moveComplete(GameObject t) {
+        cabinetLengthTable[t].isProcess = false;
+        StartCoroutine("moveEnd",t);
+        
     }
 
     public IEnumerator moveEnd(GameObject t)
     {
         if (cabinetLengthTable[t].isPull == true)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(5f);
             if (cabinetLengthTable[t].isPull == true)
             {
                 float length = cabinetLengthTable[t].values;
 
 
-                iTween.MoveTo(t, iTween.Hash("z", length, "time", 1));
+                iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 1));
                 cabinetLengthTable[t].isPull = false;
             }
         }
@@ -94,9 +107,10 @@ public class CabinetManagerComponent : MonoBehaviour
     }
 }
 
-public class BoolAndFloat{
+public class cabineValue{
     public float values;
     public bool isPull;
-
+    public bool isProcess;
+    public List<int> haveItem;
 
 }

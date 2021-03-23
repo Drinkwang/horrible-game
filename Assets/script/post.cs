@@ -63,10 +63,10 @@ public class post : MonoBehaviour
                 AppFactory.instances.SetbeUseObj(null);
 
         }
-
+       // Physics.Raycast(.)
         Ray o = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         Debug.DrawRay(o.origin, o.direction, Color.black);
-        if (Physics.Raycast(o, out hitpoint, 1.8f, 1))
+        if (Physics.Raycast(o, out hitpoint, 2.5f, 1))
         {//1.8
 
 
@@ -216,7 +216,8 @@ public class post : MonoBehaviour
 
         Ray o = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         Debug.DrawRay(o.origin, o.direction, Color.black);
-        return (Physics.Raycast(o, out hitpoint, 1.8f, 1));
+       
+        return (Physics.Raycast(o, out hitpoint, 2.5f, 1));
 
 
     }
