@@ -69,11 +69,11 @@ public class post : MonoBehaviour
         if (Physics.Raycast(o, out hitpoint, 2.5f, 1))
         {//1.8
 
-
-            if (hitpoint.collider.gameObject.layer == 0&&isHitChangeObj==true)
+            GameObject hitGameObj = hitpoint.collider.gameObject;
+            if (hitGameObj.layer == 0&&isHitChangeObj==true)
             {
                 a.intel();
-                AppFactory.instances.SetbeUseObj(hitpoint.collider.gameObject);
+                AppFactory.instances.SetbeUseObj(hitGameObj);
                 isblink = true;
 
             }
@@ -105,16 +105,20 @@ public class post : MonoBehaviour
 
                     AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
 
-                    Inventory inv = hitpoint.collider.gameObject.GetComponent<Inventory>();
+                    Inventory inv = hitGameObj.GetComponent<Inventory>();
                     if (inv != null)
-                    {
-                        AppFactory.instances.Todo(new Observer("AddGoodscommand", (int)inv.id, inv.GetHashCode()));
-                        if ((int)inv.id != 0)
-                        {
-                            player.GetComponent<Animator>().SetTrigger("grag");
-                            inv.gameObject.SetActive(false);
-                        }
-                    }
+                        //{   if (inv.cabinet == null || CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].isPull == true)
+                        //    {
+                        //        CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].haveItem.Remove((int)inv.id);
+                        //        AppFactory.instances.Todo(new Observer("AddGoodscommand", (int)inv.id, inv.GetHashCode()));
+                        //        if ((int)inv.id != 0)
+                        //        {
+                        //            player.GetComponent<Animator>().SetTrigger("grag");
+                        //            inv.gameObject.SetActive(false);
+                        //        }
+                        //    }
+                        //}
+                        getItem(inv);
                     if (hitpoint.collider.tag == "card")
                     {
                         cardDeal(hitpoint.collider);
@@ -139,7 +143,7 @@ public class post : MonoBehaviour
                             // 正则表达式剔除非数字字符（不包含小数点.）
                             string str = Regex.Replace(hitpoint.collider.name, @"[^\d.\d]", "");
                             int index = int.Parse(str) - 1;
-                            hitpoint.collider.gameObject.SetActive(false);
+                            hitGameObj.SetActive(false);
                             paintbase[index].SetActive(true);
                         }
 
@@ -155,7 +159,12 @@ public class post : MonoBehaviour
                         useItem("卡牌");
                     }
                     else if (hitpoint.collider.tag == "cabinet") {
-                        AppFactory.instances.viewTodo(new Observer(Cmd.CabineMove, hitpoint.collider.gameObject));
+                      
+                        if (CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].haveItem==null||CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].haveItem.Count == 0|| CabinetManagerComponent.instance.cabinetLengthTable[hitpoint.collider.gameObject].isPull==false) {
+
+                            AppFactory.instances.viewTodo(new Observer(Cmd.CabineMove, hitGameObj));
+                            
+                        }
                     }
 
                 }
@@ -202,11 +211,20 @@ public class post : MonoBehaviour
             }
         }
     }
-    private void getItem(RaycastHit hitpoint, int id)
+    private void getItem(Inventory inv)
     {
-        player.GetComponent<Animator>().SetTrigger("grag");
-        AppFactory.instances.Todo(new Observer("AddGoodscommand", id));
-        hitpoint.collider.gameObject.SetActive(false);
+
+        if (inv.cabinet == null || CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].isPull == true)
+        {
+            CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].haveItem.Remove((int)inv.id);
+            AppFactory.instances.Todo(new Observer("AddGoodscommand", (int)inv.id, inv.GetHashCode()));
+            if ((int)inv.id != 0)
+            {
+                player.GetComponent<Animator>().SetTrigger("grag");
+                inv.gameObject.SetActive(false);
+            }
+        }
+    
     }
 
 

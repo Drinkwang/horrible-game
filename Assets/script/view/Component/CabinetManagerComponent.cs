@@ -8,7 +8,7 @@ public class CabinetManagerComponent : MonoBehaviour
     public static CabinetManagerComponent instance;
     public float[] lengths;
     public GameObject[] cabinets;
-    public string[] canUseHave;
+
 
     public Dictionary<GameObject, cabineValue> cabinetLengthTable;
 

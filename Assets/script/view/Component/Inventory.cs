@@ -7,7 +7,8 @@ public class Inventory : MonoBehaviour
 {
     public GoodType id;
     public string invName;
-    public string[] language; 
+    public string[] language;
+    public GameObject cabinet;
 
     private void Start()
     {

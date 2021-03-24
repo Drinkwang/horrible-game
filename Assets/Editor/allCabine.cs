@@ -11,7 +11,7 @@ public class allCabine : Editor
     
     SerializedProperty cabinets;
     SerializedProperty lengths;
-    SerializedProperty canUseHave;
+//    SerializedProperty canUseHave;
     bool butor, butor2 ;
 
 
@@ -20,13 +20,9 @@ public class allCabine : Editor
 
         cabinets = serializedObject.FindProperty("cabinets");
         lengths = serializedObject.FindProperty("lengths");
-        canUseHave = serializedObject.FindProperty("canUseHave");
+//        canUseHave = serializedObject.FindProperty("canUseHave");
 
-        //Debug.Log (a);
 
-        //Debug.Log (a.arraySize);
-
-        //print(a.arraySize);
     }
     public override void OnInspectorGUI()
     {
@@ -44,19 +40,19 @@ public class allCabine : Editor
                 EditorGUILayout.PropertyField(cabinets.GetArrayElementAtIndex(i), new GUIContent("柜子" + i + ":"));
 
                 GUILayout.FlexibleSpace();
-                GoodType t = new GoodType();
-                object tObj = EditorGUILayout.EnumPopup(t);
-                if (tObj != null&&(int)(tObj)!=0) {
-                    if (canUseHave.GetArrayElementAtIndex(i).stringValue.Length > 0) {
-                        canUseHave.GetArrayElementAtIndex(i).stringValue += ",";
-                    }
-                        canUseHave.GetArrayElementAtIndex(i).stringValue += (int)(tObj);
-                }
-                EditorGUILayout.PropertyField(canUseHave.GetArrayElementAtIndex(i), new GUIContent("物品编号："));
-                int selectedSize = 1;
-                string[] names = new string[] { "Normal", "Double", "Quadruple" };
-                int[] sizes = { 1, 2, 4 };
-                EditorGUILayout.IntPopup("Resize Scale: ", selectedSize, names, sizes);
+                //GoodType t = new GoodType();
+                //object tObj = EditorGUILayout.EnumPopup(t);
+                //if (tObj != null&&(int)(tObj)!=0) {
+                //    if (canUseHave.GetArrayElementAtIndex(i).stringValue.Length > 0) {
+                //        canUseHave.GetArrayElementAtIndex(i).stringValue += ",";
+                //    }
+                //        canUseHave.GetArrayElementAtIndex(i).stringValue += (int)(tObj);
+                //}
+               // EditorGUILayout.PropertyField(canUseHave.GetArrayElementAtIndex(i), new GUIContent("物品编号："));
+                //int selectedSize = 1;
+                //string[] names = new string[] { "Normal", "Double", "Quadruple" };
+                //int[] sizes = { 1, 2, 4 };
+               // EditorGUILayout.IntPopup("Resize Scale: ", selectedSize, names, sizes);
 
 
                 EditorGUILayout.PropertyField(lengths.GetArrayElementAtIndex(i), new GUIContent("拉出长度："));

@@ -94,6 +94,14 @@ public class PackProxy : Baseproxy<Packagemodel> {
 			inventoryList = new List<Inventory>();
 		}
 		inventoryList.Add(temp);
+		if (temp.cabinet != null)
+		{
+			if (CabinetManagerComponent.instance.cabinetLengthTable[temp.cabinet].haveItem == null)
+			{
+				CabinetManagerComponent.instance.cabinetLengthTable[temp.cabinet].haveItem = new List<int>();
+			}
+			CabinetManagerComponent.instance.cabinetLengthTable[temp.cabinet].haveItem.Add((int)temp.id);
+		}
 	}
 
 
