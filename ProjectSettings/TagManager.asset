@@ -13,6 +13,7 @@ TagManager:
   - bloomtable
   - uicard
   - cabinet
+  - speaker
   layers:
   - Default
   - TransparentFX

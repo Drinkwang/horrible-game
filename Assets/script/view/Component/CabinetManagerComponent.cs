@@ -59,6 +59,7 @@ public class CabinetManagerComponent : MonoBehaviour
             {
                 cabinetLengthTable[t].isPull = true;
 
+
             }
             else
             {
@@ -67,6 +68,7 @@ public class CabinetManagerComponent : MonoBehaviour
                 cabinetLengthTable[t].isPull = false;
             }
             cabinetLengthTable[t].isProcess =true;
+            t.layer = 1;
             //isProcess[t] = true; ;
 
 
@@ -80,22 +82,32 @@ public class CabinetManagerComponent : MonoBehaviour
 
     public void moveComplete(GameObject t) {
         cabinetLengthTable[t].isProcess = false;
-        StartCoroutine("moveEnd",t);
+
+        t.layer = 0;
+        if (cabinetLengthTable[t].isPull != false)
+        {
+            StartCoroutine("moveEnd", t);
+            if (cabinetLengthTable[t].haveItem != null && cabinetLengthTable[t].haveItem.Count >0)
+            {
+                t.layer = 1;
+            }
+        }
         
     }
 
     public IEnumerator moveEnd(GameObject t)
     {
-        if (cabinetLengthTable[t].isPull == true)
+        if (cabinetLengthTable[t].isPull == true&& cabinetLengthTable[t].isProcess == false)
         {
             yield return new WaitForSeconds(5f);
-            if (cabinetLengthTable[t].isPull == true)
+            if (cabinetLengthTable[t].isPull == true && cabinetLengthTable[t].isProcess == false)
             {
                 float length = cabinetLengthTable[t].values;
-
-
-                iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 1));
                 cabinetLengthTable[t].isPull = false;
+                cabinetLengthTable[t].isProcess = true;
+                t.layer = 1;
+                iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 1 ,"oncomplete", "moveComplete", "oncompleteparams", t, "oncompletetarget", this.gameObject));
+
             }
         }
     }

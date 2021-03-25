@@ -66,7 +66,7 @@ public class post : MonoBehaviour
        // Physics.Raycast(.)
         Ray o = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         Debug.DrawRay(o.origin, o.direction, Color.black);
-        if (Physics.Raycast(o, out hitpoint, 2.5f, 1))
+        if (Physics.Raycast(o, out hitpoint, 1.8f, 1))
         {//1.8
 
             GameObject hitGameObj = hitpoint.collider.gameObject;
@@ -107,17 +107,6 @@ public class post : MonoBehaviour
 
                     Inventory inv = hitGameObj.GetComponent<Inventory>();
                     if (inv != null)
-                        //{   if (inv.cabinet == null || CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].isPull == true)
-                        //    {
-                        //        CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].haveItem.Remove((int)inv.id);
-                        //        AppFactory.instances.Todo(new Observer("AddGoodscommand", (int)inv.id, inv.GetHashCode()));
-                        //        if ((int)inv.id != 0)
-                        //        {
-                        //            player.GetComponent<Animator>().SetTrigger("grag");
-                        //            inv.gameObject.SetActive(false);
-                        //        }
-                        //    }
-                        //}
                         getItem(inv);
                     if (hitpoint.collider.tag == "card")
                     {
@@ -161,7 +150,7 @@ public class post : MonoBehaviour
                     else if (hitpoint.collider.tag == "cabinet") {
                       
                         if (CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].haveItem==null||CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].haveItem.Count == 0|| CabinetManagerComponent.instance.cabinetLengthTable[hitpoint.collider.gameObject].isPull==false) {
-
+                            if(CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].isProcess==false)
                             AppFactory.instances.viewTodo(new Observer(Cmd.CabineMove, hitGameObj));
                             
                         }
@@ -216,7 +205,10 @@ public class post : MonoBehaviour
 
         if (inv.cabinet == null || CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].isPull == true)
         {
-            CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].haveItem.Remove((int)inv.id);
+            if (inv.cabinet != null)
+            {
+                CabinetManagerComponent.instance.cabinetLengthTable[inv.cabinet].haveItem.Remove((int)inv.id);
+            }
             AppFactory.instances.Todo(new Observer("AddGoodscommand", (int)inv.id, inv.GetHashCode()));
             if ((int)inv.id != 0)
             {
@@ -235,7 +227,7 @@ public class post : MonoBehaviour
         Ray o = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         Debug.DrawRay(o.origin, o.direction, Color.black);
        
-        return (Physics.Raycast(o, out hitpoint, 2.5f, 1));
+        return (Physics.Raycast(o, out hitpoint, 1.8f, 1));
 
 
     }
