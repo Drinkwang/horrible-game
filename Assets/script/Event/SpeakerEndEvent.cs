@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpeakerEndEvent : Befunction
 {
     // Start is called before the first frame update
+    public GameObject speaker;
     public SpeakerEndEvent(string temp) : base(temp)
     {
 
@@ -21,5 +22,7 @@ public class SpeakerEndEvent : Befunction
     { //Debug.Log("222233");
       // middleLayer.Instance.OnSetSpeed(5.0f, 10.0f, 9.5f);
         AppFactory.instances.postObj.isSpeakerPlaying = false;
+        speaker.GetComponent<Animator>().SetBool("play", false);
+        Audomanage.instance.OnPlay("speakerClose", speaker.transform);
     }
 }

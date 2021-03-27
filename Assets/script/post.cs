@@ -166,11 +166,13 @@ public class post : MonoBehaviour
  
                         if (isSpeakerPlaying == false)
                         {
-                            player.GetComponent<Animator>().SetTrigger("grag");
+                            hitpoint.collider.GetComponent<Animator>().SetBool("play",true);
                             hitpoint.collider.GetComponent<Onobjsession>().add();
+                          
                         }
                         else {
-                            Audomanage.instance.OnPlay("speakerClose");
+                            Audomanage.instance.OnPlay("speakerClose",hitGameObj.transform);
+                            hitpoint.collider.GetComponent<Animator>().SetBool("play", false);
                             AppFactory.instances.viewTodo(new Observer(Cmd.dialogClear));
                         
                         }
