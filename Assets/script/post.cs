@@ -12,7 +12,7 @@ public class post : MonoBehaviour
     public Camera main;
     public GameObject onecardevent, threecardevent;
     public GameObject table;
-    public bool ispost = false, isblink = false, isHitChangeObj = true;
+    public bool ispost = false, isblink = false, isHitChangeObj = true,isSpeakerPlaying=false;
     public GameObject[] paint;
     public GameObject[] paintbase;
 
@@ -63,15 +63,20 @@ public class post : MonoBehaviour
                 AppFactory.instances.SetbeUseObj(null);
 
         }
-       // Physics.Raycast(.)
         Ray o = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-        Debug.DrawRay(o.origin, o.direction, Color.black);
+       // Debug.DrawRay(o.origin, o.direction, Color.black);
         if (Physics.Raycast(o, out hitpoint, 1.8f, 1))
         {//1.8
 
             GameObject hitGameObj = hitpoint.collider.gameObject;
-            if (hitGameObj.layer == 0&&isHitChangeObj==true)
+            bool isActive = true;
+            if(hitpoint.collider.tag == "cabinet") { 
+                isActive = CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].isActive;
+            }
+            if (hitGameObj.layer == 0&&isHitChangeObj==true&&isActive)
             {
+
+
                 a.intel();
                 AppFactory.instances.SetbeUseObj(hitGameObj);
                 isblink = true;
@@ -147,13 +152,29 @@ public class post : MonoBehaviour
                     {
                         useItem("卡牌");
                     }
-                    else if (hitpoint.collider.tag == "cabinet") {
-                      
-                        if (CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].haveItem==null||CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].haveItem.Count == 0|| CabinetManagerComponent.instance.cabinetLengthTable[hitpoint.collider.gameObject].isPull==false) {
-                            if(CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].isProcess==false)
-                            AppFactory.instances.viewTodo(new Observer(Cmd.CabineMove, hitGameObj));
-                            
+                    else if (hitpoint.collider.tag == "cabinet")
+                    {
+
+                        if (CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].haveItem == null || CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].haveItem.Count == 0 || CabinetManagerComponent.instance.cabinetLengthTable[hitpoint.collider.gameObject].isPull == false)
+                        {
+                            if (CabinetManagerComponent.instance.cabinetLengthTable[hitGameObj].isProcess == false)
+                                AppFactory.instances.viewTodo(new Observer(Cmd.CabineMove, hitGameObj));
+
                         }
+                    }
+                    else if (hitpoint.collider.tag == "speaker") {
+ 
+                        if (isSpeakerPlaying == false)
+                        {
+                            player.GetComponent<Animator>().SetTrigger("grag");
+                            hitpoint.collider.GetComponent<Onobjsession>().add();
+                        }
+                        else {
+                            Audomanage.instance.OnPlay("speakerClose");
+                            AppFactory.instances.viewTodo(new Observer(Cmd.dialogClear));
+                        
+                        }
+                        isSpeakerPlaying = !isSpeakerPlaying;
                     }
 
                 }

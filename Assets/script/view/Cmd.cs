@@ -50,6 +50,7 @@ using System.Text;
     public const string dialogRemove = "dialogRemove";
     public const string dialogMerge = "dialogMerge";
     public const string dialogClear = "dialogclear";
+    public const string dialogChangeFontSize = "dialogChangeFontSize";
 
     //saveSystem
     public const string saveGame = "saveGame";

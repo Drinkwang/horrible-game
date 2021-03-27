@@ -37,7 +37,7 @@ public class dialogComponent : MonoBehaviour
     }
     public void clear()
     {
-
+        saying.text = "";
         Audomanage.instance.StopSoundEffect(lastaudio);
         Sayingproxy.instances().clear();
       //  Sayingproxy.instances().hashIdAndIndex.index = 0;
@@ -72,6 +72,12 @@ public class dialogComponent : MonoBehaviour
         tempDialog.AddRange(dialogues);
         dialogues = tempDialog;
 
+    }
+
+    public void changeFontSize(int fontSize,bool bestFit) {
+
+        saying.resizeTextForBestFit = bestFit;
+        saying.fontSize = fontSize;
     }
 
     public void todo(Befunction t = null)

@@ -16,6 +16,7 @@ public class dialogview : Vmediator
             mlist.Add(Cmd.dialogClear);
             mlist.Add(Cmd.dialogReplace);
             mlist.Add(Cmd.dialogRemove);
+            mlist.Add(Cmd.dialogChangeFontSize);
             return mlist;
         }
     }
@@ -65,6 +66,10 @@ public class dialogview : Vmediator
      
 
                 break;
+            case Cmd.dialogChangeFontSize:
+                D.changeFontSize((int)o.body,(bool)o.data);
+                break;
+
             default:
                 ;
                 break;

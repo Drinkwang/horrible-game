@@ -7,17 +7,13 @@ public class CabinetManagerComponent : MonoBehaviour
 
     public static CabinetManagerComponent instance;
     public float[] lengths;
+    public bool[] isLock=new bool[6];
     public GameObject[] cabinets;
 
 
     public Dictionary<GameObject, cabineValue> cabinetLengthTable;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     void Awake()
     {
         instance = this;
@@ -30,6 +26,7 @@ public class CabinetManagerComponent : MonoBehaviour
             tempBAndF.values = lengths[i];
             tempBAndF.isPull = false;
             tempBAndF.isProcess = false;
+            tempBAndF.isActive = true;
             cabinetLengthTable.Add( cabinets[i], tempBAndF);
        
          
@@ -60,21 +57,23 @@ public class CabinetManagerComponent : MonoBehaviour
                 cabinetLengthTable[t].isPull = true;
 
 
+                Audomanage.instance.OnPlay("cabinetOpen", t.transform);
+
             }
             else
             {
                 length = -length;
                 //StopCoroutine("moveEnd");
+                Audomanage.instance.OnPlay("cabinetClose", t.transform);
                 cabinetLengthTable[t].isPull = false;
             }
             cabinetLengthTable[t].isProcess =true;
-            t.layer = 1;
+            //t.layer = 1;
+            cabinetLengthTable[t].isActive = false;
             //isProcess[t] = true; ;
 
 
-   
-
-            iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 1, "oncomplete", "moveComplete", "oncompleteparams", t, "oncompletetarget",this.gameObject));
+            iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 2, "oncomplete", "moveComplete", "oncompleteparams", t, "oncompletetarget",this.gameObject));
       
 
         }
@@ -82,14 +81,16 @@ public class CabinetManagerComponent : MonoBehaviour
 
     public void moveComplete(GameObject t) {
         cabinetLengthTable[t].isProcess = false;
-
-        t.layer = 0;
+        cabinetLengthTable[t].isActive = true;
+        // t.layer = 0;
         if (cabinetLengthTable[t].isPull != false)
         {
             StartCoroutine("moveEnd", t);
             if (cabinetLengthTable[t].haveItem != null && cabinetLengthTable[t].haveItem.Count >0)
             {
-                t.layer = 1;
+                //       t.layer = 1;
+                cabinetLengthTable[t].isActive = false;
+                //cabinetLengthTable[t].isProcess = true;
             }
         }
         
@@ -102,12 +103,12 @@ public class CabinetManagerComponent : MonoBehaviour
             yield return new WaitForSeconds(5f);
             if (cabinetLengthTable[t].isPull == true && cabinetLengthTable[t].isProcess == false)
             {
-                float length = cabinetLengthTable[t].values;
-                cabinetLengthTable[t].isPull = false;
-                cabinetLengthTable[t].isProcess = true;
-                t.layer = 1;
-                iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 1 ,"oncomplete", "moveComplete", "oncompleteparams", t, "oncompletetarget", this.gameObject));
-
+                //float length = cabinetLengthTable[t].values;
+                //cabinetLengthTable[t].isPull = false;
+                //cabinetLengthTable[t].isProcess = true;
+                //cabinetLengthTable[t].isActive = false;
+                //iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 1 ,"oncomplete", "moveComplete", "oncompleteparams", t, "oncompletetarget", this.gameObject));
+                move(t,false);
             }
         }
     }
@@ -123,6 +124,7 @@ public class cabineValue{
     public float values;
     public bool isPull;
     public bool isProcess;
+    public bool isActive;
     public List<int> haveItem;
 
 }

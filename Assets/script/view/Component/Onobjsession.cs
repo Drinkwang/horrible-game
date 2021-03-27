@@ -8,6 +8,7 @@ using System;
 
 public class Onobjsession : MonoBehaviour {
     private string[] textFile;
+    public int fontSize= 0;
     public void Awake()
     { 
         if (!this.GetComponent<Onobjsession>().isActiveAndEnabled){
@@ -111,6 +112,12 @@ public class Onobjsession : MonoBehaviour {
             Sayingproxy.HashIdAndIndex tempHashIdAndIndex = new Sayingproxy.HashIdAndIndex();
             tempHashIdAndIndex.hashId = this.GetHashCode();
             tempHashIdAndIndex.index = index;
+            //tempHashIdAndIndex.FontSize = fontSize;
+            //hashId和index内容是存档使用的
+            if(fontSize!=0)
+                AppFactory.instances.viewTodo(new Observer(Cmd.dialogChangeFontSize, fontSize,false));
+            else
+                AppFactory.instances.viewTodo(new Observer(Cmd.dialogChangeFontSize, fontSize, true));
             AppFactory.instances.Todo(new Observer(Cmd.dialog, t, tempHashIdAndIndex));
             Audomanage.instance.huhu.Stop();
         }
