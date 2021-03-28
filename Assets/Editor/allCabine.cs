@@ -11,7 +11,8 @@ public class allCabine : Editor
     
     SerializedProperty cabinets;
     SerializedProperty lengths;
-//    SerializedProperty canUseHave;
+    SerializedProperty isLock;
+    //    SerializedProperty canUseHave;
     bool butor, butor2 ;
 
 
@@ -20,14 +21,15 @@ public class allCabine : Editor
 
         cabinets = serializedObject.FindProperty("cabinets");
         lengths = serializedObject.FindProperty("lengths");
-//        canUseHave = serializedObject.FindProperty("canUseHave");
+        isLock = serializedObject.FindProperty("isLock");
+        //        canUseHave = serializedObject.FindProperty("canUseHave");
 
 
     }
     public override void OnInspectorGUI()
     {
-        //base.DrawDefaultInspector ();
-
+     //   base.DrawDefaultInspector ();
+        isLock.arraySize = 7;
 
         serializedObject.Update();
 
@@ -40,22 +42,17 @@ public class allCabine : Editor
                 EditorGUILayout.PropertyField(cabinets.GetArrayElementAtIndex(i), new GUIContent("柜子" + i + ":"));
 
                 GUILayout.FlexibleSpace();
-                //GoodType t = new GoodType();
-                //object tObj = EditorGUILayout.EnumPopup(t);
-                //if (tObj != null&&(int)(tObj)!=0) {
-                //    if (canUseHave.GetArrayElementAtIndex(i).stringValue.Length > 0) {
-                //        canUseHave.GetArrayElementAtIndex(i).stringValue += ",";
-                //    }
-                //        canUseHave.GetArrayElementAtIndex(i).stringValue += (int)(tObj);
-                //}
-               // EditorGUILayout.PropertyField(canUseHave.GetArrayElementAtIndex(i), new GUIContent("物品编号："));
-                //int selectedSize = 1;
-                //string[] names = new string[] { "Normal", "Double", "Quadruple" };
-                //int[] sizes = { 1, 2, 4 };
-               // EditorGUILayout.IntPopup("Resize Scale: ", selectedSize, names, sizes);
 
-
+            
                 EditorGUILayout.PropertyField(lengths.GetArrayElementAtIndex(i), new GUIContent("拉出长度："));
+
+                SerializedProperty templock = isLock.GetArrayElementAtIndex(i);
+                EditorGUILayout.PropertyField(templock, new GUIContent("是否锁住："));
+                if (CabinetManagerComponent.instance!=null)
+                    CabinetManagerComponent.instance.cabinetLengthTable[CabinetManagerComponent.instance.cabinets[i]].isLock = templock.boolValue;
+
+             
+           
                 //EditorGUILayout.BeginToggleGroup ("true or false", b.boolValue);
                 bool tempBool = GUILayout.Button("拉"); //EditorGUILayout.DropdownButton(new GUIContent(""), FocusType.Keyboard);
                 if (tempBool) {

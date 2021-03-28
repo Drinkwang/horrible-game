@@ -60,8 +60,16 @@ public class PaintModelComponent:MonoBehaviour
     }
 
 
-    public void settlement() { 
-    
+    public void settlement() {
+        if (isCompelete()) {
+            if (AppFactory.instances.eventTodo("画板排序")) {
+                this.GetComponent<Onobjsession>().add();
+                CabinetManagerComponent.instance.isLock[3] = false;
+                CabinetManagerComponent.instance.cabinetLengthTable[CabinetManagerComponent.instance.cabinets[3]].isLock = false;
+            
+            }
+        //画画事件完成
+        }
     
     }
     public void setPaintPoint(int[] temp) {

@@ -7,7 +7,14 @@ public class CabinetManagerComponent : MonoBehaviour
 
     public static CabinetManagerComponent instance;
     public float[] lengths;
-    public bool[] isLock=new bool[6];
+    public bool[] isLock;
+
+
+    
+
+
+
+
     public GameObject[] cabinets;
 
 
@@ -27,6 +34,7 @@ public class CabinetManagerComponent : MonoBehaviour
             tempBAndF.isPull = false;
             tempBAndF.isProcess = false;
             tempBAndF.isActive = true;
+            tempBAndF.isLock = isLock[i];
             cabinetLengthTable.Add( cabinets[i], tempBAndF);
        
          
@@ -44,41 +52,72 @@ public class CabinetManagerComponent : MonoBehaviour
 
     public void move(object temp,object isPull=null) {
     
-            GameObject t = temp as GameObject;
-        if (cabinetLengthTable[t].isProcess == false)
-        {
-            if (isPull != null)
-            {
-                cabinetLengthTable[t].isPull = !(bool)isPull;
-            }
-            float length = -cabinetLengthTable[t].values;
-            if (cabinetLengthTable[t].isPull == false)
-            {
-                cabinetLengthTable[t].isPull = true;
+        GameObject t = temp as GameObject;
+        if (cabinetLengthTable[t].isLock == true) {
 
 
-                Audomanage.instance.OnPlay("cabinetOpen", t.transform);
-
-            }
-            else
-            {
-                length = -length;
-                //StopCoroutine("moveEnd");
-                Audomanage.instance.OnPlay("cabinetClose", t.transform);
-                cabinetLengthTable[t].isPull = false;
-            }
-            cabinetLengthTable[t].isProcess =true;
+            cabinetLengthTable[t].isProcess = true;
             //t.layer = 1;
             cabinetLengthTable[t].isActive = false;
-            //isProcess[t] = true; ;
 
 
-            iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 2, "oncomplete", "moveComplete", "oncompleteparams", t, "oncompletetarget",this.gameObject));
-      
+            t.GetComponent<Onobjsession>().add();
+            iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z - 0.02, "time", 0.15, "loopType", iTween.LoopType.pingPong, "oncompleteparams", t, "oncompletetarget", this.gameObject, "oncomplete", "loopCompleteEnd"));
 
+         //   iTween.ShakePosition(t, args);
+
+        }
+        else {
+
+            if (cabinetLengthTable[t].isProcess == false)
+            {
+                if (isPull != null)
+                {
+                    cabinetLengthTable[t].isPull = !(bool)isPull;
+                }
+                float length = -cabinetLengthTable[t].values;
+                if (cabinetLengthTable[t].isPull == false)
+                {
+                    cabinetLengthTable[t].isPull = true;
+
+
+                    Audomanage.instance.OnPlay("cabinetOpen", t.transform);
+
+                }
+                else
+                {
+                    length = -length;
+                    //StopCoroutine("moveEnd");
+                    Audomanage.instance.OnPlay("cabinetClose", t.transform);
+                    cabinetLengthTable[t].isPull = false;
+                }
+                cabinetLengthTable[t].isProcess = true;
+                //t.layer = 1;
+                cabinetLengthTable[t].isActive = false;
+                //isProcess[t] = true; ;
+
+
+                iTween.MoveTo(t, iTween.Hash("z", t.transform.position.z + length, "time", 2, "oncomplete", "moveComplete", "oncompleteparams", t, "oncompletetarget", this.gameObject));
+
+            }
         }
     }
 
+
+    public void loopCompleteEnd(GameObject t) {
+        Debug.Log(cabinetLengthTable[t].lockTime);
+        cabinetLengthTable[t].lockTime++;
+        if (cabinetLengthTable[t].lockTime >= 6)
+        {
+            cabinetLengthTable[t].lockTime = 0;
+            iTween.Stop(t);
+            cabinetLengthTable[t].isProcess = false;
+            //t.layer = 1;
+            cabinetLengthTable[t].isActive = true;
+        }
+
+
+    }
     public void moveComplete(GameObject t) {
         cabinetLengthTable[t].isProcess = false;
         cabinetLengthTable[t].isActive = true;
@@ -125,6 +164,8 @@ public class cabineValue{
     public bool isPull;
     public bool isProcess;
     public bool isActive;
+    public bool isLock;
+    public int lockTime;
     public List<int> haveItem;
 
 }
