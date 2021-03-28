@@ -10,12 +10,13 @@ public class Inventory : MonoBehaviour
     public string[] language;
     public GameObject cabinet;
 
+
+
     private void Start()
     {
 
         //ReplaceLanguege();//代编辑
         PackProxy.instances().AddInventory(this);
-     
 
         //            this.addmodeltolist(new Goodsmodel("♠J", this.getMaxid() + 1));
         //this.addmodeltolist(new Goodsmodel("♠Q", this.getMaxid() + 1));

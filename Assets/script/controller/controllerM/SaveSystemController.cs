@@ -23,7 +23,8 @@ class SaveSystemController : IC
                 all = allsave.instance.every,
                 packProxy = PackProxy.instances(),
                 playerPosition = hiui.instance.GetPlayerPosition(),
-                sayingProxy=Sayingproxy.instances()
+                sayingProxy = Sayingproxy.instances(),
+                paintPoint = PaintModelComponent.instance.paintPoint,
                 //     playerPosition = hiui.instance.GetPlayerPosition(),
 
             };
@@ -44,7 +45,7 @@ class SaveSystemController : IC
                 SaveModel save = JsonConvert.DeserializeObject<SaveModel>(json);
                 CameraProxy.instances().SetCamera(save.cameraProxy);
                 PackProxy.instances().setPackProxy(save.packProxy);
-
+                PaintModelComponent.instance.setPaintPoint(save.paintPoint);
                 hiui.instance.setPlayerPosition(save.playerPosition);
                 allsave.instance.every = save.all;
 

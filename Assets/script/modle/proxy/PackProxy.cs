@@ -77,7 +77,6 @@ public class PackProxy : Baseproxy<Packagemodel> {
 						{
 							inven.gameObject.SetActive(false);
 							inven.Refresh();
-							AppFactory.instances.generalPaintBase();
 							return;
 
 						}
@@ -104,6 +103,11 @@ public class PackProxy : Baseproxy<Packagemodel> {
 		}
 	}
 
+	public void removeInventory(Inventory temp) {
+		inventoryList.Remove(temp);
+
+
+	}
 
 	public void saveAllInventoryLan() {
 

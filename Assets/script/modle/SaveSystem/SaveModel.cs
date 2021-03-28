@@ -16,7 +16,7 @@ namespace Assets.script.modle.SaveSystem
         public Dictionary<string, bool> all;
         public Sayingproxy sayingProxy;
         public PlayerPosition playerPosition;
-
+        public int[] paintPoint;
     }
 
     public struct PlayerPosition

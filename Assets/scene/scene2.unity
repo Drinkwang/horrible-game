@@ -12738,7 +12738,7 @@ MonoBehaviour:
   - "\u6253\u5F00\u5927\u95E8"
   - "\u6E38\u620F\u7ED3\u675F"
   - "\u6253\u5F00\u5730\u7A96"
-  - "\u4FDD\u9669\u67DC"
+  - "\u753B\u677F\u6392\u5E8F"
   - "\u64AD\u653E\u7535\u89C6"
   - "\u5C0F\u6E38\u620F"
   - "\u4E0D\u80FD\u56DE\u6536\u624B\u724C"
@@ -17545,7 +17545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.8748, z: 1}
   m_Children: []
   m_Father: {fileID: 1715919871}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1188060276
 BoxCollider:
@@ -19801,14 +19801,6 @@ MonoBehaviour:
   isblink: 0
   isHitChangeObj: 1
   isSpeakerPlaying: 0
-  paint:
-  - {fileID: 2044255862}
-  - {fileID: 1528267387}
-  - {fileID: 1188060271}
-  paintbase:
-  - {fileID: 593433800}
-  - {fileID: 1574097403}
-  - {fileID: 656202547}
 --- !u!114 &1468476393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22872,6 +22864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1715919871}
+  - component: {fileID: 1715919872}
   m_Layer: 0
   m_Name: paint
   m_TagString: Untagged
@@ -22890,8 +22883,8 @@ Transform:
   m_LocalPosition: {x: -5.21, y: 2.39, z: 0.5799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1188060275}
   - {fileID: 2044255866}
+  - {fileID: 1188060275}
   - {fileID: 1528267391}
   - {fileID: 593433801}
   - {fileID: 656202548}
@@ -22899,6 +22892,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1715919872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715919870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f988847db82cd48ab6a7d48d07b0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paint:
+  - {fileID: 2044255862}
+  - {fileID: 1528267387}
+  - {fileID: 1188060271}
+  paintbase:
+  - {fileID: 593433800}
+  - {fileID: 1574097403}
+  - {fileID: 656202547}
+  paintPoint: 
 --- !u!1001 &1722784887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24953,11 +24967,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044255862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0682, z: 0}
+  m_LocalPosition: {x: 0, y: 0.06820011, z: 0}
   m_LocalScale: {x: 1, y: 0.8635, z: 1}
   m_Children: []
   m_Father: {fileID: 1715919871}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2044255867
 BoxCollider:

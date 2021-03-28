@@ -378,18 +378,7 @@ public class AppFactory : MonoBehaviour
 
     }
 
-    public void generalPaintBase() {
-        for (int i = 0; i < this.postObj.paint.Length; i++) {
 
-            if (this.postObj.paint[i].activeSelf== false)
-                this.postObj.paintbase[i].SetActive(true);
-            else if(postObj.paint[i].activeSelf == true){ 
-                this.postObj.paintbase[i].SetActive(false);
-            }
-        }
-       
-
-    }
 
     public void saveGame(int slot) {
         AppFactory.instances.Todo(new Observer(Cmd.saveGame, slot));

@@ -102,8 +102,9 @@ public class /*  */Befunction : MonoBehaviour
             if (beFuncObj.name == "paint1_base" || beFuncObj.name == "paint2_base" || beFuncObj.name == "paint3_base")
             {
                 int beFuncId = beUseItemId - 9;
-                GameObject beUsePaint = AppFactory.instances.postObj.paint[beFuncId - 1];
-                GameObject paint = AppFactory.instances.postObj.paint[CUtil.GetResidueNum(beFuncObj.name) - 1];
+                GameObject beUsePaint = PaintModelComponent.instance.paint[beFuncId - 1];
+              
+                GameObject paint = PaintModelComponent.instance.paint[CUtil.GetResidueNum(beFuncObj.name) - 1];
                 Vector3 tempV3 = paint.transform.position;
                 paint.transform.position = beUsePaint.transform.position;
                 beUsePaint.transform.position = tempV3;
@@ -111,14 +112,25 @@ public class /*  */Befunction : MonoBehaviour
                 beFuncObj.SetActive(false);
 
 
-                GameObject beUsePaintBase = AppFactory.instances.postObj.paintbase[beFuncId - 1];
-                GameObject paintBase = AppFactory.instances.postObj.paintbase[CUtil.GetResidueNum(beFuncObj.name) - 1];
+                GameObject beUsePaintBase = PaintModelComponent.instance.paintbase[beFuncId - 1];
+                int beUsePaintPoint= 
+                  PaintModelComponent.instance.paintPoint[beFuncId - 1] ;
+
+                GameObject paintBase = PaintModelComponent.instance.paintbase[CUtil.GetResidueNum(beFuncObj.name) - 1];
+                int paintPoint = PaintModelComponent.instance.paintPoint[CUtil.GetResidueNum(beFuncObj.name) - 1];
+
+                PaintModelComponent.instance.paintPoint[beFuncId - 1] = paintPoint;
+                PaintModelComponent.instance.paintPoint[CUtil.GetResidueNum(beFuncObj.name) - 1]=beUsePaintPoint;
+
 
                 tempV3 = paintBase.transform.position;
                 paintBase.transform.position = beUsePaintBase.transform.position;
                 beUsePaintBase.transform.position = tempV3;
-                AppFactory.instances.generalPaintBase();
-                AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
+
+
+                PaintModelComponent.instance.generalPaintBase();
+                PaintModelComponent.instance.settlement();
+                AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId, beUsePaint.GetComponent<Inventory>().GetHashCode()));
                 AppFactory.instances.closePackage(null, false);
                 
 

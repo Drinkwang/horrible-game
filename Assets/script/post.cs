@@ -13,8 +13,7 @@ public class post : MonoBehaviour
     public GameObject onecardevent, threecardevent;
     public GameObject table;
     public bool ispost = false, isblink = false, isHitChangeObj = true,isSpeakerPlaying=false;
-    public GameObject[] paint;
-    public GameObject[] paintbase;
+
 
     void Update()
     {
@@ -138,7 +137,8 @@ public class post : MonoBehaviour
                             string str = Regex.Replace(hitpoint.collider.name, @"[^\d.\d]", "");
                             int index = int.Parse(str) - 1;
                             hitGameObj.SetActive(false);
-                            paintbase[index].SetActive(true);
+                            PaintModelComponent.instance.paintbase[index].SetActive(true);
+                        //    PaintModelComponent.instance.paintPoint[index]=0;
                         }
 
                         if (hitpoint.collider.name == "paint1_base" || hitpoint.collider.name == "paint2_base" || hitpoint.collider.name == "paint3_base")

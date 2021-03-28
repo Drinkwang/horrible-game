@@ -41,7 +41,7 @@ public class Packagemodel : Basemodel {
 
 	public void RemoveHashId(int hash)
 	{
-		if (hashId!=null&&hashId.Count>0)
+		if (hashId!=null)
 		{
 			if(hashId.Contains(hash))
 				hashId.Remove(hash);
