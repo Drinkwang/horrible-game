@@ -25,7 +25,7 @@ public class AddGoodscommand : IC {
             model = packproxy.getback ();
 			model.goodid = id;
             model.count = 1;
-
+			model.is3DModel = Goodproxy.instances().GetmodelbyId(id).is3DModel;
         }
 		if(io.data!=null)
 			model.AddHashId((int)io.data);

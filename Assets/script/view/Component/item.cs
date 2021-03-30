@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler,IDropHandler
 {
-	private Image image;
+	private Object image;
 	private Text text;
     private  GameObject selectitemMenu,DragObj,tempBeUseObj;
     private Canvas canvas;
@@ -16,11 +16,21 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         if (dragObjRect == null)
         { dragObjRect = this.GetComponentInParent<RectTransform>(); }
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        image = transform.GetComponentInChildren<Image> ();
+
+
 		text = transform.GetComponentInChildren<Text> ();
         selectitemMenu = GameObject.FindGameObjectWithTag("itemchosen").transform.GetChild(0).gameObject;
            
 	}
+    void init() {
+        if (this.model.is3DModel == false)
+            image = transform.GetComponentInChildren<Image>();
+        else
+        {
+            image = transform.GetComponentInChildren<RawImage>();
+        }
+
+    }
 	// Use this for initialization
 	void Start () {
 		
@@ -173,18 +183,49 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
     private Packagemodel model;
 	public Packagemodel Model
 	{
+
 		get{return this.model; }
 		set{ model = value;
-			if (model.goodid != 0) {
-				this.image.sprite = Resources.Load<Sprite> (model.good.src);
+            init();
+
+            if (model.goodid != 0) {
+                if (this.model.is3DModel==false)
+                {
+                    Image tempImage = this.image as Image;
+                    tempImage.sprite = Resources.Load<Sprite>(model.good.src);
+                    Color q = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 255);
+                    tempImage.color = q;
+                }
+                else if(this.model.is3DModel == true) {
+
+                    RawImage tempImage = this.image as RawImage;
+                    tempImage.texture = Resources.Load<Texture2D>(model.good.src);
+                    Color q = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 255);
+                    tempImage.color = q;
+
+                }
 				this.text.text = model.good.name + "";
-                Color q= new Color(this.image.color.r, this.image.color.g, this.image.color.b, 255);
-                this.image.color = q;
+       
 
 
 			} else {
-                Color qa = new Color(this.image.color.r, this.image.color.g, this.image.color.b, 0);
-                this.image.color = qa;
+
+                if (this.image is Image)
+                {
+                    Image tempImage = this.image as Image;
+                    Color qa = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 0);
+                    tempImage.color = qa;
+                }
+                else if (this.image is RawImage)
+                {
+
+                    RawImage tempImage = this.image as RawImage;
+                    Color q = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 255);
+                    tempImage.color = q;
+
+
+
+                }
 
                 this.text.text = "";
 			

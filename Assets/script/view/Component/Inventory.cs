@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public string invName;
     public string[] language;
     public GameObject cabinet;
+    public bool is3DModel=false;
 
 
 
@@ -46,6 +47,12 @@ public class Inventory : MonoBehaviour
         }
         //一次读档所有获取
 
+        for (int i= 0;i< language.Length; i++) {
+            if (language[i]==null) {
+                language[i] = invName;
+            }
+        
+        }
 
         foreach (Globelstate.language lan in Globelstate.getLanguage()) {
             PackProxy.instances().inventoryDic[(int)lan].TryGetValue(this.GetHashCode(), out language[(int)lan]);
@@ -73,7 +80,7 @@ public class Inventory : MonoBehaviour
 
         }
 
-        Goodproxy.instances().addInventory(new Goodsmodel(tempUrl, (int)id, invName));
+        Goodproxy.instances().addInventory(new Goodsmodel(tempUrl, (int)id, invName, is3DModel));
         //    for (int i = 0; i < language.Length; i++)
         //    {
         //        tex += MySingleD[i].talkobj.name + ">";

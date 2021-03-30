@@ -10,7 +10,10 @@ public class Packagemodel : Basemodel {
 	public int goodid
 	{get{ return this.Goodid;}
 		set{Goodid = value;}}
-	public Packagemodel(int id,int count,int goodid):base(id)
+
+	public bool is3DModel; 
+
+    public Packagemodel(int id,int count,int goodid):base(id)
 	{
 		this.goodid=goodid;
 		this.count=count;
@@ -48,6 +51,7 @@ public class Packagemodel : Basemodel {
 		}
 
 	}
+
 
 
 
