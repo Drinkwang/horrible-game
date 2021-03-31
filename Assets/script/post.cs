@@ -105,7 +105,7 @@ public class post : MonoBehaviour
                     AppFactory.instances.closePackage(AppFactory.instances.entrytab);
                 }
                 else if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == false || Input.GetMouseButtonDown(0) && AppFactory.instances.isopenpackage == false) && AppFactory.instances.myglobelstate == Globelstate.state.start)
-                {
+             {
 
                     AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
 

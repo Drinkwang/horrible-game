@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler,IDropHandler
 {
-	private Object image;
+	private Image image;
 	private Text text;
     private  GameObject selectitemMenu,DragObj,tempBeUseObj;
     private Canvas canvas;
@@ -23,12 +23,8 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
            
 	}
     void init() {
-        if (this.model.is3DModel == false)
-            image = transform.GetComponentInChildren<Image>();
-        else
-        {
-            image = transform.GetComponentInChildren<RawImage>();
-        }
+        image = transform.GetComponentInChildren<Image>();
+
 
     }
 	// Use this for initialization
@@ -52,6 +48,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         {
             if (this.model.goodid!=0 && this.model.good != null && this.model.good.src != null && DragObj == null)
             {
+ 
                 selectitemMenu.SetActive(true);
                 Itemselect.instance.mychild.transform.position = new Vector3(this.transform.position.x + 2 * this.transform.GetComponent<RectTransform>().sizeDelta.y, this.transform.position.y - this.transform.GetComponent<RectTransform>().sizeDelta.y / 3, this.transform.position.z);
                 Befunction T = new Befunction("检查物品" + " " + model.good.src + " " + model.good.id);
@@ -138,6 +135,8 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
                 DragObj.GetComponent<Rigidbody2D>().gravityScale = 0;
                 DragObj.transform.SetParent(canvas.transform, false);
                 DragObj.transform.SetAsLastSibling();
+
+       
                 Image img = DragObj.AddComponent<Image>();//给生成的拖拽物体添加一个Image组件并获得Image组件的控制权
                 BoxCollider2D t = DragObj.AddComponent<BoxCollider2D>();
                 t.size = new Vector2(25, 25);
@@ -149,8 +148,11 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
                 ObjFollowMouse(eventData);//让生成的物体跟随鼠标
                 AppFactory.instances.changestate(Globelstate.state.load);
                 packageComponent.instante.T.model = model;
+                }
+           
+
                 // item.Instance.model = this.model;//
-            }
+            
    
 
         }
@@ -187,45 +189,37 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 		get{return this.model; }
 		set{ model = value;
             init();
-
+            Sprite useSprite=null;
             if (model.goodid != 0) {
                 if (this.model.is3DModel==false)
                 {
-                    Image tempImage = this.image as Image;
-                    tempImage.sprite = Resources.Load<Sprite>(model.good.src);
-                    Color q = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 255);
-                    tempImage.color = q;
+                    useSprite= Resources.Load<Sprite>(model.good.src);
                 }
                 else if(this.model.is3DModel == true) {
-
-                    RawImage tempImage = this.image as RawImage;
-                    tempImage.texture = Resources.Load<Texture2D>(model.good.src);
-                    Color q = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 255);
-                    tempImage.color = q;
+   
+                    RenderTexture texture = Resources.Load<RenderTexture>(model.good.src);
+                    useSprite=Sprite.Create(CUtil.getTexture2d(texture), new Rect(new Vector2(0, 0), new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f));
+       
 
                 }
-				this.text.text = model.good.name + "";
+
+
+
+                this.image.sprite = useSprite;
+                Color q = new Color(this.image.color.r, this.image.color.g, this.image.color.b, 255);
+                this.image.color = q;
+                this.text.text = model.good.name + "";
        
 
 
 			} else {
 
-                if (this.image is Image)
-                {
-                    Image tempImage = this.image as Image;
-                    Color qa = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 0);
-                    tempImage.color = qa;
-                }
-                else if (this.image is RawImage)
-                {
-
-                    RawImage tempImage = this.image as RawImage;
-                    Color q = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 255);
-                    tempImage.color = q;
-
-
-
-                }
+       
+                //Image tempImage = this.image as Image;
+                Color qa = new Color(this.image.color.r, this.image.color.g, this.image.color.b, 0);
+                this.image.color = qa;
+                
+          
 
                 this.text.text = "";
 			

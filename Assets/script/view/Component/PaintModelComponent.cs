@@ -61,7 +61,7 @@ public class PaintModelComponent:MonoBehaviour
 
 
     public void settlement() {
-        if (isCompelete()) {
+        if (isCompelete() && paintPoint[0]==1&&paintPoint[1]==3&&paintPoint[2]==2) {
             if (AppFactory.instances.eventTodo("画板排序")) {
                 this.GetComponent<Onobjsession>().add();
                 CabinetManagerComponent.instance.isLock[3] = false;

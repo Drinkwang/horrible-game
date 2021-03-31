@@ -72,7 +72,10 @@ public class packageComponent : MonoBehaviour {
 		}
 		foreach(var i in model)
 		{
-            GameObject obj=GameObject.Instantiate (Resources.Load<GameObject> ("item"));
+            GameObject obj=null;
+        
+            obj = GameObject.Instantiate(Resources.Load<GameObject>("item"));
+
 			obj.transform.SetParent (this.gameObject.transform);
             obj.GetComponent<item>().Model = i;
 		}}

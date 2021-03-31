@@ -172,7 +172,24 @@ public static class CUtil
     }
 
 
+    public static Texture2D getTexture2d(RenderTexture renderT)
+    {
+        if (renderT == null)
+            return null;
 
+        int width = renderT.width;
+        int height = renderT.height;
+        Texture2D tex2d = new Texture2D(width, height, TextureFormat.ARGB32, false);
+        RenderTexture.active = renderT;
+        tex2d.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+        tex2d.Apply();
+
+        //byte[] b = tex2d.EncodeToPNG();
+        //Destroy(tex2d); 
+
+        //File.WriteAllBytes(Application.dataPath + "1.jpg", b); 
+        return tex2d;
+    }
 
 
 }

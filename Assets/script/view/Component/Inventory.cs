@@ -123,7 +123,8 @@ public enum GoodType {
     cd_3,
     世界名画1,
     世界名画2,
-    刚画好的油画
+    刚画好的油画,
+    撬棍
     //this.addmodeltolist(new Goodsmodel("♠Q", this.getMaxid() + 1));
     //this.addmodeltolist(new Goodsmodel("♠K", this.getMaxid() + 1));
     //this.addmodeltolist(new Goodsmodel("一些扑克", this.getMaxid() + 1));
