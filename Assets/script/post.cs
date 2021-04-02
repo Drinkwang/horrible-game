@@ -110,7 +110,7 @@ public class post : MonoBehaviour
                     AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
 
                     Inventory inv = hitGameObj.GetComponent<Inventory>();
-                    if (inv != null)
+                    if (inv != null && hitpoint.collider.tag != "paint")
                         getItem(inv);
                     if (hitpoint.collider.tag == "card")
                     {
@@ -130,22 +130,33 @@ public class post : MonoBehaviour
 
                     else if (hitpoint.collider.tag == "paint")
                     {
-                        if (hitpoint.collider.name == "paint1" || hitpoint.collider.name == "paint2" || hitpoint.collider.name == "paint3")
-                        {
 
-                            // 正则表达式剔除非数字字符（不包含小数点.）
-                            string str = Regex.Replace(hitpoint.collider.name, @"[^\d.\d]", "");
-                            int index = int.Parse(str) - 1;
-                            hitGameObj.SetActive(false);
-                            PaintModelComponent.instance.paintbase[index].SetActive(true);
-                        //    PaintModelComponent.instance.paintPoint[index]=0;
+                        if (PaintModelComponent.instance.isCorrectConsequence() && PaintModelComponent.instance.isCompelete()) {
+
+                            PaintModelComponent.instance.paintHave.GetComponent<Onobjsession>().add();
+                        }
+                        else {
+
+                            if (hitpoint.collider.name == "paint1" || hitpoint.collider.name == "paint2" || hitpoint.collider.name == "paint3")
+                            {
+
+                                // 正则表达式剔除非数字字符（不包含小数点.）
+                                string str = Regex.Replace(hitpoint.collider.name, @"[^\d.\d]", "");
+                                int index = int.Parse(str) - 1;
+                                hitGameObj.SetActive(false);
+                                PaintModelComponent.instance.paintbase[index].SetActive(true);
+                                getItem(inv);
+                                //    PaintModelComponent.instance.paintPoint[index]=0;
+                            }
+
+                            if (hitpoint.collider.name == "paint1_base" || hitpoint.collider.name == "paint2_base" || hitpoint.collider.name == "paint3_base")
+                            {
+
+                                useItem("物品");
+                            }
+
                         }
 
-                        if (hitpoint.collider.name == "paint1_base" || hitpoint.collider.name == "paint2_base" || hitpoint.collider.name == "paint3_base")
-                        {
-
-                            useItem("物品");
-                        }
 
                     }
                     else if (hitpoint.collider.tag == "cardBase")

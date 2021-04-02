@@ -108,26 +108,26 @@ public class dialogComponent : MonoBehaviour
                 textchange(dialogues[0].ChineseVersion.ToString());
                 if (dialogues[0].ChineseAC == null)
                 {
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values,dialogues[0].delay);
                 }
                 else
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].ChineseAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].ChineseAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
             }
             else if (AppFactory.instances.mylanguage == Globelstate.language.english)
             {
                 textchange(dialogues[0].EnglishVersion.ToString());
                 if (dialogues[0].EnglishAC == null)
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
                 else
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].EnglishAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].EnglishAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
             }
             else if (AppFactory.instances.mylanguage == Globelstate.language.japanense)
             {
                 textchange(dialogues[0].JapanVersion.ToString());
                 if (dialogues[0].JapanAC == null)
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, null, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
                 else
-                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].JapanAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values);
+                    lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].JapanAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
             }
             dialogues.RemoveAt(0);
 

@@ -7578,6 +7578,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!114 &283223776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8051,6 +8052,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!1 &347734585
 GameObject:
   m_ObjectHideFlags: 0
@@ -8144,7 +8146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354099183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.23, y: -1.171, z: -6.02}
+  m_LocalPosition: {x: -7.23, y: -2.082, z: -5.834}
   m_LocalScale: {x: 0.5088452, y: 0.9999999, z: 0.26381454}
   m_Children: []
   m_Father: {fileID: 1023432095}
@@ -8794,6 +8796,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\uFF08\u4E3B\u89D2\uFF09\u660E\u660E\u8D62\u4E0B\u8FD9\u4E00\u5C40\u6211\u5C31\u53EF\u4EE5\u6539\u53D8\uFF0C\u660E\u660E\u8D62\u4E0B\u8FD9\u4E00\u5C40\u6211\u5C31\u80FD\u591F\u6536\u624B\uFF0C\u53EF\u662F\u4E3A\u4EC0\u4E48\u90A3\u4E48\u96BE\u5462"
     EnglishVersion: 
     JapanVersion: 
@@ -8805,6 +8808,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\uFF08\u4E3B\u89D2\uFF09\u4E0D..."
     EnglishVersion: 
     JapanVersion: 
@@ -8816,6 +8820,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\uFF08\u4E3B\u89D2\uFF09\u4E0D...!!!"
     EnglishVersion: 
     JapanVersion: 
@@ -8827,6 +8832,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!114 &400425874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9844,6 +9850,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 03000000
+    delay: 0
   - ChineseVersion: "\u5582\uFF0C\u90A3\u4F4D\u4EB2\uFF0C\u4F60\u77E5\u9053\u731C\u62F3\u6E38\u620F\u600E\u4E48\u73A9\u4E48\uFF1F"
     EnglishVersion: 
     JapanVersion: 
@@ -9855,6 +9862,7 @@ MonoBehaviour:
     Sequence: 0
     value: 1
     values: 
+    delay: 0
   - ChineseVersion: "\u5728\u8FD9\u573A\u6E38\u620F\u91CC\uFF0C\u6211\u4EEC\u7528J,Q,K\u5206\u522B\u4EE3\u8868\u77F3\u5934\u526A\u5200\u5E03"
     EnglishVersion: 
     JapanVersion: 
@@ -9866,6 +9874,7 @@ MonoBehaviour:
     Sequence: 0
     value: 2
     values: 01000000
+    delay: 0
   - ChineseVersion: "\u6E38\u620F\u73A9\u6CD5\u662F\u5C06\u4E09\u5F20\u5361\u724C\u540C\u65F6\u6446\u5728\u684C\u9762\u4E0A"
     EnglishVersion: 
     JapanVersion: 
@@ -9877,6 +9886,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u7136\u540E\u6211\u4EEC\u53CC\u65B9\u540C\u65F6\u63ED\u5F00\u5361\u724C\uFF0C\u5206\u522B\u6309\u77F3\u5934\u526A\u5200\u5E03\u8FDB\u884C\u5BF9\u51B3"
     EnglishVersion: 
     JapanVersion: 
@@ -9888,6 +9898,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u8D62\u5F97\u591A\u7684\u4E00\u65B9\uFF0C\u5373\u53EF\u83B7\u5F97\u80DC\u5229"
     EnglishVersion: 
     JapanVersion: 
@@ -9899,6 +9910,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u6211\u4EEC\u9700\u8981\u8FDB\u884C\u4E09\u6B21\u5BF9\u51B3\uFF0C\u4E09\u5C40\u4E8C\u80DC\uFF0C\u4F60\u8D62\u4E86\u6211\u5C31\u653E\u4F60\u79BB\u5F00\u8FD9\u91CC"
     EnglishVersion: 
     JapanVersion: 
@@ -9910,6 +9922,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 03000000
+    delay: 0
   - ChineseVersion: "\u5F88\u516C\u5E73\u7684\u4EA4\u6613\uFF0C\u4E0D\u662F\u4E48\uFF1F"
     EnglishVersion: 
     JapanVersion: 
@@ -9921,6 +9934,7 @@ MonoBehaviour:
     Sequence: 0
     value: 3
     values: 
+    delay: 0
 --- !u!114 &465488841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11573,6 +11587,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!114 &640428111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11645,6 +11660,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!114 &643794502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12640,98 +12656,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739413500}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &769134826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 769134827}
-  - component: {fileID: 769134830}
-  - component: {fileID: 769134829}
-  - component: {fileID: 769134828}
-  m_Layer: 1
-  m_Name: Plane
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
-  m_IsActive: 1
---- !u!4 &769134827
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769134826}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.736044, y: 0, z: -1.033}
-  m_LocalScale: {x: 1.0000014, y: 1, z: 0.90667576}
-  m_Children: []
-  m_Father: {fileID: 1023432095}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &769134828
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769134826}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 0
-  m_MotionVectors: 2
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 2d1ff8a83be9e82469f1936d57136262, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!64 &769134829
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769134826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &769134830
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769134826}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &770206457 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: aa1df344670f1714985338a68dae72ca,
@@ -13878,6 +13802,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!1 &922154748
 GameObject:
   m_ObjectHideFlags: 0
@@ -14013,6 +13938,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\uFF08\u4E3B\u89D2\uFF09\u4F60\u5230\u5E95\u662F\u4EC0\u4E48\u4EBA\uFF1F"
     EnglishVersion: 'hi,my friend,Today ,I CALL YOU to visit my horse '
     JapanVersion: "\u4ECA\u65E5\u306F\u3042\u306A\u305F\u3092\u547C\u3093\u3067\u79C1\u306E\u8C6A\u83EF\u30A2\u30D1\u30FC\u30C8\u3092\u898B\u5B66\u3057\u307E\u3059\u3002"
@@ -14024,6 +13950,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u770B\u6765\u4F60\u5DF2\u7ECF\u5FD8\u6389\u8FD9\u4E00\u5207\u4E86\uFF0C\u5C31\u8BA9\u6211\u6765\u63D0\u9192\u4F60\u4E00\u4E0B\u5427"
     EnglishVersion: 
     JapanVersion: 
@@ -14035,6 +13962,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!1 &927532545
 GameObject:
   m_ObjectHideFlags: 0
@@ -14106,6 +14034,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u9996\u5148\u4F60\u7684\u7B2C\u4E00\u5F20\u662F"
     EnglishVersion: 
     JapanVersion: 
@@ -14117,6 +14046,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 00000000
+    delay: 0
   - ChineseVersion: J
     EnglishVersion: 
     JapanVersion: 
@@ -14128,6 +14058,7 @@ MonoBehaviour:
     Sequence: 3
     value: 0
     values: 00000000
+    delay: 0
   - ChineseVersion: "\u800C\u6211\u7684\u7B2C\u4E00\u5F20\u662F"
     EnglishVersion: 
     JapanVersion: 
@@ -14139,6 +14070,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: Q
     EnglishVersion: 
     JapanVersion: 
@@ -14150,6 +14082,7 @@ MonoBehaviour:
     Sequence: 1
     value: 5
     values: 00000000
+    delay: 0
   - ChineseVersion: "\u8FD9\u4E00\u5C0F\u5C40\u4F60\u8D62\u4E86"
     EnglishVersion: 
     JapanVersion: 
@@ -14161,6 +14094,7 @@ MonoBehaviour:
     Sequence: 3
     value: 1
     values: 00000000
+    delay: 0
   - ChineseVersion: "\u5176\u6B21\u4F60\u7684\u7B2C\u4E8C\u5F20\u662F..."
     EnglishVersion: 
     JapanVersion: 
@@ -14172,6 +14106,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: k
     EnglishVersion: 
     JapanVersion: 
@@ -14183,6 +14118,7 @@ MonoBehaviour:
     Sequence: 3
     value: 0
     values: 01000000
+    delay: 0
   - ChineseVersion: "\u800C\u6211\u7684\u7B2C\u4E8C\u5F20\u662F..."
     EnglishVersion: 
     JapanVersion: 
@@ -14194,6 +14130,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: j
     EnglishVersion: 
     JapanVersion: 
@@ -14205,6 +14142,7 @@ MonoBehaviour:
     Sequence: 1
     value: 5
     values: 01000000
+    delay: 0
   - ChineseVersion: "\u7B2C\u4E8C\u5C0F\u5C40\u9762\u662F\u6211\u8D62\u4E86"
     EnglishVersion: 
     JapanVersion: 
@@ -14216,6 +14154,7 @@ MonoBehaviour:
     Sequence: 3
     value: 1
     values: 
+    delay: 0
   - ChineseVersion: "\u7B2C\u4E09\u5C0F\u5C40\u662F\u80DC\u8D1F\u5C40\uFF0C\u6765\u770B\u770B\u6211\u4EEC\u53CC\u65B9\u7684\u724C\u5427"
     EnglishVersion: 
     JapanVersion: 
@@ -14227,6 +14166,7 @@ MonoBehaviour:
     Sequence: 1
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u4F60\u7684\u624B\u724C\u662F..."
     EnglishVersion: 
     JapanVersion: 
@@ -14238,6 +14178,7 @@ MonoBehaviour:
     Sequence: 3
     value: 3
     values: 03000000
+    delay: 0
   - ChineseVersion: q
     EnglishVersion: 
     JapanVersion: 
@@ -14249,6 +14190,7 @@ MonoBehaviour:
     Sequence: 3
     value: 0
     values: 02000000
+    delay: 0
   - ChineseVersion: "\u800C\u6211\u7684\u624B\u724C\u662F"
     EnglishVersion: 
     JapanVersion: 
@@ -14260,6 +14202,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: k
     EnglishVersion: 
     JapanVersion: 
@@ -14271,6 +14214,7 @@ MonoBehaviour:
     Sequence: 1
     value: 5
     values: 02000000
+    delay: 0
   - ChineseVersion: "\u6700\u540E\u6BD4\u5206"
     EnglishVersion: 
     JapanVersion: 
@@ -14282,6 +14226,7 @@ MonoBehaviour:
     Sequence: 1
     value: 3
     values: 
+    delay: 0
   - ChineseVersion: "3\uFF1A2"
     EnglishVersion: 
     JapanVersion: 
@@ -14293,6 +14238,7 @@ MonoBehaviour:
     Sequence: 3
     value: 2
     values: 0000000000000000
+    delay: 0
   - ChineseVersion: "\u6211\u8D62\u4E86"
     EnglishVersion: 
     JapanVersion: 
@@ -14304,6 +14250,7 @@ MonoBehaviour:
     Sequence: 3
     value: 0
     values: 
+    delay: 0
 --- !u!1 &927545201
 GameObject:
   m_ObjectHideFlags: 3
@@ -14845,6 +14792,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967685512}
   m_CullTransparentMesh: 0
+--- !u!1 &968092937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 968092938}
+  - component: {fileID: 968092939}
+  m_Layer: 0
+  m_Name: paintHave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &968092938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968092937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1715919871}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &968092939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968092937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962d23481893fc242b795900b4601730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontSize: 0
+  MySingleD:
+  - ChineseVersion: "\u753B\u4F3C\u4E4E\u5DF2\u7ECF\u88AB\u5361\u4F4F\u4E86\uFF0C\u62FF\u4E0D\u51FA\u6765"
+    EnglishVersion: 
+    JapanVersion: 
+    EnglishAC: {fileID: 0}
+    ChineseAC: {fileID: 0}
+    JapanAC: {fileID: 0}
+    talkobj: {fileID: 968092937}
+    t: {fileID: 0}
+    Sequence: 0
+    value: -3
+    values: 
+    delay: 0
 --- !u!1 &968168630
 GameObject:
   m_ObjectHideFlags: 0
@@ -15575,7 +15579,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 769134827}
+  - {fileID: 2061149304}
   - {fileID: 647378017}
   - {fileID: 428162668}
   - {fileID: 431047596}
@@ -21268,6 +21272,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u563F\uFF0C\u6211\u7684\u670B\u53CB\uFF0C\u4ECA\u5929\u628A\u4F60\u53EB\u8FC7\u6765\uFF0C\u6765\u53C2\u89C2\u6211\u7684\u8C6A\u534E\u516C\u5BD3\u3002"
     EnglishVersion: 'hi,my friend,Today ,I CALL YOU to visit my horse '
     JapanVersion: "\u4ECA\u65E5\u306F\u3042\u306A\u305F\u3092\u547C\u3093\u3067\u79C1\u306E\u8C6A\u83EF\u30A2\u30D1\u30FC\u30C8\u3092\u898B\u5B66\u3057\u307E\u3059\u3002"
@@ -21279,6 +21284,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u4F60\u5F53\u7136\u53EF\u4EE5\u5728\u8FD9\u91CC\u968F\u610F\u8D70\u52A8\uFF0C\u8FD9\u91CC\u7684\u7269\u54C1\u90FD\u53EF\u4EE5\u968F\u610F\u6446\u52A8\uFF0C\u6211\u4F1A\u8FDB\u597D\u5730\u4E3B\u4E4B\u8C0A\u7684"
     EnglishVersion: you can move anyway,anywhere,all item can be gain
     JapanVersion: "\u79FB\u52D5\u3057\u305F\u308A\u7269\u4F53\u3092\u52D5\u304B\u3059\u3053\u3068\u304C\u3067\u304D\u307E\u3059"
@@ -21290,6 +21296,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\uFF08\u4E3B\u89D2\uFF09\u4F60..\u4F60\u4EEC\u8FD9\u662F\u7ED1\u67B6\u3002"
     EnglishVersion: (player)This is a kidnapping,Some body help me
     JapanVersion: "\u8A00\u8449\u9063\u3044\u3084\u53CB\u4EBA\u3053\u308C\u306F\u8A98\u62D0\u306A\u3069\u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002\u3082\u3061\u308D\u3093\u7384\u95A2\u304B\u3089\u51FA\u3066\u3082\u3044\u3044\u3067\u3059\u3088"
@@ -21301,6 +21308,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u6CE8\u610F\u7528\u8BCD\uFF0C\u670B\u53CB\uFF0C\u8FD9\u53EF\u4E0D\u662F\u7ED1\u67B6\uFF0C\u4F60\u5F53\u7136\u53EF\u4EE5\u4ECE\u5927\u95E8\u91CC\u51FA\u53BB"
     EnglishVersion: 
     JapanVersion: 
@@ -21312,6 +21320,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
   - ChineseVersion: "\u4E0D\u8FC7\u6211\u53EF\u4E0D\u5EFA\u8BAE\u4F60\u8FD9\u6837\u505A\u5537"
     EnglishVersion: 
     JapanVersion: 
@@ -21323,6 +21332,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!224 &1579943038 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224621939957911554, guid: 150eb56e52a0fbd40850d2cba7475a9a,
@@ -21920,8 +21930,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621052947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.549, y: -0, z: -6.428}
-  m_LocalScale: {x: 0.1629775, y: 0.99999994, z: 0.17198445}
+  m_LocalPosition: {x: -6.4528, y: 0, z: -6.4372}
+  m_LocalScale: {x: 0.1825476, y: 0.99999994, z: 0.1691467}
   m_Children: []
   m_Father: {fileID: 1023432095}
   m_RootOrder: 10
@@ -23137,6 +23147,7 @@ Transform:
   - {fileID: 593433801}
   - {fileID: 656202548}
   - {fileID: 1574097404}
+  - {fileID: 968092938}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23160,6 +23171,7 @@ MonoBehaviour:
   - {fileID: 593433800}
   - {fileID: 1574097403}
   - {fileID: 656202547}
+  paintHave: {fileID: 968092937}
   paintPoint: 
 --- !u!114 &1715919873
 MonoBehaviour:
@@ -23186,6 +23198,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 1.5
 --- !u!1001 &1722784887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24943,6 +24956,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!1 &2037983258
 GameObject:
   m_ObjectHideFlags: 0
@@ -25061,7 +25075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: aa1df344670f1714985338a68dae72ca, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: aa1df344670f1714985338a68dae72ca, type: 3}
       propertyPath: m_TagString
@@ -25276,6 +25290,97 @@ MonoBehaviour:
   language: []
   cabinet: {fileID: 0}
   is3DModel: 0
+--- !u!1 &2061149303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2061149304}
+  - component: {fileID: 2061149307}
+  - component: {fileID: 2061149306}
+  - component: {fileID: 2061149305}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 1
+  m_IsActive: 1
+--- !u!4 &2061149304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061149303}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.548, y: -0.038, z: -1.0172}
+  m_LocalScale: {x: 10.03006, y: 0.01, z: 9.14845}
+  m_Children: []
+  m_Father: {fileID: 1023432095}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2061149305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061149303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2061149306
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061149303}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
+  m_MotionVectors: 2
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 2d1ff8a83be9e82469f1936d57136262, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &2061149307
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061149303}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2071575983
 GameObject:
   m_ObjectHideFlags: 0
@@ -25516,6 +25621,7 @@ MonoBehaviour:
     Sequence: 0
     value: 0
     values: 
+    delay: 0
 --- !u!1 &2099504119
 GameObject:
   m_ObjectHideFlags: 0
@@ -25605,6 +25711,7 @@ MonoBehaviour:
     Sequence: 0
     value: 4
     values: 
+    delay: 0
 --- !u!1 &2107620632
 GameObject:
   m_ObjectHideFlags: 3

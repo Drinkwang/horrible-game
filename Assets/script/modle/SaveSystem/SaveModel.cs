@@ -17,6 +17,7 @@ namespace Assets.script.modle.SaveSystem
         public Sayingproxy sayingProxy;
         public PlayerPosition playerPosition;
         public int[] paintPoint;
+        public bool[] IsLock;
     }
 
     public struct PlayerPosition

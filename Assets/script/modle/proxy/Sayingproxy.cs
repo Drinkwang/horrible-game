@@ -24,6 +24,7 @@ public struct SingledialogText
     public executeSequence Sequence;
     public int value;
     public List<int> values;
+    public float delay;
     public void Assignment(Onobjsession Single,int index) {
  
 

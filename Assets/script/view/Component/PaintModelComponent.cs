@@ -8,6 +8,9 @@ public class PaintModelComponent:MonoBehaviour
     public static PaintModelComponent instance;
     public GameObject[] paint;
     public GameObject[] paintbase;
+
+
+    public GameObject paintHave;
     public int[] paintPoint;
 
     private void Awake()
@@ -61,7 +64,7 @@ public class PaintModelComponent:MonoBehaviour
 
 
     public void settlement() {
-        if (isCompelete() && paintPoint[0]==1&&paintPoint[1]==3&&paintPoint[2]==2) {
+        if (isCompelete() && isCorrectConsequence()) {
             if (AppFactory.instances.eventTodo("画板排序")) {
                 this.GetComponent<Onobjsession>().add();
                 CabinetManagerComponent.instance.isLock[3] = false;
@@ -102,6 +105,14 @@ public class PaintModelComponent:MonoBehaviour
         }
 
         PaintModelComponent.instance.generalPaintBase();
+    }
+
+
+    public bool isCorrectConsequence() {
+
+        return (paintPoint[0] == 1 && paintPoint[1] == 3 && paintPoint[2] == 2);
+
+
     }
 
 }

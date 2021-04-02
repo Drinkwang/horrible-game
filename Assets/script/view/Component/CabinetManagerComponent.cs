@@ -157,6 +157,12 @@ public class CabinetManagerComponent : MonoBehaviour
         move(cabinets[i], b);
         //throw new System.NotImplementedException();
     }
+
+
+    public void setIsLock(bool[] isLocks) {
+        isLock = isLocks;
+    
+    }
 }
 
 public class cabineValue{
