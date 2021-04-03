@@ -15,6 +15,7 @@ TagManager:
   - cabinet
   - speaker
   - crowbar
+  - cubeMove
   layers:
   - Default
   - TransparentFX

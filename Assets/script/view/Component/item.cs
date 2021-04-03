@@ -22,11 +22,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         selectitemMenu = GameObject.FindGameObjectWithTag("itemchosen").transform.GetChild(0).gameObject;
            
 	}
-    void init() {
-        image = transform.GetComponentInChildren<Image>();
-
-
-    }
+ 
 	// Use this for initialization
 	void Start () {
 		
@@ -92,13 +88,9 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
            if(this.model.goodid != 0 && this.model.good != null && this.model.good.src != null && DragObj == null&&collision.gameObject.tag=="uicard"&& packageComponent.instante.T.Model!=null)
         {
             AppFactory.instances.Todo(new Observer("exchange", new Packagemodel[] { packageComponent.instante.T.Model, Model }));
-            //     Debug.Log(packageComponent.instante.T.Model.good.src+"tuo");
+            refresh();
+            packageComponent.instante.T.refresh();
 
-
-            Packagemodel t = packageComponent.instante.T.Model;
-            packageComponent.instante.T.Model = Model;
-            Model = t;
-            packageComponent.instante.T = this;
 
         }
 
@@ -188,43 +180,55 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 
 		get{return this.model; }
 		set{ model = value;
-            init();
-            Sprite useSprite=null;
-            if (model.goodid != 0) {
-                if (this.model.is3DModel==false)
-                {
-                    useSprite= Resources.Load<Sprite>(model.good.src);
-                }
-                else if(this.model.is3DModel == true) {
-   
-                    RenderTexture texture = Resources.Load<RenderTexture>(model.good.src);
-                    useSprite=Sprite.Create(CUtil.getTexture2d(texture), new Rect(new Vector2(0, 0), new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f));
-       
+            refresh();
 
-                }
-
-
-
-                this.image.sprite = useSprite;
-                Color q = new Color(this.image.color.r, this.image.color.g, this.image.color.b, 255);
-                this.image.color = q;
-                this.text.text = model.good.name + "";
-       
-
-
-			} else {
-
-       
-                //Image tempImage = this.image as Image;
-                Color qa = new Color(this.image.color.r, this.image.color.g, this.image.color.b, 0);
-                this.image.color = qa;
-                
-          
-
-                this.text.text = "";
-			
-			}
-			}
+            }
 		
 	}
+
+
+    void refresh() {
+
+
+        image = transform.GetComponentInChildren<Image>();
+        Sprite useSprite = null;
+        if (model.goodid != 0)
+        {
+            if (this.model.is3DModel == false)
+            {
+                useSprite = Resources.Load<Sprite>(model.good.src);
+            }
+            else if (this.model.is3DModel == true)
+            {
+
+                RenderTexture texture = Resources.Load<RenderTexture>(model.good.src);
+                useSprite = Sprite.Create(CUtil.getTexture2d(texture), new Rect(new Vector2(0, 0), new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f));
+
+
+            }
+
+
+
+            this.image.sprite = useSprite;
+            Color q = new Color(this.image.color.r, this.image.color.g, this.image.color.b, 255);
+            this.image.color = q;
+            this.text.text = model.good.name + "";
+
+
+
+        }
+        else
+        {
+
+
+            //Image tempImage = this.image as Image;
+            Color qa = new Color(this.image.color.r, this.image.color.g, this.image.color.b, 0);
+            this.image.color = qa;
+
+
+
+            this.text.text = "";
+
+        }
+    }
 }
