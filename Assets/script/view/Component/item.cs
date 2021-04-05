@@ -66,7 +66,8 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
             LimitUtil.value = 300;
             if (DragObj != null && packageComponent.instante.T.Model != null && packageComponent.instante.T.Model.good != null &&AppFactory.instances.IsHitItem())
             {
-                Befunction w = new Befunction("使用物品" + " " + packageComponent.instante.T.Model.good.src + " " + packageComponent.instante.T.Model.good.id);
+                
+                Befunction w = new Befunction("使用物品" + " " + DragObj.GetComponent<DragObj>().tempModel.good.src + " " + DragObj.GetComponent<DragObj>().tempModel.good.id);
                 w.A += w.useritem;
                 w.runa();
                 Destroy(DragObj);//拖拽结束后销毁生成的物体
@@ -124,6 +125,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
                 DragObj = new GameObject("ICON");
                 DragObj.tag = "uicard";
                 DragObj.AddComponent<Rigidbody2D>();
+                DragObj.AddComponent<DragObj>();
                 DragObj.GetComponent<Rigidbody2D>().gravityScale = 0;
                 DragObj.transform.SetParent(canvas.transform, false);
                 DragObj.transform.SetAsLastSibling();
@@ -140,6 +142,8 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
                 ObjFollowMouse(eventData);//让生成的物体跟随鼠标
                 AppFactory.instances.changestate(Globelstate.state.load);
                 packageComponent.instante.T.model = model;
+                DragObj.GetComponent<DragObj>().tempModel = new Packagemodel(model.id, model.count, model.goodid);
+                DragObj.GetComponent<DragObj>().tempModel.good = model.good;
                 }
            
 

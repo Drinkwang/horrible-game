@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.script.Utils;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 //该对象定义了所有物品
 [Serializable]
 public class itemchosenmodel : Basemodel {
@@ -97,7 +98,7 @@ public class /*  */Befunction : MonoBehaviour
 
             return;
         }
-        if (beUseItemId >= 10 && beUseItemId <= 12)
+        if (beUseItemId >= (int)GoodType.世界名画1 && beUseItemId <= (int)GoodType.刚画好的油画)
         {
             if (beFuncObj.name == "paint1_base" || beFuncObj.name == "paint2_base" || beFuncObj.name == "paint3_base")
             {
@@ -136,7 +137,7 @@ public class /*  */Befunction : MonoBehaviour
 
             }
         }
-        if (beUseItemId >= 1 && beUseItemId <= 3)
+        if (beUseItemId >= (int)GoodType.J && beUseItemId <= (int)GoodType.K)
         {
             if (beFuncObj.name == "cardBase0" || beFuncObj.name == "cardBase1" || beFuncObj.name == "cardBase2")
             {
@@ -150,8 +151,9 @@ public class /*  */Befunction : MonoBehaviour
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
                 AppFactory.instances.closePackage(null, false);
                 BloomModel.instance().currenceUseCardNum++;
-                BloomModel.instance().myback[index].GetComponent<CardBase>().SetData(beUseItemId + 10,true);
-                if (BloomModel.instance().currenceUseCardNum == 3) {
+                BloomModel.instance().myback[index].GetComponent<CardBase>().SetData(beUseItemId + 10, true);
+                if (BloomModel.instance().currenceUseCardNum == 3)
+                {
                     middleLayer.Instance.canMove = false;
                     middleLayer.Instance.MousePause();
                     AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
@@ -160,16 +162,32 @@ public class /*  */Befunction : MonoBehaviour
                 }
                 //if (AppFactory.instances.eventTodo("琳的记忆")) {
 
-              //    AppFactory.instances.womanLin.SetActive(true);
+                //    AppFactory.instances.womanLin.SetActive(true);
                 //  
                 // AppFactory.instances.womanLin.GetComponent<Onobjsession>().add();
 
                 //}
             }
         }
+        else if (beUseItemId == (int)GoodType.撬棍) {
+            if (beFuncObj.name == "PCube-move")
+            {
+                AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
+                AppFactory.instances.closePackage(null, false);
+                middleLayer.Instance.canMove = false;
+                middleLayer.Instance.MousePause();
+                AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 5));
+                crowDragComponent.instance.OnCrowAni() ;
+ 
+            }
+        }
 
         GameObject selectitemMenu = GameObject.FindGameObjectWithTag("itemchosen").transform.GetChild(0).gameObject;
         selectitemMenu.SetActive(false);
     }
+
+
+
+
 
 }

@@ -131,11 +131,13 @@ public class post : MonoBehaviour
                     else if (hitpoint.collider.tag == "paint")
                     {
 
-                        if (PaintModelComponent.instance.isCorrectConsequence() && PaintModelComponent.instance.isCompelete()) {
+                        if (PaintModelComponent.instance.isCorrectConsequence() && PaintModelComponent.instance.isCompelete())
+                        {
 
                             PaintModelComponent.instance.paintHave.GetComponent<Onobjsession>().add();
                         }
-                        else {
+                        else
+                        {
 
                             if (hitpoint.collider.name == "paint1" || hitpoint.collider.name == "paint2" || hitpoint.collider.name == "paint3")
                             {
@@ -173,21 +175,26 @@ public class post : MonoBehaviour
 
                         }
                     }
-                    else if (hitpoint.collider.tag == "speaker") {
- 
+                    else if (hitpoint.collider.tag == "speaker")
+                    {
+
                         if (isSpeakerPlaying == false)
                         {
-                            hitpoint.collider.GetComponent<Animator>().SetBool("play",true);
+                            hitpoint.collider.GetComponent<Animator>().SetBool("play", true);
                             hitpoint.collider.GetComponent<Onobjsession>().add();
-                          
+
                         }
-                        else {
-                            Audomanage.instance.OnPlay("speakerClose",hitGameObj.transform);
+                        else
+                        {
+                            Audomanage.instance.OnPlay("speakerClose", hitGameObj.transform);
                             hitpoint.collider.GetComponent<Animator>().SetBool("play", false);
                             AppFactory.instances.viewTodo(new Observer(Cmd.dialogClear));
-                        
+
                         }
                         isSpeakerPlaying = !isSpeakerPlaying;
+                    }
+                    else if (hitpoint.collider.tag == "cubeMove") {
+                        useItem("物品");
                     }
 
                 }
