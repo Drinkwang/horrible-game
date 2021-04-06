@@ -89,12 +89,14 @@ public class post : MonoBehaviour
                 {
                     if (AppFactory.instances.eventTodo("赌桌事件"))
                     {
+
                         middleLayer.Instance.canMove = false;
                         middleLayer.Instance.MousePause();
                         hitpoint.collider.GetComponent<Onobjsession>().add();
                         AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
                         AppFactory.instances.closePackage(AppFactory.instances.entrytab);
                         AppFactory.instances.changestate(Globelstate.state.load);
+                        hitpoint.collider.GetComponent<BoxCollider>().enabled = false;
                     }
                 }
             }
