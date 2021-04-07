@@ -66,9 +66,8 @@ public class bloomTableEvent : Befunction
       
         //tempBloomData.initCards(0);
         //tempBloomData.initCards(1);
-        middleLayer.Instance.canMove = true;
-        middleLayer.Instance.MouseRun();
-        AppFactory.instances.changestate(Globelstate.state.start);
+
+        AppFactory.instances.changestate(Globelstate.state.start,true);
 
         for (int i = 0; i < 3; i++)
         {

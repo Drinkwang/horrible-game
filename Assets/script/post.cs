@@ -90,12 +90,14 @@ public class post : MonoBehaviour
                     if (AppFactory.instances.eventTodo("赌桌事件"))
                     {
 
-                        middleLayer.Instance.canMove = false;
-                        middleLayer.Instance.MousePause();
+                        //middleLayer.Instance.canMove = false;
+                        //middleLayer.Instance.MousePause();
+
+                        //AppFactory.instances.closePackage(AppFactory.instances.entrytab);
                         hitpoint.collider.GetComponent<Onobjsession>().add();
                         AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 4));
-                        AppFactory.instances.closePackage(AppFactory.instances.entrytab);
-                        AppFactory.instances.changestate(Globelstate.state.load);
+                
+                        AppFactory.instances.changestate(Globelstate.state.load,true);
                         hitpoint.collider.GetComponent<BoxCollider>().enabled = false;
                     }
                 }
@@ -195,8 +197,14 @@ public class post : MonoBehaviour
                         }
                         isSpeakerPlaying = !isSpeakerPlaying;
                     }
-                    else if (hitpoint.collider.tag == "cubeMove") {
+                    else if (hitpoint.collider.tag == "cubeMove")
+                    {
                         useItem("物品");
+                    }
+                    else if (hitpoint.collider.tag == "ladder") {
+                        Debug.Log("helloworld");
+                    //todo
+                    
                     }
 
                 }

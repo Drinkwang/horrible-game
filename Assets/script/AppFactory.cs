@@ -108,8 +108,27 @@ public class AppFactory : MonoBehaviour
         nowstate = itemstate.package;
     }
 
-    public void changestate(Globelstate.state a)
-    { globelstate = a; }
+    public void changestate(Globelstate.state a,bool changeState)
+    { globelstate = a;
+
+        if (changeState == true)
+        {
+            if (a == Globelstate.state.load)
+            {
+                AppFactory.instances.closePackage(null, false);
+                middleLayer.Instance.canMove = false;
+                middleLayer.Instance.MousePause();
+            }
+            else if (a == Globelstate.state.start)
+            {
+                middleLayer.Instance.canMove = true;
+                middleLayer.Instance.MouseRun();
+
+
+            }
+        }
+    
+    }
     public void AdjustCommand(string msg, IC i)
     {
         this.c.AdjustCommand(msg, i);

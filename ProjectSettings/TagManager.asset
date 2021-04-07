@@ -16,6 +16,7 @@ TagManager:
   - speaker
   - crowbar
   - cubeMove
+  - ladder
   layers:
   - Default
   - TransparentFX

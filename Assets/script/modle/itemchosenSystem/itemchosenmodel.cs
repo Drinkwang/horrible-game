@@ -173,9 +173,9 @@ public class /*  */Befunction : MonoBehaviour
             if (beFuncObj.name == "PCube-move")
             {
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
-                AppFactory.instances.closePackage(null, false);
-                middleLayer.Instance.canMove = false;
-                middleLayer.Instance.MousePause();
+
+                AppFactory.instances.changestate(Globelstate.state.load,true);
+
                 AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 5));
                 crowDragComponent.instance.OnCrowAni() ;
  

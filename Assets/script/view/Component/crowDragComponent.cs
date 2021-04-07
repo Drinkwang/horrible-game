@@ -13,7 +13,7 @@ public class crowDragComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void Awake()
@@ -27,7 +27,7 @@ public class crowDragComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     internal void OnCrowAni()
@@ -41,10 +41,17 @@ public class crowDragComponent : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         gameObject.GetComponent<PlayableDirector>().Play();
         yield return new WaitForSeconds(1.8f);
-        gameObject.SetActive(false);
+
         AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 0));
-        middleLayer.Instance.canMove = true;
-        middleLayer.Instance.MouseRun();
+        //StartCoroutine("CrowAni3", this);
+
+        yield return new WaitForSeconds(1.8f);
+        gameObject.SetActive(false);
+        AppFactory.instances.changestate(Globelstate.state.start, true);
         // corw.GetComponent<PlayableDirector>().played += crowAni2;
     }
+
+
+
+
 }

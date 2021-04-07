@@ -122,7 +122,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public void ongamestart()
         {
             ui.SetActive(false);
-            AppFactory.instances.changestate(Globelstate.state.start);
+            AppFactory.instances.changestate(Globelstate.state.start,false);
             firstperson.enabled = true;
             /* firstperson.m_RunSpeed = 0.1f;
                firstperson.m_JumpSpeed = 0.1f;

@@ -62,7 +62,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 
         if (eventData != null)
         {
-            AppFactory.instances.changestate(Globelstate.state.start);
+            AppFactory.instances.changestate(Globelstate.state.start,false);
             LimitUtil.value = 300;
             if (DragObj != null && packageComponent.instante.T.Model != null && packageComponent.instante.T.Model.good != null &&AppFactory.instances.IsHitItem())
             {
@@ -140,7 +140,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
                 DragObj.GetComponent<RectTransform>().sizeDelta =
                 new Vector2(Screen.height * 0.1f, Screen.height * 0.1f);//设置新生成物品的尺寸
                 ObjFollowMouse(eventData);//让生成的物体跟随鼠标
-                AppFactory.instances.changestate(Globelstate.state.load);
+                AppFactory.instances.changestate(Globelstate.state.load,false);
                 packageComponent.instante.T.model = model;
                 DragObj.GetComponent<DragObj>().tempModel = new Packagemodel(model.id, model.count, model.goodid);
                 DragObj.GetComponent<DragObj>().tempModel.good = model.good;
