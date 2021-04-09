@@ -407,6 +407,12 @@ public class AppFactory : MonoBehaviour
     public void loadGame(int slot) {
         AppFactory.instances.Todo(new Observer(Cmd.loadGame, slot));
     }
+
+    public void setPosition(Transform temp) {
+
+        postObj.setPoSition(temp);
+    
+    }
     public void changetitle(string a)
     { tasktitle.text = a; }
 

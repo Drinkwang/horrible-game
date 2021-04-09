@@ -95,7 +95,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         void mousepause()
         {
             interactionui.SetActive(false);
-            firstperson.enabled = false;
+           firstperson.enabled = false;
           //  firstperson.changeCamera(0,CinemacineComponent.Instance().CinemacineMain);
             // transform.GetChild(0).transform.rotation.eulerAngles.Set(0,0,0);
             //    .eulerAngles = new Vector3(0, 0, 0);
@@ -163,6 +163,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             firstperson.transform.rotation = Quaternion.Euler(playerPosition.rx, playerPosition.ry, playerPosition.rz);
             firstperson.changeCamera(0, CinemacineComponent.Instance().CinemacineMain);
             
+        }
+
+        internal void setPlayerPosition(Transform temp) {
+            mousepause();
+            firstperson.transform.position = temp.position;
+            firstperson.transform.rotation = temp.rotation;
+            firstperson.changeCamera(0, CinemacineComponent.Instance().CinemacineMain);
+
         }
     }
 }

@@ -202,9 +202,9 @@ public class post : MonoBehaviour
                         useItem("物品");
                     }
                     else if (hitpoint.collider.tag == "ladder") {
-                        Debug.Log("helloworld");
+                        LadderComponent.instance.MoveByLadder();
                     //todo
-                    
+
                     }
 
                 }
@@ -281,5 +281,11 @@ public class post : MonoBehaviour
         return (Physics.Raycast(o, out hitpoint, 1.8f, 1));
 
 
+    }
+
+    public void setPoSition(Transform T) {
+
+        this.gameObject.transform.position = T.position;
+        this.gameObject.transform.rotation = T.rotation;
     }
 }
