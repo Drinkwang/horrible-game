@@ -17,6 +17,7 @@ TagManager:
   - crowbar
   - cubeMove
   - ladder
+  - terrain
   layers:
   - Default
   - TransparentFX

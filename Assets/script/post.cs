@@ -288,4 +288,34 @@ public class post : MonoBehaviour
         this.gameObject.transform.position = T.position;
         this.gameObject.transform.rotation = T.rotation;
     }
+
+    public float getPlayerHeight() {
+
+        return this.gameObject.transform.position.y;
+    
+    }
+    //(Collision collision)
+    //{
+
+    //    {
+
+    //        Debug.Log("111");
+    //    }
+
+    //}
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.tag == "steelPanel" && LadderComponent.instance.isUp == false)
+    //    {
+
+    //        LadderComponent.instance.isUp = true;
+    //    }
+
+    //    else if (other.tag == "steelUpPanel" && LadderComponent.instance.isUp == true)
+    //    {
+
+    //        LadderComponent.instance.isUp = false;
+    //    }
+    //}
+
 }

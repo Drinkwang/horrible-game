@@ -416,4 +416,18 @@ public class AppFactory : MonoBehaviour
     public void changetitle(string a)
     { tasktitle.text = a; }
 
+    public bool adjustPlayerIsDown() {
+        if (postObj.getPlayerHeight() >= 7)
+        {
+            return false;
+
+        }
+        else if(postObj.getPlayerHeight()<4.5){
+            return true ;
+        }
+        return false;
+    
+    
+    }
+
 }
