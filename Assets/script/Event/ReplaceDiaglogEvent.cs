@@ -66,14 +66,16 @@ public class ReplaceDiaglogEvent : Befunction
             //你输了
             if (isReplaceD==true)
                 Lost();
-            BloomModel.instance().myScore++;
+
+            BloomModel.instance().enenmyScore++;
+
         }
         else if (belostcard == enemycardpoint)
         {
             //你赢了
             if (isReplaceD == true)
                 Win();
-            BloomModel.instance().enenmyScore++;
+            BloomModel.instance().myScore++;
         }
         else if (mycardpoint == enemycardpoint)
         {
@@ -145,6 +147,10 @@ public class ReplaceDiaglogEvent : Befunction
         else if (type == ReplaceDiagType.ReplaceAudio_Break_Final) {
             if(BloomModel.instance().enenmyScore==2|| BloomModel.instance().myScore==2)
                 breakFinal(changeId);
+            else if(BloomModel.instance().enenmyScore == 0 && BloomModel.instance().myScore == 0){ 
+            
+            
+            }
 
         }
         Reset();

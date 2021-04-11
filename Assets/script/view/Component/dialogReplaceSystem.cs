@@ -19,6 +19,7 @@ public class dialogReplaceSystem : MonoBehaviour
     public ReplaceNextDiaglogData audioMerge;
 
     public ReplaceNextDiaglogData anywin2;
+    public ReplaceNextDiaglogData anyDraw2;
     //每次加入新的替换系统，需要在initNextDialogData里面进行初始化
 
     void Awake()
