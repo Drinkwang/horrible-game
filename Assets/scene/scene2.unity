@@ -11671,6 +11671,7 @@ MonoBehaviour:
   draw: {fileID: 11400000, guid: d72f6927e0c0d5f41a681b3145db4c97, type: 2}
   audioMerge: {fileID: 11400000, guid: e3caacfeca148124792a14c2bf2d446e, type: 2}
   anywin2: {fileID: 11400000, guid: 15d4ed9dcc7df5b46872cc879da32a82, type: 2}
+  anyDraw2: {fileID: 11400000, guid: 211aa13ae16fc1c4f8ed3660b16b2bd0, type: 2}
 --- !u!1 &620345964
 GameObject:
   m_ObjectHideFlags: 0

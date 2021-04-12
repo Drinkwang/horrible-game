@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tName: 
   MySingleD:
-  - ChineseVersion: "\u5982\u679C\u6211\u4EEC\u5DF2\u7ECF\u5E73\u4E86\u4E8C\u5C40\uFF0C\u90A3\u4E48\u6700\u540E\u4E00\u5C40\u4E5F\u65E0\u9700\u8FDB\u884C\u4E0B\u53BB\u4E86"
+  - ChineseVersion: "\u5982\u679C\u6211\u4EEC\u5DF2\u7ECF\u5E73\u4E86\u4E8C\u5C40\uFF0C\u90A3\u4E48\u63A5\u4E0B\u6765\u7684\u6E38\u620F\u4E5F\u65E0\u9700\u8FDB\u884C\u4E0B\u53BB\u4E86"
     EnglishVersion: 
     JapanVersion: 
-    EnglishAC: {fileID: 0}
+    EnglishAC: {fileID: 8300000, guid: 50fbe467efa1d9f41aaff9e82fa968c4, type: 3}
     ChineseAC: {fileID: 0}
     JapanAC: {fileID: 0}
     talkobj: {fileID: 0}

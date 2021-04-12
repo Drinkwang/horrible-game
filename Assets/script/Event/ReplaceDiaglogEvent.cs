@@ -146,10 +146,10 @@ public class ReplaceDiaglogEvent : Befunction
         }
         else if (type == ReplaceDiagType.ReplaceAudio_Break_Final) {
             if(BloomModel.instance().enenmyScore==2|| BloomModel.instance().myScore==2)
-                breakFinal(changeId);
-            else if(BloomModel.instance().enenmyScore == 0 && BloomModel.instance().myScore == 0){ 
-            
-            
+                breakFinal(changeId,true);
+            else if(BloomModel.instance().enenmyScore == 0 && BloomModel.instance().myScore == 0){
+                breakFinal(changeId, false);
+
             }
 
         }
@@ -158,9 +158,9 @@ public class ReplaceDiaglogEvent : Befunction
     }
 
 
-    public void breakFinal(int changeId)
+    public void breakFinal(int changeId,bool isWin)
     {
-        dialogReplaceSystem.instance.ReplaceNextDiaglog(this.sai,changeId);
+        dialogReplaceSystem.instance.ReplaceNextDiaglog(this.sai,changeId,isWin);
     }
 
 

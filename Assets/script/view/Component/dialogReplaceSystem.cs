@@ -37,6 +37,7 @@ public class dialogReplaceSystem : MonoBehaviour
         draw.initDiaglog();
         audioMerge.initDiaglog();
         anywin2.initDiaglog();
+        anyDraw2.initDiaglog();
 
     }
 
@@ -73,11 +74,19 @@ public class dialogReplaceSystem : MonoBehaviour
         audioMerge.mergeAudio(sai,Point);
     }
 
-    public void ReplaceNextDiaglog(ReplaceNextDiaglogData.SessionAddIndex sai,int count)
+    public void ReplaceNextDiaglog(ReplaceNextDiaglogData.SessionAddIndex sai,int count,bool isWin)
     {
         int index;
-        index = (int)(Random.Range(0, anywin2.MySingleD.Length));
-        anywin2.replace(index, sai);
+        if (isWin == true)
+        {
+            index = (int)(Random.Range(0, anywin2.MySingleD.Length));
+            anywin2.replace(index, sai);
+        }
+        else {
+            index = (int)(Random.Range(0, anyDraw2.MySingleD.Length));
+            anyDraw2.replace(index, sai);
+
+        }
        AppFactory.instances.Todo(new Observer(Cmd.dialogRemove, sai, count));
     }
 
