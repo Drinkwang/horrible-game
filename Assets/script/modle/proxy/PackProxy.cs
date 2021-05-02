@@ -20,8 +20,9 @@ public class PackProxy : Baseproxy<Packagemodel> {
 		if (instance == null) {
 			instance = new PackProxy ();
 		
-		} 
-			return instance;
+		}
+		instance.ModelToDoView();
+		return instance;
 		
 	}
 	public void crateInventory(int index)

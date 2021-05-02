@@ -10,6 +10,7 @@ public class Observer  {
     /// date 字段是特殊時期使用的，非特殊情況盡可能保留
     /// </summary>
     public object data;
+    
 
     // Use this for initialization
 

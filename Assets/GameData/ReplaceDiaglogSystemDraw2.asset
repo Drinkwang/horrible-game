@@ -18,7 +18,7 @@ MonoBehaviour:
     EnglishVersion: 
     JapanVersion: 
     EnglishAC: {fileID: 8300000, guid: 50fbe467efa1d9f41aaff9e82fa968c4, type: 3}
-    ChineseAC: {fileID: 0}
+    ChineseAC: {fileID: 8300000, guid: 50fbe467efa1d9f41aaff9e82fa968c4, type: 3}
     JapanAC: {fileID: 0}
     talkobj: {fileID: 0}
     t: {fileID: 0}

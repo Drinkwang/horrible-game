@@ -4,11 +4,43 @@ using System;
 using System.Linq;
 public class Baseproxy<T> where T:Basemodel,new()  {
 	public List<T> modellist;
+	public List<view> IComponentList;
 	// Use this for initialization
 	public Baseproxy()
 	{
 		modellist=new List<T>();
 	}
+
+	public void regiestNewComponent(view t) {
+		if (IComponentList == null) {
+			IComponentList = new List<view>();
+		}
+		IComponentList.Add(t);
+	}
+
+	public void removeNewComponent(view t)
+	{
+		if (IComponentList != null && IComponentList.Count > 0)
+		{
+			IComponentList.Remove(t);
+		}
+
+	}
+
+
+	public void ModelToDoView() {
+		if (IComponentList != null&&IComponentList.Count>0)
+		{
+			foreach (view t in IComponentList) {
+
+				t.refresh();
+			}
+		}
+
+	}
+
+
+
 	public bool TryGetModel(int id,out T model)
 	{model=modellist.FirstOrDefault(a=>a.id==id);
 		if (model == null) {

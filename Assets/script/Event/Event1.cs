@@ -7,7 +7,7 @@ public class Event1 : Befunction
     public GameObject lin;
     public Event1(string temp) : base(temp)
     {
-
+       // AppFactory.instances.Todo(new Observer(Cmd.showItem,"11","11"));
     }
 
     void Start()

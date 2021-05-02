@@ -27,6 +27,7 @@ public class CameraProxy:Baseproxy<CameraModel>{
             instance = new CameraProxy();
 
         }
+        instance.ModelToDoView();
         return instance;
 
     }

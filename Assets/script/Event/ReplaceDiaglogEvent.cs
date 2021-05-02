@@ -149,7 +149,6 @@ public class ReplaceDiaglogEvent : Befunction
                 breakFinal(changeId,true);
             else if(BloomModel.instance().enenmyScore == 0 && BloomModel.instance().myScore == 0){
                 breakFinal(changeId, false);
-
             }
 
         }
