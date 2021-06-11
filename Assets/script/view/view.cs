@@ -29,8 +29,6 @@ public class view {
 			a.Todo(i);
 			}
 	}
-	public void refresh() { 
-	
-	}
+
 
 }

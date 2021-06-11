@@ -111,8 +111,6 @@ public class PackProxy : Baseproxy<Packagemodel> {
 	}
 
 	public void saveAllInventoryLan() {
-
-
 		foreach (Globelstate.language lan in Globelstate.getLanguage()) {
 				string streamOpenFileName = Application.streamingAssetsPath + "/" + lan + "/" + "Inventory" + ".text";
 			if (!File.Exists(streamOpenFileName)) {
@@ -128,16 +126,16 @@ public class PackProxy : Baseproxy<Packagemodel> {
 					{
 
 						if ((int)lan < inventoryList[i].language.Length)
-							tex += inventoryList[i].GetHashCode() + "," + inventoryList[i].language[(int)lan] + '\n';
+							tex += inventoryList[i].gameObject.GetHashCode() + "," + inventoryList[i].language[(int)lan] + '\n';
 						else
-							tex += inventoryList[i].GetHashCode() + "," + inventoryList[i].invName + '\n';
+							tex += inventoryList[i].gameObject.GetHashCode() + "," + inventoryList[i].invName + '\n';
 					}
 					else {
 
 						if ((int)lan < inventoryList[i].language.Length)
-							tex += inventoryList[i].GetHashCode() + "," + inventoryList[i].language[(int)lan];
+							tex += inventoryList[i].gameObject.GetHashCode() + "," + inventoryList[i].language[(int)lan];
 						else
-							tex += inventoryList[i].GetHashCode() + "," + inventoryList[i].invName;
+							tex += inventoryList[i].gameObject.GetHashCode() + "," + inventoryList[i].invName;
 					}
 
 

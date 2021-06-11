@@ -4,21 +4,21 @@ using System;
 using System.Linq;
 public class Baseproxy<T> where T:Basemodel,new()  {
 	public List<T> modellist;
-	public List<view> IComponentList;
+	public List<Vmediator> IComponentList;
 	// Use this for initialization
 	public Baseproxy()
 	{
 		modellist=new List<T>();
 	}
 
-	public void regiestNewComponent(view t) {
+	public void regiestNewComponent(Vmediator t) {
 		if (IComponentList == null) {
-			IComponentList = new List<view>();
+			IComponentList = new List<Vmediator>();
 		}
 		IComponentList.Add(t);
 	}
 
-	public void removeNewComponent(view t)
+	public void removeNewComponent(Vmediator t)
 	{
 		if (IComponentList != null && IComponentList.Count > 0)
 		{
@@ -31,7 +31,7 @@ public class Baseproxy<T> where T:Basemodel,new()  {
 	public void ModelToDoView() {
 		if (IComponentList != null&&IComponentList.Count>0)
 		{
-			foreach (view t in IComponentList) {
+			foreach (Vmediator t in IComponentList) {
 
 				t.refresh();
 			}

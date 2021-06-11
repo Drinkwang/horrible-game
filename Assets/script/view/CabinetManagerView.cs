@@ -39,5 +39,7 @@ public class CabinetManagerView : Vmediator
             CabinetManagerComponent.instance.shake(o.body);
         }
     }
+    public override void refresh() { 
+    }
 }
 

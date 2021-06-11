@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 114701576119402492}
   - component: {fileID: 61425201698005448}
   - component: {fileID: 8448057724365795278}
+  - component: {fileID: 7438506536480447793}
   m_Layer: 5
   m_Name: item
   m_TagString: uicard
@@ -85,7 +86,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 8448057724365795278}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -158,6 +159,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7438506536480447793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048340348583564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5edd246b7c0474da85ce1be6d16eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OutlineColor: {r: 1, g: 0.731424, b: 0, a: 1}
+  OutlineWidth: 0
 --- !u!1 &1908087440309144
 GameObject:
   m_ObjectHideFlags: 0

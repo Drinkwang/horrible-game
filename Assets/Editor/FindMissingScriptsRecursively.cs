@@ -10,6 +10,22 @@ public class FindMissingScriptsRecursively : EditorWindow
         EditorWindow.GetWindow(typeof(FindMissingScriptsRecursively));
     }
 
+
+    [MenuItem("Window/LoadLanguageSystem")]
+    public static void LoadLanguageSystem()
+    {
+        PackProxy.instances().loadAllInventoryLan();
+    //    EditorWindow.GetWindow(typeof(FindMissingScriptsRecursively));
+    }
+
+
+
+    [MenuItem("Window/SaveLanguageSystem")]
+    public static void SaveLanguageSystem()
+    {
+        PackProxy.instances().saveAllInventoryLan();
+        //    EditorWindow.GetWindow(typeof(FindMissingScriptsRecursively));
+    }
     public void OnGUI()
     {
         if (GUILayout.Button("Find Missing Scripts in selected GameObjects"))

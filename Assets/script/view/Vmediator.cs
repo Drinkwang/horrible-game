@@ -9,5 +9,6 @@ public abstract class Vmediator  {
 	public abstract List<string> msglist{ get; }
 
 	public abstract void Todo(Observer o);
+	public virtual void refresh() { }
 
 }

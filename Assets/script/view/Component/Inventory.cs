@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour
         }
 
         foreach (Globelstate.language lan in Globelstate.getLanguage()) {
-            PackProxy.instances().inventoryDic[(int)lan].TryGetValue(this.GetHashCode(), out language[(int)lan]);
+            PackProxy.instances().inventoryDic[(int)lan].TryGetValue(this.gameObject.GetHashCode(), out language[(int)lan]);
         }
         GenerateText();
            
