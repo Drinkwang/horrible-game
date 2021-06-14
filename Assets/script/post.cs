@@ -20,8 +20,8 @@ public class post : MonoBehaviour
         RaycastHit hitpoint;
         if ((Input.GetKeyDown(KeyCode.Tab) && AppFactory.instances.myglobelstate == Globelstate.state.start) || (Input.GetMouseButtonDown(1) && AppFactory.instances.myglobelstate == Globelstate.state.start))
         {
-            AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击物品进行使用";
-            AppFactory.instances.showpack(AppFactory.instances.entrytab);
+            //AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击物品进行使用";
+            AppFactory.instances.showpack(TagCmd.clickUseItem);
             AppFactory.instances.Todo(new Observer("hide"));
             AppFactory.instances.CancelInvoke("sinvoke");
 
@@ -106,12 +106,12 @@ public class post : MonoBehaviour
             {
                 if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == true || Input.GetMouseButtonDown(1) && AppFactory.instances.isopenpackage == true) && AppFactory.instances.myglobelstate == Globelstate.state.start)
                 {
-                    AppFactory.instances.closePackage(AppFactory.instances.entrytab);
+                    AppFactory.instances.closePackage();
                 }
                 else if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == false || Input.GetMouseButtonDown(0) && AppFactory.instances.isopenpackage == false) && AppFactory.instances.myglobelstate == Globelstate.state.start)
              {
 
-                    AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
+//                    AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
 
                     Inventory inv = hitGameObj.GetComponent<Inventory>();
                     if (inv != null && hitpoint.collider.tag != "paint")
@@ -221,8 +221,8 @@ public class post : MonoBehaviour
         //isHitChangeObj = false;
         AppFactory.instances.closePackage();
      
-        AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击" + itemName + "进行使用";
-        AppFactory.instances.showpack(AppFactory.instances.entrytab);
+        //AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击" + itemName + "进行使用";
+        AppFactory.instances.showpack("点击" + itemName + "进行使用");
         return;
 
     }

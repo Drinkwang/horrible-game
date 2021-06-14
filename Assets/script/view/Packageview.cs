@@ -29,13 +29,9 @@ public class Packageview : Vmediator {
 		//switch (x.msg) {
 		//case "show":
 			List<Packagemodel> packmodelList = (List<Packagemodel>)x.body;
-			pack.showPackage (packmodelList);
-		//	break;
-		//default:
-		//	;
-		//	break;
-			
-		//}
+			string tempMsg = (string)x.data;
+			pack.showPackage (packmodelList,tempMsg);
+
 		
 	}
 

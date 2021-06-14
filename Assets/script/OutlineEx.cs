@@ -63,7 +63,7 @@ namespace TooSimpleFramework.UI
             base.graphic.material.SetColor("_OutlineColor", this.OutlineColor);
             base.graphic.material.SetInt("_OutlineWidth", this.OutlineWidth);
             base.graphic.SetVerticesDirty();
-        }
+        }   
 
 
         public override void ModifyMesh(VertexHelper vh)

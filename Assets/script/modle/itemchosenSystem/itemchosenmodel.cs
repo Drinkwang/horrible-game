@@ -132,7 +132,7 @@ public class /*  */Befunction : MonoBehaviour
                 PaintModelComponent.instance.generalPaintBase();
                 PaintModelComponent.instance.settlement();
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId, beUsePaint.GetComponent<Inventory>().GetHashCode()));
-                AppFactory.instances.closePackage(null, false);
+                AppFactory.instances.closePackage(false);
                 
 
             }
@@ -149,7 +149,7 @@ public class /*  */Befunction : MonoBehaviour
                 Tempmodel.cardBorad[index].layer = 1;
                 //Tempmodel.myback[index].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId+10));
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
-                AppFactory.instances.closePackage(null, false);
+                AppFactory.instances.closePackage( false);
                 BloomModel.instance().currenceUseCardNum++;
                 BloomModel.instance().myback[index].GetComponent<CardBase>().SetData(beUseItemId + 10, true);
                 if (BloomModel.instance().currenceUseCardNum == 3)

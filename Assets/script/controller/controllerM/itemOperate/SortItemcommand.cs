@@ -28,7 +28,7 @@ public class SortItemcommand : IC {
 				return -1;
 			return -o;
 		});
-		AppFactory.instances.viewTodo (new Observer ("show", packmodellist));
+		AppFactory.instances.viewTodo (new Observer ("show", packmodellist,null));
 
 	}
 }

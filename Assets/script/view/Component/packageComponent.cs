@@ -6,6 +6,7 @@ public class packageComponent : MonoBehaviour {
 	public static packageComponent instante;
     Color oringin;
     public  item T;
+    public GameObject entrytab;
     public void Awake()
 	{instante = this;
         oringin = this.GetComponent<Image>().color;
@@ -24,7 +25,7 @@ public class packageComponent : MonoBehaviour {
         {//print (t.name);
             Destroy(t.gameObject);
         }
-        
+        entrytab.SetActive(false);
         this.GetComponent<Image>().color= new Color(oringin.r,oringin.g,oringin.b,0);
        
     }
@@ -63,8 +64,42 @@ public class packageComponent : MonoBehaviour {
         return null;
     }
 
-    public void showPackage(List<Packagemodel> model)
+    public void showPackage(List<Packagemodel> model,string tempLanguage)
     {
+        if (tempLanguage.Length > 0)
+        {
+
+            //   entrytab.GetComponentInChildren<Text>().text = tempLanguage;
+            //   entrytab.SetActive(true);
+
+
+
+            if (tempLanguage == TagCmd.clickUseItem)
+            {
+
+                tagComponent.instance.changeTagWithType(TagCmd.clickUseItem);
+            }
+            else if (tempLanguage == TagCmd.pressTabInterrupt)
+            {
+
+                tagComponent.instance.changeTagWithType(TagCmd.pressTabInterrupt);
+
+            }
+            else {
+
+                tagComponent.instance.changeTagWithType(tempLanguage);
+
+            }
+
+
+        }
+        else {
+            tagComponent.instance.changeTagWithType("", false);
+        }
+
+
+
+
         this.GetComponent<Image>().color = oringin;
         foreach (Transform t in this.transform)
 		{//print (t.name);

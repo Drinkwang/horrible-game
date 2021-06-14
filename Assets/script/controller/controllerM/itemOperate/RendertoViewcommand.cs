@@ -25,10 +25,10 @@ public class RendertoViewcommand : IC {
         }
 
 
-
+		string tempMsg= (string)a.data;
 
 		
-		AppFactory.instances.viewTodo(new Observer("show", packmodellist));
+		AppFactory.instances.viewTodo(new Observer("show", packmodellist, tempMsg));
 	}
 
 	public static List<Packagemodel> solve(List<Packagemodel> arr)

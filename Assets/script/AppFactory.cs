@@ -27,7 +27,7 @@ public class AppFactory : MonoBehaviour
     
     public bool isopenpackage = false;
     private allsave mysave;
-    public GameObject entrytab;
+    //public GameObject entrytab;
     public GameObject testSystem;
     public GameObject raceEvent;
     //public GameObject quiver,enemy;
@@ -115,7 +115,7 @@ public class AppFactory : MonoBehaviour
         {
             if (a == Globelstate.state.load)
             {
-                AppFactory.instances.closePackage(null, false);
+                AppFactory.instances.closePackage(false);
                 middleLayer.Instance.canMove = false;
                 middleLayer.Instance.MousePause();
             }
@@ -261,7 +261,7 @@ public class AppFactory : MonoBehaviour
     /// <param name="isMove">如果该值为false，则关闭主角的移动选项</param>
     /// <param name="IsChangePost">如果该值为false，则关掉主角能交互物品的功能</param>
     /// <param name="changeIsHitChangeObj">如果该值为ture，则关掉物品聚焦锚点，玩家将无法改变使用物品对象</param>
-    public void showpack(GameObject blind=null,bool playAudio=true,bool isMove=false,bool IsChangePost=true,bool changeIsHitChangeObj=true)
+    public void showpack(string tagCmd="",bool playAudio=true,bool isMove=false,bool IsChangePost=true,bool changeIsHitChangeObj=true)
     {
         if (isopenpackage == false)
         {
@@ -270,18 +270,17 @@ public class AppFactory : MonoBehaviour
             if (IsChangePost==true)
                 AppFactory.instances.changePost(false);
             isopenpackage = true;
-            if(blind!=null)
-                blind.SetActive(true);
+            //if(blind!=null)
+            //    blind.SetActive(true);
           
             if(playAudio==true)
                 Audomanage.instance.OnPlay("pick");
             if(isMove==false)
                 middleLayer.Instance.MousePause();
-            //Time.timeScale = 0;
 
             if (nowstate == itemstate.package)
             {
-                Todo(new Observer("RendertoViewcommand"));
+                Todo(new Observer(Cmd.renderAllItem, "main", tagCmd));
             }
             else if (nowstate == itemstate.task)
             { //Todo(new Observer("rtask")); 
@@ -296,11 +295,8 @@ public class AppFactory : MonoBehaviour
             AppFactory.instances.changePost(true);
             packageComponent.instante.closePackage();
             ChangeIsHitChangeObj(true);
-            //  TaskComponent.instance.transform.GetChild(0).gameObject.SetActive(false);
-            //close taskitem
-            if (blind!=null)
-                blind.SetActive(false);
-            // Time.timeScale = 1;
+            //if (blind!=null)
+            //    blind.SetActive(false);
             isopenpackage = false;
 
             middleLayer.Instance.MouseRun();
@@ -311,16 +307,15 @@ public class AppFactory : MonoBehaviour
      
     }
 
-    public void closePackage(GameObject blind = null,bool isPlayAudio=true) {
+    public void closePackage(bool isPlayAudio=true) {
         if (isopenpackage == true)
         {
             ChangeIsHitChangeObj(true);
             AppFactory.instances.changePost(true);
             packageComponent.instante.closePackage();
             //close taskitem
-            if (blind != null)
-                blind.SetActive(false);
-            // Time.timeScale = 1;
+            //if (blind != null)
+            //    blind.SetActive(false);
             StartCoroutine("ClosePackage");
             middleLayer.Instance.MouseRun();
 
@@ -347,13 +342,10 @@ public class AppFactory : MonoBehaviour
         if (isopenpackage != true)
         {
             packageComponent.instante.closePackage();
-            entrytab.SetActive(false);
+            //entrytab.SetActive(false);
             //ChangeIsHitChangeObj(true);
         }
-        //  TaskComponent.instance.transform.GetChild(0).gameObject.SetActive(false);
-        //close taskitem
 
-        // Time.timeScale = 1;
 
     }
 

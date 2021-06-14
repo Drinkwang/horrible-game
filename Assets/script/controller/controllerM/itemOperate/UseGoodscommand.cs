@@ -25,7 +25,7 @@ public class UseGoodscommand : IC {
                 model.goodid = 0;
                 packproxy.update(id, model); }
 
-            AppFactory.instances.Todo(new Observer("RendertoViewcommand", "else"));
+            AppFactory.instances.Todo(new Observer(Cmd.renderAllItem, "else", TagCmd.clickUseItem));
         } 
 
         

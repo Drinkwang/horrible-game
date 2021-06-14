@@ -29,9 +29,9 @@ public class AddGoodscommand : IC {
         }
 		if(io.data!=null)
 			model.AddHashId((int)io.data);
-        AppFactory.instances.Todo (new Observer ("RendertoViewcommand","main"));
-        AppFactory.instances.closePackage(AppFactory.instances.entrytab, false);
-        AppFactory.instances.showpack(AppFactory.instances.entrytab,false,true,false,false);
+        AppFactory.instances.Todo (new Observer (Cmd.renderAllItem,"main", TagCmd.pressTabInterrupt));
+        AppFactory.instances.closePackage(false);
+        AppFactory.instances.showpack(TagCmd.pressTabInterrupt,false,true,false,false);
         
         AppFactory.instances.ssinvoke();
 
