@@ -62,28 +62,29 @@ public class AppFactory : MonoBehaviour
         return beUseObj;
     }
 
-    private Globelstate.state globelstate;
-    public Globelstate.state myglobelstate
-    {
-        get { return globelstate; }
-        private set { globelstate = value; }
-    }
-    private Globelstate.language elanguage;
-    public Globelstate.language mylanguage
-    {
-        get { return elanguage; }
-        private set { elanguage = value; }
-    }
+    //private Globelstate.state globelstate;
+    //public Globelstate.state myglobelstate
+    //{
+    //    get { return globelstate; }
+    //    private set { globelstate = value; }
+    //}
+    //private Globelstate.language elanguage;
+    //public Globelstate.language mylanguage
+    //{
+    //    get { return elanguage; }
+    //    private set { elanguage = value; }
+    //}
 
     public void changevalue(Dropdown change)
     {
+        OpnionProxy opnion=OpnionProxy.instances();
         Debug.Log(change.value);
         if (change.value == 0)
-        { mylanguage = Globelstate.language.china; }
+        { opnion.SetLanguage(Globelstate.language.china); }
         else if (change.value == 1)
-        { mylanguage = Globelstate.language.english; }
+        { opnion.SetLanguage(Globelstate.language.english); }
         else if (change.value == 2)
-        { mylanguage = Globelstate.language.japanense; }
+        { opnion.SetLanguage(Globelstate.language.japanense); }
     }
 
     public enum itemstate
@@ -104,12 +105,14 @@ public class AppFactory : MonoBehaviour
         {
             instances = this;
         }
-        globelstate = Globelstate.state.unstart;
+        OpnionProxy.instances().setState(Globelstate.state.unstart);
+
         nowstate = itemstate.package;
     }
 
     public void changestate(Globelstate.state a,bool changeState)
-    { globelstate = a;
+    { 
+        OpnionProxy.instances().setState(a);
 
         if (changeState == true)
         {
@@ -382,10 +385,6 @@ public class AppFactory : MonoBehaviour
         viewTodo(new Observer(Cmd.initCamera));
         Todo(new Observer(Cmd.initPostEffectOperate));
         PackProxy.instances().saveAllInventoryLan();
-
-    }
-    public void Cleardialog()
-    {
 
     }
 

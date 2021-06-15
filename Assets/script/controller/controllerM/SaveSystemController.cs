@@ -26,6 +26,7 @@ class SaveSystemController : IC
                 sayingProxy = Sayingproxy.instances(),
                 paintPoint = PaintModelComponent.instance.paintPoint,
                 IsLock = CabinetManagerComponent.instance.isLock,
+                opnion = OpnionProxy.instances()
                 //     playerPosition = hiui.instance.GetPlayerPosition(),
 
             };
@@ -46,7 +47,7 @@ class SaveSystemController : IC
                 SaveModel save = JsonConvert.DeserializeObject<SaveModel>(json);
                 CameraProxy.instances().SetCamera(save.cameraProxy);
                 PackProxy.instances().setPackProxy(save.packProxy);
-
+                OpnionProxy.instances().setOpnion(save.opnion);
 
                 PaintModelComponent.instance.setPaintPoint(save.paintPoint);
                 CabinetManagerComponent.instance.setIsLock(save.IsLock);

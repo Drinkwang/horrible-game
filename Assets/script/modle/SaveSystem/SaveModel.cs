@@ -18,6 +18,7 @@ namespace Assets.script.modle.SaveSystem
         public PlayerPosition playerPosition;
         public int[] paintPoint;
         public bool[] IsLock;
+        public OpnionProxy opnion;
     }
 
     public struct PlayerPosition

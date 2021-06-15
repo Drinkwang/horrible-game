@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BloomModel : MonoBehaviour
+public class BloomProxy : MonoBehaviour
 {
     public GameObject[] cardback;
     public GameObject[] myback;
@@ -14,7 +14,7 @@ public class BloomModel : MonoBehaviour
     public int enenmyScore;
     public int currenceUseCardNum;
 
-    public static BloomModel _instance;
+    public static BloomProxy _instance;
     void Awake()
     {
         if (_instance == null)
@@ -24,7 +24,7 @@ public class BloomModel : MonoBehaviour
 
     
 
-    public static BloomModel instance() {
+    public static BloomProxy instance() {
 
         return _instance;
     }

@@ -12,8 +12,8 @@ using System.Text;
     {
         if (io.msg == Cmd.changeCamera)
         {
-            CameraModel ChangeModel = (CameraModel)io.body;
-            CameraModel t;
+            Cameramodel ChangeModel = (Cameramodel)io.body;
+            Cameramodel t;
             if (cameraProxy.TryGetModel(ChangeModel.id, out t))
             {
                 t = ChangeModel;
@@ -28,8 +28,8 @@ using System.Text;
         }
         else if (io.msg == Cmd.addCamera) {
             cameraProxy.clear();
-            List<CameraModel> newL =(List<CameraModel>)io.body;
-            foreach (CameraModel i in newL)
+            List<Cameramodel> newL =(List<Cameramodel>)io.body;
+            foreach (Cameramodel i in newL)
                 cameraProxy.addmodeltolist(i);
         }
 

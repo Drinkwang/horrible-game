@@ -17,8 +17,9 @@ public class post : MonoBehaviour
 
     void Update()
     {
+        OpnionProxy opnion = OpnionProxy.instances();
         RaycastHit hitpoint;
-        if ((Input.GetKeyDown(KeyCode.Tab) && AppFactory.instances.myglobelstate == Globelstate.state.start) || (Input.GetMouseButtonDown(1) && AppFactory.instances.myglobelstate == Globelstate.state.start))
+        if ((Input.GetKeyDown(KeyCode.Tab) && opnion.myglobelstate == Globelstate.state.start) || (Input.GetMouseButtonDown(1) && opnion.myglobelstate == Globelstate.state.start))
         {
             //AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "点击物品进行使用";
             AppFactory.instances.showpack(TagCmd.clickUseItem);
@@ -104,11 +105,11 @@ public class post : MonoBehaviour
             }
             if (ispost == true)
             {
-                if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == true || Input.GetMouseButtonDown(1) && AppFactory.instances.isopenpackage == true) && AppFactory.instances.myglobelstate == Globelstate.state.start)
+                if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == true || Input.GetMouseButtonDown(1) && AppFactory.instances.isopenpackage == true) && opnion.myglobelstate == Globelstate.state.start)
                 {
                     AppFactory.instances.closePackage();
                 }
-                else if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == false || Input.GetMouseButtonDown(0) && AppFactory.instances.isopenpackage == false) && AppFactory.instances.myglobelstate == Globelstate.state.start)
+                else if ((Input.GetKeyDown(KeyCode.E) && AppFactory.instances.isopenpackage == false || Input.GetMouseButtonDown(0) && AppFactory.instances.isopenpackage == false) && opnion.myglobelstate == Globelstate.state.start)
              {
 
 //                    AppFactory.instances.entrytab.GetComponentInChildren<Text>().text = "按tab开启物品栏";
@@ -238,7 +239,7 @@ public class post : MonoBehaviour
         {
 
             player.GetComponent<Animator>().SetTrigger("grag");
-            BloomModel.instance().gameObject.GetComponent<Onobjsession>().add();
+            BloomProxy.instance().gameObject.GetComponent<Onobjsession>().add();
         }
 
         if (PackProxy.instances().TryGeGoodtModel(1) == true && PackProxy.instances().TryGeGoodtModel(2) == true && PackProxy.instances().TryGeGoodtModel(3) == true)

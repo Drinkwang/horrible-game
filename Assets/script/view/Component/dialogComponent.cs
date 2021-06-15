@@ -101,9 +101,9 @@ public class dialogComponent : MonoBehaviour
             t.A += tempFunction;
             t._A += tempFunction2;
 
-            
+            OpnionProxy opnion=OpnionProxy.instances();
 
-            if (AppFactory.instances.mylanguage == Globelstate.language.china)
+            if (opnion.mylanguage == Globelstate.language.china)
             {
                 textchange(dialogues[0].ChineseVersion.ToString());
                 if (dialogues[0].ChineseAC == null)
@@ -113,7 +113,7 @@ public class dialogComponent : MonoBehaviour
                 else
                     lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].ChineseAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
             }
-            else if (AppFactory.instances.mylanguage == Globelstate.language.english)
+            else if (opnion.mylanguage == Globelstate.language.english)
             {
                 textchange(dialogues[0].EnglishVersion.ToString());
                 if (dialogues[0].EnglishAC == null)
@@ -121,7 +121,7 @@ public class dialogComponent : MonoBehaviour
                 else
                     lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].EnglishAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
             }
-            else if (AppFactory.instances.mylanguage == Globelstate.language.japanense)
+            else if (opnion.mylanguage == Globelstate.language.japanense)
             {
                 textchange(dialogues[0].JapanVersion.ToString());
                 if (dialogues[0].JapanAC == null)
@@ -148,15 +148,13 @@ public class dialogComponent : MonoBehaviour
     }
     void tempFunction()
     {
-        //   if (Sayingproxy.instances().returnLs().Count <= 0)
-        //      AppFactory.instances.changePost(true);
+
         tempFunction2();
 
     }
     void tempFunction2(int res = 0, List<int> values = null)
     {
-        //   if (Sayingproxy.instances().returnLs().Count <= 0)
-        //      AppFactory.instances.changePost(true);
+
         AppFactory.instances.viewTodo(new Observer(Cmd.dialog));
 
     }

@@ -10,7 +10,7 @@ public class bloomTableEvent : Befunction
     public GameObject stoneScissorCloth;
     private Canvas canvas;
     private packageComponent packageC;
-    private BloomModel bloomModel;
+    private BloomProxy bloomModel;
     public Camera tempCamera;
     //public BloomData tempBloomData;
     private List<GameObject> hintObj;
@@ -37,7 +37,7 @@ public class bloomTableEvent : Befunction
     {
         packageC = packageComponent.instante;
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        bloomModel = BloomModel.instance();
+        bloomModel = BloomProxy.instance();
         Reset();
     }
 
@@ -62,7 +62,7 @@ public class bloomTableEvent : Befunction
 
 
     public void event3() {
-        bloomModel = BloomModel.instance();
+        bloomModel = BloomProxy.instance();
       
         //tempBloomData.initCards(0);
         //tempBloomData.initCards(1);
@@ -166,7 +166,7 @@ public class bloomTableEvent : Befunction
 
     }
     public IEnumerator showPack() {
-        bloomModel = BloomModel.instance();
+        bloomModel = BloomProxy.instance();
         hintObj = new List<GameObject>();
         yield return new WaitForSeconds(0.5f);
         AppFactory.instances.showpack();

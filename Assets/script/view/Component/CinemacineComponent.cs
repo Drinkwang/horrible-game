@@ -28,10 +28,10 @@ public class CinemacineComponent:MonoBehaviour{
         List<CinemachineVirtualCamera> temp = new List<CinemachineVirtualCamera>();
         temp = this.transform.GetComponentsInChildren<CinemachineVirtualCamera>().ToList();
         cinemacineList.AddRange(temp);
-        List < CameraModel > addList= new List<CameraModel>();
+        List < Cameramodel > addList= new List<Cameramodel>();
         for (int i=0;i<cinemacineList.Count;i++) {
             CinemachineVirtualCamera tcv = cinemacineList[i];
-            CameraModel t = new CameraModel(i+1,tcv.m_Lens.FieldOfView,tcv.m_Priority,tcv.m_LookAt);
+            Cameramodel t = new Cameramodel(i+1,tcv.m_Lens.FieldOfView,tcv.m_Priority,tcv.m_LookAt);
             addList.Add(t);
         }
         AppFactory.instances.Todo(new Observer("addCamera",addList));
@@ -49,7 +49,7 @@ public class CinemacineComponent:MonoBehaviour{
 
     public void changeCamera(object body)
     {
-       CameraModel t= body as CameraModel;
+       Cameramodel t= body as Cameramodel;
         for (int j = 0; j < cinemacineList.Count; j++)
         {
             if (t.id == j + 1){

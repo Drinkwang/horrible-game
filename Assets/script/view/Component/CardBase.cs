@@ -9,7 +9,7 @@ public class CardBase : MonoBehaviour
     public void SetData(int a, bool isRender) {
 
         if (datas == null) {
-            init(BloomModel.instance().deckhold);
+            init(BloomProxy.instance().deckhold);
         
         }
 

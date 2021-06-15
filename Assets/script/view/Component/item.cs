@@ -40,7 +40,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
     public void OnPointerDownAfter()
     {
 
-        if (AppFactory.instances.myglobelstate == Globelstate.state.start)
+        if (OpnionProxy.instances().myglobelstate == Globelstate.state.start)
         {
             if (this.model.goodid!=0 && this.model.good != null && this.model.good.src != null && DragObj == null)
             {
@@ -116,7 +116,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         tempBeUseObj = AppFactory.instances.GetbeUseObj();
         AppFactory.instances.ChangeIsHitChangeObj(true);
 
-        if (AppFactory.instances.myglobelstate == Globelstate.state.start&& eventData!=null)
+        if (OpnionProxy.instances().myglobelstate == Globelstate.state.start&& eventData!=null)
         {
             if (this.model.goodid != 0 && this.model.good != null && this.model.good.src != null && DragObj == null)
             {

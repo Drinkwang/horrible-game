@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-public class CameraModel:Basemodel  {
+public class Cameramodel:Basemodel  {
     [JsonIgnore]
     public float fieldValue;
     [JsonIgnore]
@@ -8,10 +8,10 @@ public class CameraModel:Basemodel  {
     [JsonIgnore]
     public int priority;
 
-	public CameraModel()
+	public Cameramodel()
 	{
 	}
-	public CameraModel(int i,float fieldValue,int priority,object follow){
+	public Cameramodel(int i,float fieldValue,int priority,object follow){
         this.id = i;
         this.fieldValue = fieldValue;
         this.follow = follow;

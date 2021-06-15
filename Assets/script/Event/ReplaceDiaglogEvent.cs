@@ -45,7 +45,7 @@ public class ReplaceDiaglogEvent : Befunction
         //if(bloomData==null)
         //    bloomData = BloomModel.instance().bloomData;
         ////0是j，1是q，2是k
-        var beChangePoint=BloomModel.instance().myback[changeId].GetComponent<CardBase>().data.Point;
+        var beChangePoint=BloomProxy.instance().myback[changeId].GetComponent<CardBase>().data.Point;
         int index = CUtil.cardPointToId(beChangePoint);
         dialogReplaceSystem.instance.ReplaceJqk(index, this.sai);
 
@@ -55,8 +55,8 @@ public class ReplaceDiaglogEvent : Befunction
     public void changeWinOrLost(int changeId,bool isReplaceD){
 
 
-        var mycardpoint = BloomModel.instance().myback[changeId].GetComponent<CardBase>().data.Point;
-        var enemycardpoint = BloomModel.instance().cardback[changeId].GetComponent<CardBase>().data.Point;
+        var mycardpoint = BloomProxy.instance().myback[changeId].GetComponent<CardBase>().data.Point;
+        var enemycardpoint = BloomProxy.instance().cardback[changeId].GetComponent<CardBase>().data.Point;
         int bewincard = CUtil.getBeWinCard(mycardpoint, true);
         int belostcard = CUtil.getBeWinCard(mycardpoint, false);
 
@@ -67,7 +67,7 @@ public class ReplaceDiaglogEvent : Befunction
             if (isReplaceD==true)
                 Lost();
 
-            BloomModel.instance().enenmyScore++;
+            BloomProxy.instance().enenmyScore++;
 
         }
         else if (belostcard == enemycardpoint)
@@ -75,7 +75,7 @@ public class ReplaceDiaglogEvent : Befunction
             //你赢了
             if (isReplaceD == true)
                 Win();
-            BloomModel.instance().myScore++;
+            BloomProxy.instance().myScore++;
         }
         else if (mycardpoint == enemycardpoint)
         {
@@ -139,15 +139,15 @@ public class ReplaceDiaglogEvent : Befunction
         else if (type == ReplaceDiagType.ReplaceAudio_Merge_Score)
         {
             b = new List<int>();
-            b.Add(BloomModel.instance().myScore);
+            b.Add(BloomProxy.instance().myScore);
             b.Add(3);
-            b.Add(BloomModel.instance().enenmyScore);
+            b.Add(BloomProxy.instance().enenmyScore);
             changeAudioMerge(changeId, b);
         }
         else if (type == ReplaceDiagType.ReplaceAudio_Break_Final) {
-            if(BloomModel.instance().enenmyScore==2|| BloomModel.instance().myScore==2)
+            if(BloomProxy.instance().enenmyScore==2|| BloomProxy.instance().myScore==2)
                 breakFinal(changeId,true);
-            else if(BloomModel.instance().enenmyScore == 0 && BloomModel.instance().myScore == 0){
+            else if(BloomProxy.instance().enenmyScore == 0 && BloomProxy.instance().myScore == 0){
                 breakFinal(changeId, false);
             }
 

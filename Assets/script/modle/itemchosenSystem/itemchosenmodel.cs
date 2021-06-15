@@ -141,7 +141,7 @@ public class /*  */Befunction : MonoBehaviour
         {
             if (beFuncObj.name == "cardBase0" || beFuncObj.name == "cardBase1" || beFuncObj.name == "cardBase2")
             {
-                BloomModel Tempmodel = BloomModel.instance();
+                BloomProxy Tempmodel = BloomProxy.instance();
                 //beFuncObj.name.("cardBase")
                 int index = int.Parse(System.Text.RegularExpressions.Regex.Replace(beFuncObj.name, @"[^0-9]+", ""));
 
@@ -150,9 +150,9 @@ public class /*  */Befunction : MonoBehaviour
                 //Tempmodel.myback[index].GetComponent<MeshRenderer>().material = Resources.Load<Material>(CUtil.idToCardBackString(beUseItemId+10));
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
                 AppFactory.instances.closePackage( false);
-                BloomModel.instance().currenceUseCardNum++;
-                BloomModel.instance().myback[index].GetComponent<CardBase>().SetData(beUseItemId + 10, true);
-                if (BloomModel.instance().currenceUseCardNum == 3)
+                BloomProxy.instance().currenceUseCardNum++;
+                BloomProxy.instance().myback[index].GetComponent<CardBase>().SetData(beUseItemId + 10, true);
+                if (BloomProxy.instance().currenceUseCardNum == 3)
                 {
                     middleLayer.Instance.canMove = false;
                     middleLayer.Instance.MousePause();

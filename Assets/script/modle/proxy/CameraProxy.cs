@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-public class CameraProxy:Baseproxy<CameraModel>{
+public class CameraProxy:Baseproxy<Cameramodel>{
     private int nowCameraID;
     private static CameraProxy instance;
 

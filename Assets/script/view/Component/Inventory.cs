@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
     private void GenerateText()
     {
         string tempUrl=invName;
-        Globelstate.language myLanguege=AppFactory.instances.mylanguage;
+        Globelstate.language myLanguege=OpnionProxy.instances().mylanguage;
         if (language != null)
         {
             int index =(int)myLanguege;
