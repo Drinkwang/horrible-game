@@ -210,7 +210,10 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 
 
             }
-
+            if (AppFactory.instances.GetbeUseObj()) { 
+            
+            
+            }
 
 
             this.image.sprite = useSprite;

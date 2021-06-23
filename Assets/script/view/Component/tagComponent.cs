@@ -84,7 +84,7 @@ public class tagComponent : MonoBehaviour
             for (int i = 0; i < TagLanguage.Length; i++)
             {
 
-                if (TagLanguage[i].lan == AppFactory.instances.mylanguage)
+                if (TagLanguage[i].lan == OpnionProxy.instances().mylanguage)
                 {
 
                     if (Content == "clickUseItem")

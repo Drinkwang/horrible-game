@@ -15,10 +15,16 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-
+        this.readValue();
         //ReplaceLanguege();//代编辑
         PackProxy.instances().AddInventory(this);
 
+    }
+
+    private void readValue() { 
+    
+    
+    
     }
 
     void Update()

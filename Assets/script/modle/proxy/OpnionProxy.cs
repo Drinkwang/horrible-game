@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
   public class OpnionProxy
     {
+    public bool isOpenCheckTip = true;
 
 
     private Globelstate.state globelstate;
