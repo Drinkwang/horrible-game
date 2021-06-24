@@ -1,0 +1,1 @@
+注意：LocalTestRun.bat是生成测试的json和c#文件，对应文件可以在testCs和testJson目录底下观看。当xlsx发生改变可以先点击“LocalTestRun.bat”进行生成测试文件进行对照，如果没有问题，可以点击GlobalRun.bat进行项目代码的实际变更

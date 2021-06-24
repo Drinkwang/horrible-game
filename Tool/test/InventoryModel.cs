@@ -4,7 +4,7 @@
 // 1. 每个 Sheet 形成一个 Struct 定义, Sheet 的名称作为 Struct 的名称
 // 2. 表格约定：第一行是变量名称，第二行是变量类型
 
-// Generate From C:\Users\15271\Documents\horror Game\Tool\xlsx\GoodInfo.xlsx.xlsx
+// Generate From InventoryModel.xlsx
 
 public class InventoryModel
 {
@@ -16,6 +16,7 @@ public class InventoryModel
 	public string cabinet; // 锁住商品的柜子(tag)
 	public string[] Language; // 不同语言的名字
 	public bool is3DModel; // 是否是3d模型，自动生成物品栏图片
+	public string FunctionObj; // 物品作用的对象
 }
 
 
