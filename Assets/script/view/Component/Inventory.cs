@@ -21,8 +21,8 @@ public class Inventory : MonoBehaviour
 
     }
 
-    private void readValue() { 
-    
+    private void readValue() {
+        ArchiveManager.Instance.GetSamplelist<InventoryModel>();
     
     
     }

@@ -6,7 +6,7 @@
 
 // Generate From InventoryModel.xlsx
 
-public class InventoryModel
+public class InventoryModel: Basemodel
 {
 	public int GoodId; // 编号
 	public string GoodType; // 商品类型(大概率不用)

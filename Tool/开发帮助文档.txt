@@ -1,1 +1,12 @@
+该文件放在Assets同级目录下，可以一键生成excel对应的json和Model以及Proxy文件
+
+确保下面路径存在，也可以手动对bat进行修改，适配当前项目
+@SET JSON_FOLDER=..\Assets\Resources\Json\
+@SET C_FOLDER=..\Assets\script\modle\AutoModel\
+@SET C2_FOLDER=..\Assets\script\modle\proxy\AutoProxy\
+
+一切完工后可以执行bat文件生成对应cs和json文件
 注意：LocalTestRun.bat是生成测试的json和c#文件，对应文件可以在testCs和testJson目录底下观看。当xlsx发生改变可以先点击“LocalTestRun.bat”进行生成测试文件进行对照，如果没有问题，可以点击GlobalRun.bat进行项目代码的实际变更
+JSON_FOLDER是json目录
+C_FOLDER是Model目录
+C2_FOLDER是Proxy目录

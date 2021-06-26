@@ -4,7 +4,7 @@
 // 1. 每个 Sheet 形成一个 Struct 定义, Sheet 的名称作为 Struct 的名称
 // 2. 表格约定：第一行是变量名称，第二行是变量类型
 
-// Generate From InventoryModel.xlsx
+// Generate From C:\Users\15271\Documents\horror Game\Tool\xlsx\InventoryModel.xlsx.xlsx
 
 public class InventoryModel: Basemodel
 {
