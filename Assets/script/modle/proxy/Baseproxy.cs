@@ -75,4 +75,21 @@ public class Baseproxy<T> where T:Basemodel,new()  {
 	{T model=modellist.FirstOrDefault (a => a.id == id);
 		return model;
 	}
+
+	public T getModelByElement(string fieledName,Object t) {
+
+		T model = modellist.FirstOrDefault(a => {
+			Type type= a.GetType();
+
+			object value = a.GetType().GetField(fieledName).GetValue(a);
+			if (a.GetType().GetField(fieledName).GetValue(a).Equals(t))
+			{
+
+				return true;
+			}
+			else
+				return false;
+		 });
+		return model;
+	}
 }

@@ -1,7 +1,7 @@
 //
 // Auto Generated Code By excel2json
 // https://neil3d.gitee.io/coding/excel2json.html
-// 1. 每个 Sheet 形成一个 Struct 定义, Sheet 的名称作为 Struct 的名称
+// 1. 本文件为自动生成的Proxy文件，请放到合适的目录底下,此文件不能做任何修改，尽量通过Controller调用
 // 2. by drinker
 
 // Generate From InventoryModel.xlsx
@@ -20,6 +20,11 @@ public class InventoryProxy: Baseproxy<InventoryModel>
 		}
 		instance.ModelToDoView();
 	return instance;
+	}
+
+	public InventoryProxy()	{
+
+		modellist= ArchiveManager.Instance.GetSamplelist<InventoryModel>();
 	}
 }
 

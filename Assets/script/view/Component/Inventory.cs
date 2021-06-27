@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     public string[] language;
     public GameObject cabinet;
     public bool is3DModel=false;
-
+    private string FunctionObj;
 
 
     private void Start()
@@ -22,9 +22,14 @@ public class Inventory : MonoBehaviour
     }
 
     private void readValue() {
-        ArchiveManager.Instance.GetSamplelist<InventoryModel>();
-    
-    
+        InventoryModel myValue=InventoryProxy.instances().getModelByElement("GoodId", (int)id);
+        invName = myValue.InvName;
+       // language = myValue.Language;
+        cabinet =GameObject.Find(myValue.cabinet);
+        is3DModel = myValue.is3DModel;
+        FunctionObj = myValue.FunctionObj;
+
+
     }
 
     void Update()
