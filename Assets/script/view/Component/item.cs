@@ -210,9 +210,26 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 
 
             }
-            if (AppFactory.instances.GetbeUseObj()) { 
-            
-            
+
+            GameObject beObj = AppFactory.instances.GetbeUseObj();
+            if (beObj) {
+
+                if (this.model.good.beFuncName == beObj.tag)
+                {
+
+                    this.GetComponent<Animation>().Play("itemEdge");
+                    //    OutlineEx t = obj.GetComponent<OutlineEx>();//.OutlineWidth = 1;
+                    //                iTween.ValueTo(gameObject, iTween.Hash("from", 1, "to", 10,// gameObject.transform.position为0.0.0
+                    //"easetype", "easeInBack", "loopType", iTween.LoopType.pingPong, "time", 1f, "onupdate", "AnimationUpdata", "onupdateparams",[t,1], "oncomplete", "Oncomplete"));
+                    // iTween.ValueTo();
+                }
+                else
+                {
+                    this.GetComponent<Animation>().Stop("itemEdge");
+                    //   obj.GetComponent<OutlineEx>().OutlineWidth = 0;
+
+                }
+
             }
 
 
@@ -237,5 +254,12 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
             this.text.text = "";
 
         }
+
+
+ 
+
+
+        
+
     }
 }

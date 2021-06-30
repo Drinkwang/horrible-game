@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 public class packageComponent : MonoBehaviour {
@@ -66,6 +67,7 @@ public class packageComponent : MonoBehaviour {
 
     public void showPackage(List<Packagemodel> model,string tempLanguage)
     {
+   //     GameObject beObj = AppFactory.instances.GetbeUseObj();
         if (tempLanguage.Length > 0)
         {
 
@@ -76,12 +78,12 @@ public class packageComponent : MonoBehaviour {
 
             if (tempLanguage == TagCmd.clickUseItem)
             {
-
+         
                 tagComponent.instance.changeTagWithType(TagCmd.clickUseItem);
             }
             else if (tempLanguage == TagCmd.pressTabInterrupt)
             {
-
+                //beObj = null;
                 tagComponent.instance.changeTagWithType(TagCmd.pressTabInterrupt);
 
             }
@@ -105,16 +107,33 @@ public class packageComponent : MonoBehaviour {
 		{//print (t.name);
 			Destroy (t.gameObject);
 		}
-		foreach(var i in model)
-		{
-            GameObject obj=null;
-        
+
+
+        foreach (var i in model)
+        {
+            GameObject obj = null;
+
             obj = GameObject.Instantiate(Resources.Load<GameObject>("item"));
 
-			obj.transform.SetParent (this.gameObject.transform);
+            obj.transform.SetParent(this.gameObject.transform);
             obj.GetComponent<item>().Model = i;
-		}}
-	
-	// Update is called once per frame
+
+
+        }
+       
+    }
+
+    
+
+
+    //public void AnimationUpdata(object obj, OutlineEx t)
+    //{
+
+
+    //    int per = (int)obj;
+    //    t.OutlineWidth = per;
+
+    //}
+    // Update is called once per frame
 
 }

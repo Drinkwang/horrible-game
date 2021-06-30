@@ -273,9 +273,7 @@ public class AppFactory : MonoBehaviour
             if (IsChangePost==true)
                 AppFactory.instances.changePost(false);
             isopenpackage = true;
-            //if(blind!=null)
-            //    blind.SetActive(true);
-          
+
             if(playAudio==true)
                 Audomanage.instance.OnPlay("pick");
             if(isMove==false)

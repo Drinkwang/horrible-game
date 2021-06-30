@@ -10,25 +10,29 @@ public class RendertoViewcommand : IC {
 
 	public void Todo(Observer a)
 	{
-		List<Packagemodel> packmodellist = packproxy.getmodellist();
-		for (int i = 0; i < packmodellist.Count; i++)
+
+		if ((string)a.msg == Cmd.renderAllItem)
 		{
-			if (packmodellist[i].goodid != 0)
-			{//Debug .Log("a");
-				packmodellist[i].good = goodproxy.GetmodelbyId(packmodellist[i].goodid);
+			List<Packagemodel> packmodellist = packproxy.getmodellist();
+			for (int i = 0; i < packmodellist.Count; i++)
+			{
+				if (packmodellist[i].goodid != 0)
+				{//Debug .Log("a");
+					packmodellist[i].good = goodproxy.GetmodelbyId(packmodellist[i].goodid);
+				}
+
+			}
+			if ((string)a.body == "else")
+			{
+				packproxy.modellist = solve(packmodellist);
 			}
 
+
+			string tempMsg = (string)a.data;
+
+
+			AppFactory.instances.viewTodo(new Observer("show", packmodellist, tempMsg));
 		}
-        if ((string)a.body == "else")
-        {
-			packproxy.modellist = solve(packmodellist);
-        }
-
-
-		string tempMsg= (string)a.data;
-
-		
-		AppFactory.instances.viewTodo(new Observer("show", packmodellist, tempMsg));
 	}
 
 	public static List<Packagemodel> solve(List<Packagemodel> arr)

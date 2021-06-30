@@ -13,8 +13,8 @@ public class PackProxy : Baseproxy<Packagemodel> {
 	private List<Inventory> inventoryList;
 	private static PackProxy  instance;
 	[JsonIgnore]
-	public Dictionary<int, string>[] inventoryDic; 
-
+	public Dictionary<int, string>[] inventoryDic;
+	public string tagCmdOrName;
 	public static PackProxy instances()
 	{
 		if (instance == null) {

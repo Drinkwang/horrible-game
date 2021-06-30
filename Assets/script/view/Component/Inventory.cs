@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     public string invName;
     public string[] language;
     public GameObject cabinet;
-    public bool is3DModel=false;
+    private bool is3DModel=false;
     private string FunctionObj;
 
 
@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
         cabinet =GameObject.Find(myValue.cabinet);
         is3DModel = myValue.is3DModel;
         FunctionObj = myValue.FunctionObj;
-
+        
 
     }
 
@@ -78,7 +78,7 @@ public class Inventory : MonoBehaviour
 
         }
 
-        Goodproxy.instances().addInventory(new Goodsmodel(tempUrl, (int)id, invName, is3DModel));
+        Goodproxy.instances().addInventory(new Goodsmodel(tempUrl, (int)id, invName, is3DModel, FunctionObj));
         //    for (int i = 0; i < language.Length; i++)
         //    {
         //        tex += MySingleD[i].talkobj.name + ">";
