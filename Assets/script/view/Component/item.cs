@@ -13,8 +13,8 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
    
     void Awake()
 	{
-        if (dragObjRect == null)
-        { dragObjRect = this.GetComponentInParent<RectTransform>(); }
+        if (dragObjRect == null){
+            dragObjRect = this.GetComponentInParent<RectTransform>(); }
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 
 
@@ -200,7 +200,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         {
             if (this.model.is3DModel == false)
             {
-                useSprite = Resources.Load<Sprite>(model.good.src);
+                useSprite = Resources.Load<Sprite>("80x80/"+model.good.src);
             }
             else if (this.model.is3DModel == true)
             {
@@ -213,23 +213,24 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
 
             GameObject beObj = AppFactory.instances.GetbeUseObj();
             if (beObj) {
-
-                if (this.model.good.beFuncName == beObj.tag)
+                if (PackProxy.instances().tagCmdOrName != TagCmd.pressTabInterrupt)
                 {
+                    if (this.model.good.beFuncName == beObj.tag)
+                    {
 
-                    this.GetComponent<Animation>().Play("itemEdge");
-                    //    OutlineEx t = obj.GetComponent<OutlineEx>();//.OutlineWidth = 1;
-                    //                iTween.ValueTo(gameObject, iTween.Hash("from", 1, "to", 10,// gameObject.transform.position为0.0.0
-                    //"easetype", "easeInBack", "loopType", iTween.LoopType.pingPong, "time", 1f, "onupdate", "AnimationUpdata", "onupdateparams",[t,1], "oncomplete", "Oncomplete"));
-                    // iTween.ValueTo();
+                        this.GetComponent<Animation>().Play("itemEdge");
+                        //    OutlineEx t = obj.GetComponent<OutlineEx>();//.OutlineWidth = 1;
+                        //                iTween.ValueTo(gameObject, iTween.Hash("from", 1, "to", 10,// gameObject.transform.position为0.0.0
+                        //"easetype", "easeInBack", "loopType", iTween.LoopType.pingPong, "time", 1f, "onupdate", "AnimationUpdata", "onupdateparams",[t,1], "oncomplete", "Oncomplete"));
+                        // iTween.ValueTo();
+                    }
+                    else
+                    {
+                        this.GetComponent<Animation>().Stop("itemEdge");
+                        //   obj.GetComponent<OutlineEx>().OutlineWidth = 0;
+
+                    }
                 }
-                else
-                {
-                    this.GetComponent<Animation>().Stop("itemEdge");
-                    //   obj.GetComponent<OutlineEx>().OutlineWidth = 0;
-
-                }
-
             }
 
 
@@ -245,7 +246,6 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         {
 
 
-            //Image tempImage = this.image as Image;
             Color qa = new Color(this.image.color.r, this.image.color.g, this.image.color.b, 0);
             this.image.color = qa;
 

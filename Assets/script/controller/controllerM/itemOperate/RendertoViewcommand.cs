@@ -29,7 +29,7 @@ public class RendertoViewcommand : IC {
 
 
 			string tempMsg = (string)a.data;
-
+			packproxy.tagCmdOrName = tempMsg;
 
 			AppFactory.instances.viewTodo(new Observer("show", packmodellist, tempMsg));
 		}
