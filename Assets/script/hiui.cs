@@ -24,7 +24,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
         void inter()
         {//Debug.Log ("helloworld");
-            if (AppFactory.instances.eventTodo("第一次交互") == false)
+            if (AppFactory.instances.eventTodo(eventCmd.第一次交互) == false)
             {
                 interactionui.GetComponent<Image>().material = bili;
             }

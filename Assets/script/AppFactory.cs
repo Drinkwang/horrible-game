@@ -357,7 +357,7 @@ public class AppFactory : MonoBehaviour
     }
 
 
-    public bool eventIsExcuteState(string t) {
+    public bool eventIsExcuteState(eventCmd t) {
         if (mysave.every.ContainsKey(t) && mysave.every[t] == false)
         {
             return true;
@@ -368,7 +368,7 @@ public class AppFactory : MonoBehaviour
 
     }
 
-    public bool eventTodo(string t) {
+    public bool eventTodo(eventCmd t) {
         if (mysave.every.ContainsKey(t)&&mysave.every[t]==false) {
             mysave.every[t] = true;
             return true;

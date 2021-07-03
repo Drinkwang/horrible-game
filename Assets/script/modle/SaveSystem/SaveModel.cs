@@ -13,7 +13,7 @@ namespace Assets.script.modle.SaveSystem
 
         public CameraProxy cameraProxy;
         public PackProxy packProxy;
-        public Dictionary<string, bool> all;
+        public Dictionary<eventCmd, bool> all;
         public Sayingproxy sayingProxy;
         public PlayerPosition playerPosition;
         public int[] paintPoint;

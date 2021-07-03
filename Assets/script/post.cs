@@ -86,9 +86,9 @@ public class post : MonoBehaviour
 
             if (hitpoint.collider.tag == "bloomtable")
             {
-                if (!AppFactory.instances.eventIsExcuteState("三张卡牌"))
+                if (!AppFactory.instances.eventIsExcuteState(eventCmd.三张卡牌))
                 {
-                    if (AppFactory.instances.eventTodo("赌桌事件"))
+                    if (AppFactory.instances.eventTodo(eventCmd.赌桌事件))
                     {
 
                         //middleLayer.Instance.canMove = false;
@@ -125,7 +125,7 @@ public class post : MonoBehaviour
 
                     else if (hitpoint.collider.name == "tv")
                     {
-                        if (AppFactory.instances.eventTodo("播放电视"))
+                        if (AppFactory.instances.eventTodo(eventCmd.播放电视))
                         {
                             player.GetComponent<Animator>().SetTrigger("grag");
                             AppFactory.instances.Todo(new Observer(Cmd.playTv));
@@ -202,10 +202,15 @@ public class post : MonoBehaviour
                     {
                         useItem("物品");
                     }
-                    else if (hitpoint.collider.tag == "ladder") {
+                    else if (hitpoint.collider.tag == "ladder")
+                    {
                         LadderComponent.instance.MoveByLadder();
-                    //todo
+                        //todo
 
+                    }
+                    else if (hitpoint.collider.tag == "paper") { 
+                    
+                    
                     }
 
                 }
@@ -229,13 +234,13 @@ public class post : MonoBehaviour
     }
     public void cardDeal(Collider t)
     {
-        if (AppFactory.instances.eventTodo("第一张卡牌"))
+        if (AppFactory.instances.eventTodo(eventCmd.第一张卡牌))
         {
             onecardevent.GetComponent<Onobjsession>().add();
 
         }
 
-        if ((t.name == "mycard0" || t.name == "mycard1" || t.name == "mycard2") && AppFactory.instances.eventTodo("不能回收手牌"))
+        if ((t.name == "mycard0" || t.name == "mycard1" || t.name == "mycard2") && AppFactory.instances.eventTodo(eventCmd.不能回收手牌))
         {
 
             player.GetComponent<Animator>().SetTrigger("grag");
@@ -244,7 +249,7 @@ public class post : MonoBehaviour
 
         if (PackProxy.instances().TryGeGoodtModel(1) == true && PackProxy.instances().TryGeGoodtModel(2) == true && PackProxy.instances().TryGeGoodtModel(3) == true)
         {
-            if (AppFactory.instances.eventTodo("三张卡牌"))
+            if (AppFactory.instances.eventTodo(eventCmd.三张卡牌))
             {
                 threecardevent.GetComponent<Onobjsession>().add();
                 table.SetActive(true);

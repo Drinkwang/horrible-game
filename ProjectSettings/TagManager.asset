@@ -18,6 +18,8 @@ TagManager:
   - cubeMove
   - ladder
   - terrain
+  - paper
+  - savePoint
   layers:
   - Default
   - TransparentFX
