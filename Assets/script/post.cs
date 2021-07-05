@@ -86,7 +86,7 @@ public class post : MonoBehaviour
 
             if (hitpoint.collider.tag == "bloomtable")
             {
-                if (!AppFactory.instances.eventIsExcuteState(eventCmd.三张卡牌))
+                if (!AppFactory.instances.eventIsCanExcuteState(eventCmd.三张卡牌))
                 {
                     if (AppFactory.instances.eventTodo(eventCmd.赌桌事件))
                     {
@@ -202,15 +202,15 @@ public class post : MonoBehaviour
                     {
                         useItem("物品");
                     }
-                    else if (hitpoint.collider.tag == "ladder")
+                    else if (hitpoint.collider.tag == "ladder"&&!AppFactory.instances.eventIsCanExcuteState(eventCmd.打开地窖))
                     {
                         LadderComponent.instance.MoveByLadder();
                         //todo
 
                     }
-                    else if (hitpoint.collider.tag == "paper") { 
-                    
-                    
+                    else if (hitpoint.collider.tag == "paper") {
+
+                        scribeChange.instance.A();
                     }
 
                 }

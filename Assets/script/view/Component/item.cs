@@ -200,7 +200,7 @@ public class item : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IDragH
         {
             if (this.model.is3DModel == false)
             {
-                useSprite = Resources.Load<Sprite>("80x80/"+model.good.src);
+                useSprite = Resources.Load<Sprite>("64x64/" + model.good.src);
             }
             else if (this.model.is3DModel == true)
             {

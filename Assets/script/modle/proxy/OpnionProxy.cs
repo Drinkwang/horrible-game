@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Assets.script.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Assets.script.Utils.Multilingual;
 
-
-  public class OpnionProxy
+public class OpnionProxy
     {
     public bool isOpenCheckTip = true;
 
@@ -16,8 +17,8 @@ using System.Threading.Tasks;
         get { return globelstate; }
         private set { globelstate = value; }
     }
-    private Globelstate.language elanguage;
-    public Globelstate.language mylanguage
+    private languageType elanguage;
+    public languageType mylanguage
     {
         get { return elanguage; }
         private set { elanguage = value; }
@@ -36,7 +37,7 @@ using System.Threading.Tasks;
 
     }
 
-    internal void SetLanguage(Globelstate.language lan)
+    internal void SetLanguage(languageType lan)
     {
         mylanguage = lan;
     }

@@ -169,13 +169,13 @@ public class /*  */Befunction : MonoBehaviour
                 //}
             }
         }
-        else if (beUseItemId == (int)GoodType.撬棍) {
+        else if (beUseItemId == (int)GoodType.撬棍 && AppFactory.instances.eventTodo(eventCmd.打开地窖)) {
             if (beFuncObj.name == "PCube-move")
             {
                 AppFactory.instances.Todo(new Observer(Cmd.consumeItem, beUseItemId));
 
                 AppFactory.instances.changestate(Globelstate.state.load,true);
-
+ 
                 AppFactory.instances.Todo(new Observer(Cmd.moveCamera, 5));
                 crowDragComponent.instance.OnCrowAni() ;
  

@@ -5,7 +5,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System;
-
+using Assets.script.Utils;
 
 [CreateAssetMenu(fileName = "DiaglogSystem", menuName = "Command/ReplaceData")]
 public class ReplaceNextDiaglogData : ScriptableObject
@@ -22,8 +22,8 @@ public class ReplaceNextDiaglogData : ScriptableObject
         //     MySingleD = null;
         // }
         Debug.Log(this.name + "");
-        textFile = new string[Globelstate.LanguageLength()];
-        foreach (Globelstate.language language in Globelstate.getLanguage())
+        textFile = new string[Multilingual.LanguageLength()];
+        foreach (languageType language in Multilingual.getLanguage())
         {
             string streamOpenFileName = Application.streamingAssetsPath + "/" + language + "/" + this.name + ".text";
 
@@ -63,17 +63,17 @@ public class ReplaceNextDiaglogData : ScriptableObject
             for (int i = 0; i < MySingleD.Length; i++)
             {
                 tex += this.name + i + ">";
-                if (MySingleD[i].ChineseVersion != null && language == (int)Globelstate.language.china)
+                if (MySingleD[i].ChineseVersion != null && language == (int)languageType.china)
                     tex += MySingleD[i].ChineseVersion;
-                else if (MySingleD[i].ChineseVersion == null && language == (int)Globelstate.language.china)
+                else if (MySingleD[i].ChineseVersion == null && language == (int)languageType.china)
                     tex += "中文";
-                else if (MySingleD[i].EnglishVersion != null && language == (int)Globelstate.language.english)
+                else if (MySingleD[i].EnglishVersion != null && language == (int)languageType.english)
                     tex += MySingleD[i].EnglishVersion;
-                else if (MySingleD[i].EnglishVersion == null && language == (int)Globelstate.language.english)
+                else if (MySingleD[i].EnglishVersion == null && language == (int)languageType.english)
                     tex += "null";
-                else if (MySingleD[i].JapanVersion != null && language == (int)Globelstate.language.japanense)
+                else if (MySingleD[i].JapanVersion != null && language == (int)languageType.japanense)
                     tex += MySingleD[i].JapanVersion;
-                else if (MySingleD[i].JapanVersion == null && language == (int)Globelstate.language.japanense)
+                else if (MySingleD[i].JapanVersion == null && language == (int)languageType.japanense)
                     tex += "存在しない";
                 if (i != MySingleD.Length - 1)
                     tex += "\n";
@@ -91,11 +91,11 @@ public class ReplaceNextDiaglogData : ScriptableObject
             for (int i = 0; i < eachParagraph.Length; i++)
             {
                 String[] talkAndSpeak = eachParagraph[i].Split('>');
-                if (language == (int)Globelstate.language.china)
+                if (language == (int)languageType.china)
                     MySingleD[i].ChineseVersion = talkAndSpeak[1];
-                else if (language == (int)Globelstate.language.english)
+                else if (language == (int)languageType.english)
                     MySingleD[i].EnglishVersion = talkAndSpeak[1];
-                else if (language == (int)Globelstate.language.japanense)
+                else if (language == (int)languageType.japanense)
                     MySingleD[i].JapanVersion = talkAndSpeak[1];
             }
         }
@@ -109,7 +109,7 @@ public class ReplaceNextDiaglogData : ScriptableObject
         if (MySingleD != null)
         {
 
-            foreach (Globelstate.language language in Globelstate.getLanguage())
+            foreach (languageType language in Multilingual.getLanguage())
             {
                 ReadToText((int)language);
             }
@@ -132,7 +132,7 @@ public class ReplaceNextDiaglogData : ScriptableObject
         if (MySingleD != null)
         {
 
-            foreach (Globelstate.language language in Globelstate.getLanguage())
+            foreach (languageType language in Multilingual.getLanguage())
             {
                 ReadToText((int)language);
             }

@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using Assets.script.Utils;
+
 public class dialogComponent : MonoBehaviour
 {
     public static dialogComponent instance;
@@ -103,7 +105,7 @@ public class dialogComponent : MonoBehaviour
 
             OpnionProxy opnion=OpnionProxy.instances();
 
-            if (opnion.mylanguage == Globelstate.language.china)
+            if (opnion.mylanguage == languageType.china)
             {
                 textchange(dialogues[0].ChineseVersion.ToString());
                 if (dialogues[0].ChineseAC == null)
@@ -113,7 +115,7 @@ public class dialogComponent : MonoBehaviour
                 else
                     lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].ChineseAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
             }
-            else if (opnion.mylanguage == Globelstate.language.english)
+            else if (opnion.mylanguage == languageType.english)
             {
                 textchange(dialogues[0].EnglishVersion.ToString());
                 if (dialogues[0].EnglishAC == null)
@@ -121,7 +123,7 @@ public class dialogComponent : MonoBehaviour
                 else
                     lastaudio = Audomanage.instance.OnPlay(0.8f, dialogues[0].EnglishAC, dialogues[0].talkobj.transform, t, dialogues[0].value, dialogues[0].values, dialogues[0].delay);
             }
-            else if (opnion.mylanguage == Globelstate.language.japanense)
+            else if (opnion.mylanguage == languageType.japanense)
             {
                 textchange(dialogues[0].JapanVersion.ToString());
                 if (dialogues[0].JapanAC == null)

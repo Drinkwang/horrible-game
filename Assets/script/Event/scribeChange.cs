@@ -11,11 +11,28 @@ public class scribeChange : Befunction
     public Color centerC;
     public Color inscribeC;
 
+    public static scribeChange instance;
+
+
+
     public scribeChange(string temp) : base(temp)
     {
 
+    
+    
+    
     }
 
+
+
+    public void Awake()
+    {
+        if (instance == null) {
+
+            instance = this;
+        
+        }
+    }
     void Start()
     {
         base.A += function;

@@ -6,6 +6,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text;
+using Assets.script.Utils;
 
 public class PackProxy : Baseproxy<Packagemodel> {
 
@@ -111,7 +112,7 @@ public class PackProxy : Baseproxy<Packagemodel> {
 	}
 
 	public void saveAllInventoryLan() {
-		foreach (Globelstate.language lan in Globelstate.getLanguage()) {
+		foreach (languageType lan in Multilingual.getLanguage()) {
 				string streamOpenFileName = Application.streamingAssetsPath + "/" + lan + "/" + "Inventory" + ".text";
 			if (!File.Exists(streamOpenFileName)) {
 				if (!Directory.Exists(Application.streamingAssetsPath + "/" + lan))
@@ -126,16 +127,16 @@ public class PackProxy : Baseproxy<Packagemodel> {
 					{
 
 						if ((int)lan < inventoryList[i].language.Length)
-							tex += inventoryList[i].gameObject.GetHashCode() + "," + inventoryList[i].language[(int)lan] + '\n';
+							tex += inventoryList[i].gameObject.GetInstanceID() + "," + inventoryList[i].language[(int)lan] + '\n';
 						else
-							tex += inventoryList[i].gameObject.GetHashCode() + "," + inventoryList[i].invName + '\n';
+							tex += inventoryList[i].gameObject.GetInstanceID() + "," + inventoryList[i].invName + '\n';
 					}
 					else {
 
 						if ((int)lan < inventoryList[i].language.Length)
-							tex += inventoryList[i].gameObject.GetHashCode() + "," + inventoryList[i].language[(int)lan];
+							tex += inventoryList[i].gameObject.GetInstanceID() + "," + inventoryList[i].language[(int)lan];
 						else
-							tex += inventoryList[i].gameObject.GetHashCode() + "," + inventoryList[i].invName;
+							tex += inventoryList[i].gameObject.GetInstanceID() + "," + inventoryList[i].invName;
 					}
 
 
@@ -151,9 +152,9 @@ public class PackProxy : Baseproxy<Packagemodel> {
 
 
 	public void loadAllInventoryLan() {
-		inventoryDic = new Dictionary<int, string>[Globelstate.LanguageLength()];
+		inventoryDic = new Dictionary<int, string>[Multilingual.LanguageLength()];
 
-		foreach (Globelstate.language lan in Globelstate.getLanguage())
+		foreach (languageType lan in Multilingual.getLanguage())
 		{
 			inventoryDic[(int)lan] = new Dictionary<int, string>();
 			string streamOpenFileName = Application.streamingAssetsPath + "/" + lan + "/" + "Inventory" + ".text";

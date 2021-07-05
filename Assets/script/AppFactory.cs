@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.script.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,8 +69,8 @@ public class AppFactory : MonoBehaviour
     //    get { return globelstate; }
     //    private set { globelstate = value; }
     //}
-    //private Globelstate.language elanguage;
-    //public Globelstate.language mylanguage
+    //private languageType elanguage;
+    //public languageType mylanguage
     //{
     //    get { return elanguage; }
     //    private set { elanguage = value; }
@@ -80,11 +81,11 @@ public class AppFactory : MonoBehaviour
         OpnionProxy opnion=OpnionProxy.instances();
         Debug.Log(change.value);
         if (change.value == 0)
-        { opnion.SetLanguage(Globelstate.language.china); }
+        { opnion.SetLanguage(languageType.china); }
         else if (change.value == 1)
-        { opnion.SetLanguage(Globelstate.language.english); }
+        { opnion.SetLanguage(languageType.english); }
         else if (change.value == 2)
-        { opnion.SetLanguage(Globelstate.language.japanense); }
+        { opnion.SetLanguage(languageType.japanense); }
     }
 
     public enum itemstate
@@ -357,7 +358,7 @@ public class AppFactory : MonoBehaviour
     }
 
 
-    public bool eventIsExcuteState(eventCmd t) {
+    public bool eventIsCanExcuteState(eventCmd t) {
         if (mysave.every.ContainsKey(t) && mysave.every[t] == false)
         {
             return true;

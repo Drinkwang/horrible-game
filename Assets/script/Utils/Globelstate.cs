@@ -13,22 +13,12 @@ public class Globelstate {
         load
 
     }
-    public enum language
-    {
-        china,
-        english,
-        japanense
 
-    }
     public enum Lookstate {
         mainCamera,
         eitherCamera
     }
 
-    public static int LanguageLength(){
-        return Enum.GetValues(typeof(language)).Length;
-    }
-    public static Array getLanguage() {
-        return Enum.GetValues(typeof(language));
-    }
+
+
 }

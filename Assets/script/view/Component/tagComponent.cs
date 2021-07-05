@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using Assets.script.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using static Assets.script.Utils.Multilingual;
 
 public class tagComponent : MonoBehaviour
 {
@@ -27,8 +29,8 @@ public class tagComponent : MonoBehaviour
     void saveLogic()
     {
 
-        string[] textFile = new string[Globelstate.LanguageLength()];
-        foreach (Globelstate.language lan in Globelstate.getLanguage())
+        string[] textFile = new string[LanguageLength()];
+        foreach (languageType lan in getLanguage())
         {
             string streamOpenFileName = Application.streamingAssetsPath + "/" + lan + "/" + this.gameObject.name + ".text";
 
@@ -123,7 +125,7 @@ public struct tagLanguage
     public string clickUseItem;
     public string pressTabInterrupt;
 
-    public Globelstate.language lan;
+    public languageType lan;
 
 }
 static class TagCmd {
