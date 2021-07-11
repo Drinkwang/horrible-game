@@ -1,0 +1,16 @@
+[
+  {
+    "TagId": 1,
+    "TagName": "clickUseItem",
+    "china": "点击进行使用",
+    "english": "Click item to use",
+    "japanense": "クリックして使う"
+  },
+  {
+    "TagId": 2,
+    "TagName": "pressTabInterrupt",
+    "china": "按Tab键进行交互",
+    "english": "PressTabInterrupt",
+    "japanense": "[tab]キーを押して対話します"
+  }
+]

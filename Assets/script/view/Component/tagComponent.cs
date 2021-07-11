@@ -10,16 +10,20 @@ using static Assets.script.Utils.Multilingual;
 public class tagComponent : MonoBehaviour
 {
 
-    public tagLanguage[] TagLanguage;
+    public tagLanguage[] TagLanguages;
 
     public static tagComponent instance; 
 
 
 
-    string GenerateText(int i)
+    string GenerateText()
     {
+        string reLs="";
+        for (int i = 0; i < TagLanguages.Length; i++) {
 
-        return "";
+            reLs += TagLanguages[i].clickUseItem + "," + TagLanguages[i].pressTabInterrupt+ "\n";
+        }
+        return reLs;
 
     }
 
@@ -29,50 +33,47 @@ public class tagComponent : MonoBehaviour
     void saveLogic()
     {
 
-        string[] textFile = new string[LanguageLength()];
-        foreach (languageType lan in getLanguage())
-        {
-            string streamOpenFileName = Application.streamingAssetsPath + "/" + lan + "/" + this.gameObject.name + ".text";
+        string textFile = "";
 
-            if (!Directory.Exists(Application.streamingAssetsPath + "/" + lan))
-            {
-                Directory.CreateDirectory(Application.streamingAssetsPath + "/" + lan);
-            }
+            string streamOpenFileName = Application.streamingAssetsPath + "/"  + this.gameObject.name + ".text";
+
+
             if (File.Exists(streamOpenFileName))
             {
 
                 StreamReader sr = new StreamReader(streamOpenFileName);
                 if (sr != null)
                 {
-                    textFile[(int)lan] = sr.ReadToEnd();
+                    textFile = sr.ReadToEnd();
                 }
 
             }
-            else if (textFile[(int)lan] == null)
+            else if (!File.Exists(streamOpenFileName))
             {
-                if (!File.Exists(streamOpenFileName))
-                {
-                    string tex = GenerateText((int)lan);
-                    File.WriteAllText(streamOpenFileName, tex, Encoding.UTF8);
 
-                }
+                textFile = GenerateText();
+                File.WriteAllText(streamOpenFileName, textFile, Encoding.UTF8);
+
+                
             }
+        string[] eachTag=textFile.Split('\n');
+        foreach (languageType t in getLanguage()) {
+            string[] tags = eachTag[(int)t].Split(',');
+            TagLanguages[(int)t].clickUseItem = tags[0];
+            TagLanguages[(int)t].pressTabInterrupt = tags[1];
         }
+      
 
     }
 
    
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
 
     void Awake()
     {
         if(instance==null)
             instance = this;
+        saveLogic();
 
     }
 
@@ -83,21 +84,21 @@ public class tagComponent : MonoBehaviour
         if (Content.Length > 0)
         {
             this.GetComponentInChildren<Text>().text = Content;
-            for (int i = 0; i < TagLanguage.Length; i++)
+            for (int i = 0; i < TagLanguages.Length; i++)
             {
 
-                if (TagLanguage[i].lan == OpnionProxy.instances().mylanguage)
+                if (TagLanguages[i].lan == OpnionProxy.instances().mylanguage)
                 {
 
                     if (Content == "clickUseItem")
                     {
-                        this.GetComponentInChildren<Text>().text = TagLanguage[i].clickUseItem;
+                        this.GetComponentInChildren<Text>().text = TagLanguages[i].clickUseItem;
 
                     }
                     else if (Content == "pressTabInterrupt")
                     {
 
-                        this.GetComponentInChildren<Text>().text = TagLanguage[i].pressTabInterrupt;
+                        this.GetComponentInChildren<Text>().text = TagLanguages[i].pressTabInterrupt;
 
                     }
                     break;

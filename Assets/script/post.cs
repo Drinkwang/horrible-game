@@ -209,8 +209,8 @@ public class post : MonoBehaviour
 
                     }
                     else if (hitpoint.collider.tag == "paper") {
-
-                        scribeChange.instance.A();
+                        hitpoint.collider.GetComponent<paperComponent>().OnPaperShow();
+                       // scribeChange.instance.A();
                     }
 
                 }

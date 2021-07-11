@@ -112,41 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!21 &13144350
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: TSF Shaders/UI/OutlineEx
-  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 6
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &15133755
 GameObject:
   m_ObjectHideFlags: 0
@@ -8593,41 +8558,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397439315}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!21 &399091406
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: TSF Shaders/UI/OutlineEx
-  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 0
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &400425871
 GameObject:
   m_ObjectHideFlags: 0
@@ -12271,6 +12201,41 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!21 &673202075
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TSF Shaders/UI/OutlineEx
+  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 4
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &682464138
 GameObject:
   m_ObjectHideFlags: 0
@@ -13649,15 +13614,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea805e8b2e97e04a9d97149235e91fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagLanguage:
-  - clickUseItem: "\u70B9\u51FB\u7269\u54C1\u8FDB\u884C\u4F7F\u7528"
-    pressTabInterrupt: "\u6309tab\u952E\u5F00\u5173\u7269\u54C1\u680F"
+  TagLanguages:
+  - clickUseItem: "\u70B9\u51FB\u8FDB\u884C\u4F7F\u7528\u4F7F\u7528"
+    pressTabInterrupt: "\u6309tab\u952E\u8FDB\u884C\u4EA4\u4E92"
     lan: 0
-  - clickUseItem: Click Item can use
-    pressTabInterrupt: Press Tab Switch State
+  - clickUseItem: clickUseItem
+    pressTabInterrupt: pressTabInterrupt
     lan: 1
-  - clickUseItem: '  '
-    pressTabInterrupt: 
+  - clickUseItem: 11
+    pressTabInterrupt: 22
     lan: 2
 --- !u!1 &796986612
 GameObject:
@@ -15815,7 +15780,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 13144350}
+  m_Material: {fileID: 1060682181}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -17624,6 +17589,41 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 305112007}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1060682181
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TSF Shaders/UI/OutlineEx
+  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 6
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &1063095879
 GameObject:
   m_ObjectHideFlags: 0
@@ -18378,6 +18378,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132963815}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!21 &1135551244
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TSF Shaders/UI/OutlineEx
+  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1149794235
 GameObject:
   m_ObjectHideFlags: 0
@@ -20729,41 +20764,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!21 &1406384090
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: TSF Shaders/UI/OutlineEx
-  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 4
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1414470520
 GameObject:
   m_ObjectHideFlags: 3
@@ -22174,6 +22174,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bad5d3ac547b2e438903ce2c9766b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  top:
+    china: 
+    english: 
+    japanense: 
+  center:
+    china: 
+    english: 
+    japanense: 
+  inscribe:
+    china: 
+    english: 
+    japanense: 
+  topC: {r: 0, g: 0, b: 0, a: 0}
+  centerC: {r: 0, g: 0, b: 0, a: 0}
+  inscribeC: {r: 0, g: 0, b: 0, a: 0}
+  id: 1
+  isExit: 0
+  IsDestory: 0
 --- !u!65 &1534832744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23236,41 +23254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speaker: {fileID: 4506546981518609014}
---- !u!21 &1616558730
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: TSF Shaders/UI/OutlineEx
-  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 0
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1631759804
 GameObject:
   m_ObjectHideFlags: 0
@@ -23677,6 +23660,41 @@ Transform:
   m_Father: {fileID: 984479706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1648839609
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TSF Shaders/UI/OutlineEx
+  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1656975306
 GameObject:
   m_ObjectHideFlags: 0
@@ -24158,6 +24176,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.8, z: 1}
   m_Center: {x: -0.29, y: 0.5, z: 2.3}
+--- !u!21 &1694237492
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TSF Shaders/UI/OutlineEx
+  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _OutlineWidth: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1699191675
 GameObject:
   m_ObjectHideFlags: 0
@@ -25149,41 +25202,6 @@ Transform:
   m_Father: {fileID: 1380298483}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1885647792
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: TSF Shaders/UI/OutlineEx
-  m_Shader: {fileID: 4800000, guid: 19f1d505901f3a646a8b2482ac2adfff, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ColorMask: 15
-    - _OutlineWidth: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1908394142
 GameObject:
   m_ObjectHideFlags: 0
@@ -25279,7 +25297,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1885647792}
+  m_Material: {fileID: 1648839609}
   m_Color: {r: 0.4044118, g: 0.10705019, b: 0.18703027, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -25428,91 +25446,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.99999994, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &1939102994
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 69525400530200835}
-    m_Modifications:
-    - target: {fileID: 5156838890994186592, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_Name
-      value: paper_camera (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994186592, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_TagString
-      value: paper
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.529
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.46500143
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5156838890994186593, guid: 5e435f285f3d011488dbec2c20cb435d, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 5e435f285f3d011488dbec2c20cb435d, type: 3}
 --- !u!1 &1948938157
 GameObject:
   m_ObjectHideFlags: 0
@@ -27583,43 +27516,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mychild: {fileID: 0}
---- !u!1 &2133885349 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5156838890994186592, guid: 5e435f285f3d011488dbec2c20cb435d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1939102994}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2133885350 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5156838890994607424, guid: 5e435f285f3d011488dbec2c20cb435d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1939102994}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2133885351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133885349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bad5d3ac547b2e438903ce2c9766b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &2133885352
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133885349}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.45775604, y: 0.14924836, z: 0.13585281}
-  m_Center: {x: -0.0002193898, y: -0.0020712465, z: -0.004141055}
 --- !u!33 &69525400527333671
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27680,7 +27576,6 @@ Transform:
   - {fileID: 1534832740}
   - {fileID: 69525400530200837}
   - {fileID: 69525400530200847}
-  - {fileID: 2133885350}
   m_Father: {fileID: 1322058411}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

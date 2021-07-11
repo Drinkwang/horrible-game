@@ -20,6 +20,8 @@ namespace Assets.script.Utils
         }
     }
 
+
+    [Serializable]
     public class languageString{
         public string china;
         public string english;
