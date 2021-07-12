@@ -30,20 +30,37 @@ public class paperComponent : MonoBehaviour
 
     public void OnReadPaper() {
 
-        //可以用反射的来实现多语言变化，目前只实现三种语言
+
 
         PaperModel model= PaperProxy.instances().getModelByElement("PaperId", (int)id);
-        top.china = model.china[0];
-        top.english = model.english[0];
-        top.japanense = model.japanense[0];
 
-        center.china = model.china[1];
-        center.english = model.english[1];
-        center.japanense = model.japanense[1];
 
-        inscribe.china = model.china[2];
-        inscribe.english = model.english[2];
-        inscribe.japanense = model.japanense[2];
+        foreach (languageType lan in Multilingual.getLanguage()) {
+            string lanType = lan.ToString();
+
+            string[] t = model.GetType().GetField(lanType).GetValue(model) as string[];
+            top.GetType().GetField(lanType).SetValue(top, t[0]);
+            center.GetType().GetField(lanType).SetValue(center, t[1]);
+            inscribe.GetType().GetField(lanType).SetValue(inscribe, t[2]);
+            // Debug.Log();
+
+        }
+        isExit = model.IsExit;
+        IsDestory = model.IsDestory;
+      //  Color = new Color( model.Color[0], model.Color[1], model.Color[2], model.Color[3]);
+
+
+        //top.china = model.china[0];
+        //top.english = model.english[0];
+        //top.japanense = model.japanense[0];
+
+        //center.china = model.china[1];
+        //center.english = model.english[1];
+        //center.japanense = model.japanense[1];
+
+        //inscribe.china = model.china[2];
+        //inscribe.english = model.english[2];
+        //inscribe.japanense = model.japanense[2];
 
     }
     public void OnPaperShow() {
