@@ -26,7 +26,8 @@ class SaveSystemController : IC
                 sayingProxy = Sayingproxy.instances(),
                 paintPoint = PaintModelComponent.instance.paintPoint,
                 IsLock = CabinetManagerComponent.instance.isLock,
-                opnion = OpnionProxy.instances()
+                opnion = OpnionProxy.instances(),
+                paperValueProxy=PaperValueProxy.instances()
                 //     playerPosition = hiui.instance.GetPlayerPosition(),
 
             };
@@ -57,7 +58,7 @@ class SaveSystemController : IC
 
 
                 Sayingproxy.instances().SetSaveContent(save.sayingProxy.hashIdAndIndex);
-
+                PaperValueProxy.instances().SetPaperValue(save.paperValueProxy);
             }
 
 

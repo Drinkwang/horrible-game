@@ -13,6 +13,7 @@ using System.Text;
     //task
     public const string addTask = "addtask";
     public const string renderTask = "rtask";
+    //显示游戏内纸质文档
     public const string changeM = "changeM";
 
 

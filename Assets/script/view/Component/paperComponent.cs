@@ -12,13 +12,20 @@ public class paperComponent : MonoBehaviour
     public Color topC;
     public Color centerC;
     public Color inscribeC;
-    public PaperType id=PaperType.相机1;
+    // public PaperType id=PaperType.相机1;
 
-    public bool isExit;
-    public bool IsDestory;
+
+    public PaperType type = PaperType.相机1;
+    private PaperValue paper;
+    //public bool isExit;
+    //public bool IsDestory;
+    //private int MainId;
+    //private int HashId;
     // Start is called before the first frame update
     void Start()
     {
+
+        PaperValueProxy.instances().addPaperComponentToList(this);
         OnReadPaper();
     }
 
@@ -32,7 +39,7 @@ public class paperComponent : MonoBehaviour
 
 
 
-        PaperModel model= PaperProxy.instances().getModelByElement("PaperId", (int)id);
+        PaperModel model= PaperProxy.instances().getModelByElement("PaperId", (int)type);
 
 
         foreach (languageType lan in Multilingual.getLanguage()) {
@@ -45,8 +52,31 @@ public class paperComponent : MonoBehaviour
             // Debug.Log();
 
         }
-        isExit = model.IsExit;
-        IsDestory = model.IsDestory;
+        this.paper = new PaperValue();
+        this.paper.isExit = model.IsExit;
+        this.paper.isDestory = model.IsDestory;
+        this.paper.hashId = this.gameObject.GetHashCode();
+        this.paper.id = model.PaperId;
+        if (model.Color.Length >= 12) {
+            topC.r= model.Color[0];
+            topC.g= model.Color[1];
+            topC.b = model.Color[2];
+            topC.a= model.Color[3];
+
+            centerC.r = model.Color[4];
+            centerC.g = model.Color[5];
+            centerC.b = model.Color[6];
+            centerC.a = model.Color[7];
+
+            inscribeC.r = model.Color[8];
+            inscribeC.g = model.Color[9];
+            inscribeC.b = model.Color[10];
+            inscribeC.a = model.Color[11];
+
+
+        }
+
+    //    paper.type = (PaperType)model.PaperId;
       //  Color = new Color( model.Color[0], model.Color[1], model.Color[2], model.Color[3]);
 
 
@@ -64,31 +94,20 @@ public class paperComponent : MonoBehaviour
 
     }
     public void OnPaperShow() {
-
-        string[] temp = new string[] { top.china, center.china, inscribe.china };
-        AppFactory.instances.Todo(new Observer("changeM", temp));
+        string lanType = OpnionProxy.instances().mylanguage.ToString() ;
+     //   top.GetType().GetField(lanType).GetValue(top);
+        string t = (string)top.GetType().GetField(lanType).GetValue(top);
+        string c= (string)center.GetType().GetField(lanType).GetValue(center);
+        string i= (string)inscribe.GetType().GetField(lanType).GetValue(inscribe);
+        string[] temp = new string[] { t, c, i };
+       // string[] temp = new string[] { top.china, center.china, inscribe.china };
+        Color[] tempColor = new Color[] {topC,centerC,inscribeC};
+       // paperValue paper = new paperValue();
+        
+        AppFactory.instances.Todo(new Observer("changeM", temp,tempColor,paper));
     }
 }
 
 
 
 
-public enum PaperType
-{
-
-
-    相机1 = 1,
-
-    //this.addmodeltolist(new Goodsmodel("♠Q", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("♠K", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("一些扑克", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("扑克-小鬼", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("扑克-大鬼", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("cd-1", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("cd-2", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("cd-3", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("世界名画1", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("世界名画2", this.getMaxid() + 1));
-    //this.addmodeltolist(new Goodsmodel("刚画好的油画", this.getMaxid() + 1));
-
-}

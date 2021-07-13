@@ -111,6 +111,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
          //  firstperson.changeCamera(0,CinemacineComponent.Instance().CinemacineMain);
             firstperson.enabled = true;
             interactionui.SetActive(true);
+           mouse.SetCursorLock(true);
 
         }
         // Update is called once per frame

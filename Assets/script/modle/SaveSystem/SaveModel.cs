@@ -13,6 +13,7 @@ namespace Assets.script.modle.SaveSystem
 
         public CameraProxy cameraProxy;
         public PackProxy packProxy;
+        public PaperValueProxy paperValueProxy;
         public Dictionary<eventCmd, bool> all;
         public Sayingproxy sayingProxy;
         public PlayerPosition playerPosition;

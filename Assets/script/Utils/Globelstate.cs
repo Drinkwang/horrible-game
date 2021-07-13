@@ -10,6 +10,7 @@ public class Globelstate {
     { save,
         unstart,
         start,
+        readPaper,
         load
 
     }

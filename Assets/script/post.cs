@@ -27,6 +27,13 @@ public class post : MonoBehaviour
             AppFactory.instances.CancelInvoke("sinvoke");
 
         }
+        else if ((Input.GetKeyDown(KeyCode.Tab) && opnion.myglobelstate == Globelstate.state.readPaper) || (Input.GetMouseButtonDown(1) && opnion.myglobelstate == Globelstate.state.readPaper) || (Input.GetKeyDown(KeyCode.Escape) && opnion.myglobelstate == Globelstate.state.readPaper)){
+
+            if (scribeComponent.instance.exit == true) {
+                scribeComponent.instance.re();
+            
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Backspace) && Input.GetKeyDown(KeyCode.F4))
         {
 
