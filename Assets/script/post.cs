@@ -24,7 +24,7 @@ public class post : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && opnion.myglobelstate == Globelstate.state.start || (Input.GetMouseButtonDown(0) && opnion.myglobelstate == Globelstate.state.start)) {
             Debug.Log("shoot");
 
-            Ray tw = main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+  
 
             if (!GamePool.Instance.IsContainPool(PoolName.bulletPool)) {
                 GamePool.Instance.CreatePool(PoolName.bulletPool, shootObj, 5, 100, true,50);
@@ -34,14 +34,17 @@ public class post : MonoBehaviour
       
            Vector3 CanvasPoint = CanvasComponent.instances().ReturnCanvasPosition(shootPoint);
 
-            float halfValue = 0.05f;
-           Vector3 ScreenP= main.ScreenToWorldPoint(new Vector3(CanvasPoint.x, CanvasPoint.y, CanvasPoint.z))+ new Vector3(this.transform.forward.x* halfValue, this.transform.forward.y * halfValue, this.transform.forward.z* halfValue);
-            //GameObject bullet= GameObject.Instantiate(shootObj, ScreenP, Quaternion.identity, bulletManager.transform);
-
             GameObject bullet = GamePool.Instance.GetObject(PoolName.bulletPool);
-            bullet.transform.position = ScreenP;
-            //     bullet.GetComponent<Rigidbody>().AddForce(hitpoint.transform * 500);
-            bullet.GetComponent<Rigidbody>().AddForce(tw.direction * 500);
+            bullet.GetComponent<BulletComponent>().launch(CanvasPoint);
+
+            //float halfValue = 0.05f;
+            //Vector3 ScreenP= main.ScreenToWorldPoint(new Vector3(CanvasPoint.x, CanvasPoint.y, CanvasPoint.z))+ new Vector3(this.transform.forward.x* halfValue, this.transform.forward.y * halfValue, this.transform.forward.z* halfValue);
+            ////GameObject bullet= GameObject.Instantiate(shootObj, ScreenP, Quaternion.identity, bulletManager.transform);
+
+
+            //bullet.transform.position = ScreenP;
+            ////     bullet.GetComponent<Rigidbody>().AddForce(hitpoint.transform * 500);
+            //bullet.GetComponent<Rigidbody>().AddForce(tw.direction * 500);
             //this.gameObject.
         }
         else if ((Input.GetKeyDown(KeyCode.Tab) && opnion.myglobelstate == Globelstate.state.start) || (Input.GetMouseButtonDown(1) && opnion.myglobelstate == Globelstate.state.start))
