@@ -11,13 +11,14 @@ public class dialogComponent : MonoBehaviour
     private List<SingledialogText> dialogues;
     private Text saying;
     private AudioSource lastaudio;
-
+    private Befunction tempBefunction;
 
 
     void Awake()
     {
         instance = this;
         saying = this.GetComponent<Text>();
+        tempBefunction=this.gameObject.AddComponent<Befunction>();
 
     }
 
@@ -82,7 +83,7 @@ public class dialogComponent : MonoBehaviour
         saying.fontSize = fontSize;
     }
 
-    public void todo(Befunction t = null)
+    public void todo(Befunction t=null)
     {
         if (dialogues.Count != 0)
         {
@@ -93,13 +94,22 @@ public class dialogComponent : MonoBehaviour
                 else if (dialogues[0].Sequence == SingledialogText.executeSequence.RunInDiaglogBegan)
                 {
                     dialogues[0].t.runa(dialogues[0].value, dialogues[0].values);
-                    t = new Befunction("who know");
+                    tempBefunction.clearDelegate();
+                    t = tempBefunction;
+
                 }
-                else{
+                else
+                {
                     t = dialogues[0].t;
+
+
                 }
             }
-            else t = new Befunction("who know");/*  */
+            else {
+                tempBefunction.clearDelegate();
+                t = tempBefunction;
+
+            }
             t.A += tempFunction;
             t._A += tempFunction2;
 

@@ -65,6 +65,30 @@ public class /*  */Befunction : MonoBehaviour
     {
         t = temp;
     }
+    public void clearDelegate() {
+        if (A != null) {
+            Delegate[] tempA = A.GetInvocationList();
+            for (int i = 0; i < tempA.Length; i++)
+            {
+                A -= tempA[i] as Action;
+
+            }
+        }
+        if (_A != null) {
+
+            Delegate[] temp_A = _A.GetInvocationList();
+
+            for (int j = 0; j < temp_A.Length; j++)
+            {
+                _A -= temp_A[j] as Action<int, List<int>>;
+
+            }
+
+
+        }
+
+    
+    }
 
     internal void runa(int res = 0, List<int> resG = null)
     {
