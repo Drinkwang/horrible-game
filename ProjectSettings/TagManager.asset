@@ -20,6 +20,7 @@ TagManager:
   - terrain
   - paper
   - savePoint
+  - enemy
   layers:
   - Default
   - TransparentFX

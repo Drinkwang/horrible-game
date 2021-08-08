@@ -190,6 +190,13 @@ public static class CUtil
         //File.WriteAllBytes(Application.dataPath + "1.jpg", b); 
         return tex2d;
     }
+    public static Transform FindUpParent(Transform zi)
+    {
+        if (zi.parent == null)
+            return zi;
+        else
+            return FindUpParent(zi.parent);
+    }
 
 
 }

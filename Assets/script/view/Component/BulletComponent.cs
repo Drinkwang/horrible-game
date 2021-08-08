@@ -25,6 +25,31 @@ public class BulletComponent:MonoBehaviour{
     public void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision);
+        Transform upGame = CUtil.FindUpParent(collision.transform);
+        if (upGame.gameObject.tag == "enemy") {
+            if (collision.gameObject.name == "body")
+            {
+
+                upGame.gameObject.GetComponent<enemyComponent>().takeDamage(30);
+            }
+            else if (collision.gameObject.name == "leg")
+            {
+
+
+                upGame.gameObject.GetComponent<enemyComponent>().takeDamage(15);
+            }
+            else if (collision.gameObject.name == "head")
+            {
+
+                upGame.gameObject.GetComponent<enemyComponent>().takeDamage(50);
+            }
+            else if (collision.gameObject.name == "arm") {
+
+                upGame.gameObject.GetComponent<enemyComponent>().takeDamage(20);
+            
+            }
+            GamePool.Instance.Destroy(PoolName.bulletPool,this.gameObject);
+        }
       //  Destroy(this);
     }
 }

@@ -21,7 +21,7 @@ public class post : MonoBehaviour
     {
         OpnionProxy opnion = OpnionProxy.instances();
         RaycastHit hitpoint;
-        if (Input.GetKeyDown(KeyCode.Space) && opnion.myglobelstate == Globelstate.state.start || (Input.GetMouseButtonDown(0) && opnion.myglobelstate == Globelstate.state.start)) {
+        if ( (Input.GetButtonDown("Fire1") && opnion.myglobelstate == Globelstate.state.start)) {
             Debug.Log("shoot");
 
   
